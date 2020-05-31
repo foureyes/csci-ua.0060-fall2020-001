@@ -17,8 +17,7 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "echo \"test\""
-        # "chmod 777 /srv/jekyll && jekyll build --future"
+        jekyll/builder:latest /bin/bash -c  "chmod 777 /srv/jekyll && jekyll build --trace"
 
 #name: Build and deploy jekyll site
 #
