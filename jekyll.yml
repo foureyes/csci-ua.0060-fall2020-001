@@ -18,12 +18,12 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && jekyll build --future"
-    - name: ssh deploy
-      uses: easingthemes/ssh-deploy@v2.1.2
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        ARGS: "-rltgoDzvO"
-        SOURCE: "/srv/jekyll/_site/"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
+#    - name: ssh deploy
+#      uses: easingthemes/ssh-deploy@v2.1.2
+#      with:
+#        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+#        ARGS: "-rltgoDzvO"
+#        SOURCE: "/srv/jekyll/_site/"
+#        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+#        REMOTE_USER: ${{ secrets.REMOTE_USER }}
+#        TARGET: ${{ secrets.REMOTE_TARGET }}
