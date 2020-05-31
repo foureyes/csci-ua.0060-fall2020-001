@@ -17,7 +17,19 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c  "chmod 777 /srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace" #jekyll -v"
+        jekyll/builder:latest /bin/bash -c  "chmod 777 /srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace && which ssh && which rsync" #jekyll -v"
+
+  deploy:
+    - name: deploy to server
+        uses: AEnterprise/rsync-deploy@v1.0
+        env:
+          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-e -c -r --delete"
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          FOLDER: "./"
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }
 
 #name: Build and deploy jekyll site
 #
