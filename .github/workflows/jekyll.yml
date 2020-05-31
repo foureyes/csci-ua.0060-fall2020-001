@@ -17,9 +17,10 @@ jobs:
       run: |
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c  "echo \"mkdir $HOME/.ssh && echo ${{ secrets.SSH_KEY }} > $HOME/.ssh/id_rsa &&/srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace && which ssh && which rsync && -avz -e 'ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no' ${{ github.workspace }}/_site ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PATH }}\"" 
+        jekyll/builder:latest /bin/bash -c "mkdir $HOME/.ssh && echo ${{ secrets.SSH_KEY }} > $HOME/.ssh/id_rsa &&/srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace && which ssh && which rsync && -avz -e 'ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no' ${{ github.workspace }}/_site ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PATH }}" 
+        
+#"echo \"mkdir $HOME/.ssh && echo ${{ secrets.SSH_KEY }} > $HOME/.ssh/id_rsa &&/srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace && which ssh && which rsync && -avz -e 'ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no' ${{ github.workspace }}/_site ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PATH }}\"" 
 
-        #"mkdir $HOME/.ssh && echo ${{ secrets.SSH_KEY }} > $HOME/.ssh/id_rsa &&/srv/jekyll && bundle info jekyll && echo \"jekyll\" && jekyll build --trace && which ssh && which rsync && -avz -e 'ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no' ${{ github.workspace }}/_site ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PATH }}" #jekyll -v"
 
 
   #deploy:
