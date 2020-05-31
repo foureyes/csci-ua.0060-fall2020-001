@@ -13,4 +13,4 @@ _data/.~lock.*
 *lock.schedule.csv
 _data/*lock.schedule.csv
 _data/.~lock.schedule.csv#
-
+Gemfile.lock
