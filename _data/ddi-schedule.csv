@@ -1,30 +1,58 @@
 draft,type,num,date,day,slides,readings,assignments,,old schedule
-,,1,Sep-3,Thu,Introduction to the class,,,,
-,,2,Sep-8,Tue,Python and Data Scrubbing (includes Python review notes),,,,
-,,3,Sep-10,Thu,Python and Data Scrubbing (includes Python review notes),,,,
-,,4,Sep-15,Tue,Python and Data Scrubbing (includes Python review notes),,,,
-,,5,Sep-17,Thu,SQLite,,,,
-,,6,Sep-22,Tue,SQLite,,,,
-,,7,Sep-24,Thu,SQLite,,,,
-,,8,Sep-29,Tue,SQLite,,,,
-,,9,Oct-1,Thu,Using Python with SQLite,,,,
-,,10,Oct-6,Tue,Relational database design,,,,
-,,11,Oct-8,Thu,Relational database design,,,,
-,,12,Oct-13,Tue,Relational database design,,,,
-,,13,Oct-15,Thu,Relational database design,,,,
-,,14,Oct-20,Tue,Review,,,,
-,exam,15,Oct-22,Thu,Exam,,,,
-,,16,Oct-27,Tue,"Using Unix/Linux on i6, Multiple Tables (MySQL)",,,,
-,,17,Oct-29,Thu,Multiple Tables (MySQL),,,,
-,,18,Nov-3,Tue,Multiple Tables (MySQL),,,,
-,,19,Nov-5,Thu,Multiple Tables (MySQL),,,,
-,,20,Nov-10,Tue,Multiple Tables (MySQL) / Database Management,,,,
-,,21,Nov-12,Thu,NoSQL (MongoDB),,,,
-,,22,Nov-17,Tue,NoSQL (MongoDB),,,,
-,,23,Nov-19,Thu,Data Visualization (matplotlib),,,,
-,,24,Nov-24,Tue,Data Analysis Library (pandas),,,,
-,holiday,,Nov-26,Thu,,,,,
-,,25,Dec-1,Tue,Optional Topic 1,,,,
-,,26,Dec-3,Thu,Optional Topic 2,,,,
+y,,1,Sep-3,Thu,"Introduction to the class, Python Review
+
+* intro 
+* sequences: string manipulation, generating data, storing data, aliasing
+* control structures: conditionals, loops, transforming data, filtering data
+* functions, descriptive statistics
+* submitting assignments",,"[Homework #00 – survey, git practice](assignments/00.md)",,
+y,,2,Sep-8,Tue,"Python and Data Scrubbing (and Python Review Continued)
+
+* tuples, list comprehension
+* other container types: set, unique, dict, counting
+* file i/o
+* csv
+* exception handling
+
+",,"[Homework #01 – parsing csv / course data calculate descriptive statistics, then write functions that encapsulate](assignments/00.md)",,
+y,,3,Sep-10,Thu,"Python and Data Scrubbing 
+
+* bad data
+* 2 x examples
+* data sources (talk?)
+",,,,
+y,,4,Sep-15,Tue,"Python and Data Scrubbing
+
+* regular expressions
+* working with modules (built-in)
+* csv, os, etc.",,"[Homework #02 – choose dataset, python program that saves data to a file OR make our own repl / data explorer (select list, filter, order]()",,
+y,,5,Sep-17,Thu,SQLite,,,,
+y,,6,Sep-22,Tue,SQLite,,,,
+y,,7,Sep-24,Thu,SQLite,,Workshop #01,,
+y,,8,Sep-29,Tue,Using Python with SQLite,,[Homework #03](),,
+y,,9,Oct-1,Thu,"Relational database design
+
+* normalization",,,,
+y,,10,Oct-6,Tue,"Relational database design
+
+* reverse engineer
+* workshop",,,,
+y,,11,Oct-8,Thu,Relational database design,,,,
+y,,12,Oct-13,Tue,"Using Unix/Linux on i6, Multiple Tables (MySQL)",,,,
+y,,13,Oct-15,Thu,Multiple Tables (MySQL),,,,
+y,,14,Oct-20,Tue,Review,,,,
+y,exam,15,Oct-22,Thu,Exam,,,,
+y,,16,Oct-27,Tue,Multiple Tables (MySQL),,,,
+y,,17,Oct-29,Thu,Multiple Tables (MySQL),,,,
+y,,18,Nov-3,Tue,Multiple Tables (MySQL) / Database Management,,,,
+y,,19,Nov-5,Thu,NoSQL (MongoDB),,,,
+y,,20,Nov-10,Tue,NoSQL (MongoDB),,,,
+y,,21,Nov-12,Thu,NoSQL (MongoDB),,,,
+y,,22,Nov-17,Tue,Data Visualization (matplotlib),,,,
+y,,23,Nov-19,Thu,Consuming APIs,,,,
+y,,24,Nov-24,Tue,Data Analysis Library (pandas),,,,
+y,holiday,,Nov-26,Thu,,,,,
+y,,25,Dec-1,Tue,Optional Topic 1 - Data Driven Applications (flask),,,,
+y,,26,Dec-3,Thu,Optional Topic 2,,,,
 y,,27,Dec-8,Tue,Review,,,,
 y,exam,28,Dec-10,Thu,Exam,,,,
