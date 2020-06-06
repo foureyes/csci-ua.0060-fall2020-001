@@ -1,21 +1,21 @@
-name: Jekyll site CI
+name: Jekyll Build and Deploy
 
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
-  build:
-
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod 777 /srv/jekyll && mkdir -p $HOME/.ssh && echo \"${{ secrets.SSH_KEY }}\" > $HOME/.ssh/id_rsa && chmod 600 $HOME/.ssh/id_rsa && jekyll build --trace && rsync -avz -e 'ssh -i $HOME/.ssh/id_rsa -o StrictHostKeyChecking=no' /srv/jekyll/_site ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.PATH }}" 
- 
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: jekyll build and rsync
+      uses: foureyes/jekyll-rsync-action
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+        DEST_USERNAME: ${{ secrets.DEST_USERNAME }}
+        DEST_HOST: ${{ secrets.DEST_HOST }}
+        DEST_PATH: ${{ secrets.DEST_PATH }}
