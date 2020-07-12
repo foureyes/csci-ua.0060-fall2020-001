@@ -13,7 +13,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 <!-- TODO: demo -->",,"* [video: working with files in Python](modules/py/files.html)
 * [homework #01](homework/01.html)
 
-<!-- TODO: video – python file io -->
+<!-- TODO: video - python file io -->
 <!-- TODO: homework #01 - write csv module -->",,Python and Data Scrubbing (includes Python review notes)
 ,workshop,3,Sep-10,Thu,"Python and Data Cleaning
 
@@ -24,7 +24,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 * [descriptive statistics](slides/stats/stats.html)
 * [csv module](slides/py/csv.html)
 
-* data services – guest speaker",,"* [homework #02](homework/02.html)
+* data services - guest speaker",,"* [homework #02](homework/02.html)
 
 <!-- choose data set, descriptive -->
 ",,Python and Data Scrubbing (includes Python review notes)
