@@ -3,26 +3,63 @@ layout: default
 nav-state: syllabus
 ---
 
+
+Syllabus
+=====
+
+Taking the Course Remotely
+-----
+
+Course Information
+-----
+
+* __Course Number__: {{ site.vars.course_number }}
+* __Course Section__: {{ site.vars.course_section }}
+* __Course Name__: {{ site.vars.course_name }}
+* __Course Semester__: {{ site.vars.course_semester }}
+* __Course Time__: {{ site.vars.course_time }}
+* __Course Room__: {{ site.vars.course_room }}
+* __Course Site__: {{ site.vars.course_site }}
+* __Course Site_alt__: {{ site.vars.course_site_alt }}
+
 Topics
-======
+-----
 
-1. intro (1)
-2. python + data cleansing  x 2 + workshop x 1 (3)
-3. sqlite / sql single table x 3 + workshop x 1 (4)
-4. design x 1 (1)
-5. mysql / multiple tables x 2 + workshop x 1 (3)
-7. web / server side x 2 (2)
-8. apis (1) 
-10. web / api / viz workshop (1)
-9. viz (1)
-6. mongodb x 2 + workshop x 1 (3)
-11. pandas x 2 (2)
-12. optional x 2 (2)
+* Manipulating Data (using Python)
+* SQL and Relational Database with Single Tables (using SQLite) 
+* Relational Database with Multiple Tables (with MySQL)
+* Relational Database Design
+* Database Driven Web Site
+* Consuming APIs
+* Data Visualization
+* Document Database (with MongoDB)
+* Manipulating Date with a Library (using pandas)
+* (Optional) Other Database Paradigms
 
-4 coding quizzes
-4 workshops
-2 exams
-4 videos
+Course work
+-----
+
+Tentatively:
+
+* __10%__: 5 x interactive workshops
+* __10%__: 4 x at-home coding quizzes
+* __5%__: 6-8 x at-home general quizzes
+* __25%__: 7-9 x homework assignments
+* __25%__: 1 x midterm exam
+* __25%__: 1 x final exam
+
+Books
+-----
+
+* to be posted
+
+Homework Policy
+-----
+
+Exam Policy
+-----
+
+<!--
 
 * Using Python to prepare datafiles; explorations of "data in the wild"
 * Using Python for data anlysis.
@@ -63,3 +100,4 @@ Topics
 12. apis
 13. optional x 2
 14. review x 2
+-->
