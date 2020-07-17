@@ -14,7 +14,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 * [homework #01](homework/01.html)
 
 <!-- TODO: video - python file io -->
-<!-- TODO: homework #01 - write csv module -->",,Python and Data Scrubbing (includes Python review notes)
+<!-- TODO: hw - write csv module -->",,Python and Data Scrubbing (includes Python review notes)
 ,workshop,3,Sep-10,Thu,"Python and Data Cleaning
 
 
@@ -23,10 +23,9 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 * [descriptive statistics](slides/stats/stats.html)
 * [csv module](slides/py/csv.html)
-
 * data services - guest speaker",,"* [homework #02](homework/02.html)
 
-<!-- choose data set, descriptive -->
+<!-- TODO: hw choose data set, descriptive -->
 ",,Python and Data Scrubbing (includes Python review notes)
 ,,5,Sep-17,Thu,"Single Table with SQLite
 
@@ -37,30 +36,13 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 * [importing data](slides/sql/sqlite-import.html)
 * [aggregation](slides/sql/aggregation.html)
-* [python integration](slides/sql/sqlite-python.html)",,* [video: sqlite](modules/sql/sqlite.html),,SQLite
-,workshop,7,Sep-24,Thu,Single Table with SQLite,,"* [homework #03](homework/03.html)
+* [python integration](slides/sql/sqlite-python.html)",,"* [video: sqlite](modules/sql/sqlite.html)
 
-<!-- import data set and aggregations -->
+<!--  TODO: video - sqlite basics -->
+<!--  TODO: video - crud -->",,SQLite
+,workshop,7,Sep-24,Thu,"Single Table with SQLite
+
+* analyze data set, case study",,"* [homework #03](homework/03.html)
+
+<!-- TODO: hw import data set and aggregations -->
 ",,SQLite
-,,8,Sep-29,Tue,Multiple Tables with MySQL,,,,SQLite
-,,9,Oct-1,Thu,Relational Database Design,,,,Using Python with SQLite
-,workshop,10,Oct-6,Tue,Multiple Tables with MySQL,,,,Relational database design
-,,11,Oct-8,Thu,Multiple Tables with MySQL,,,,Relational database design
-,,12,Oct-13,Tue,?,,,,Relational database design
-,,13,Oct-15,Thu,Review,,,,Relational database design
-,exam,14,Oct-20,Tue,Midterm Exam,,,,Review
-,,15,Oct-22,Thu,Database Driven Websites,,,,Exam
-,,16,Oct-27,Tue,Database Driven Websites,,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
-,,17,Oct-29,Thu,Consuming APIs,,,,Multiple Tables (MySQL)
-,,18,Nov-3,Tue,Data Visualization,,,,Multiple Tables (MySQL)
-,workshop,19,Nov-5,Thu,Consuming APIs and Data Visualization,,,,Multiple Tables (MySQL)
-,,20,Nov-10,Tue,Document Store with MongoDB,,,,Multiple Tables (MySQL) / Database Management
-,,21,Nov-12,Thu,Document Store with MongoDB,,,,NoSQL (MongoDB)
-,workshop,22,Nov-17,Tue,Document Store with MongoDB,,,,NoSQL (MongoDB)
-,,23,Nov-19,Thu,Data Analysis Library with Pandas,,,,Data Visualization (matplotlib)
-,,24,Nov-24,Tue,Data Analysis Library with Pandas,,,,Data Analysis Library (pandas)
-,holiday,,Nov-26,Thu,Holiday,,,,
-,,25,Dec-1,Tue,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 1
-,,26,Dec-3,Thu,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 2
-y,,27,Dec-8,Tue,Review,,,,Review
-y,exam,28,Dec-10,Thu,Final Exam,,,,Exam

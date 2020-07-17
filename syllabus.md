@@ -3,19 +3,8 @@ layout: default
 nav-state: syllabus
 ---
 
-* Using Python to prepare datafiles; explorations of "data in the wild"
-* Using Python for data anlysis.
-* Introduction to data visualization; using Python to build charts and graphs.
-* Introduction to SQL with SQLite
-* Relational database Design
-* Server-side SQL: We will use MySQL in class and also discuss Oracle and PostGreSQL
-* NoSQL: Introduction to MongoDB
-* Discussion of other database paradigms such as Graph databases [Time-permitting]
-
-4 coding quizzes
-4 workshops
-2 exams
-4 videos
+Topics
+======
 
 1. intro (1)
 2. python + data cleansing  x 2 + workshop x 1 (3)
@@ -29,8 +18,21 @@ nav-state: syllabus
 6. mongodb x 2 + workshop x 1 (3)
 11. pandas x 2 (2)
 12. optional x 2 (2)
-13. review x 2 (2)
-14. exam x 2 (2)
+
+4 coding quizzes
+4 workshops
+2 exams
+4 videos
+
+* Using Python to prepare datafiles; explorations of "data in the wild"
+* Using Python for data anlysis.
+* Introduction to data visualization; using Python to build charts and graphs.
+* Introduction to SQL with SQLite
+* Relational database Design
+* Server-side SQL: We will use MySQL in class and also discuss Oracle and PostGreSQL
+* NoSQL: Introduction to MongoDB
+* Discussion of other database paradigms such as Graph databases [Time-permitting]
+
 
 
 
