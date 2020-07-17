@@ -46,3 +46,88 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 <!-- TODO: hw import data set and aggregations -->
 ",,SQLite
+,,8,Sep-29,Tue,"Client Server, Working on Remote System
+
+* [client-server, remote](slides/sql/client-server.html)
+* [mysql intro](slides/sql/mysql.html)
+* [mysql types, create, read, update, delete](slides/sql/mysql-types-crud.html)
+",,,,SQLite
+,,9,Oct-1,Thu,"Multiple Tables with MySQL, Relational Database Design
+
+* [joins](slides/sql/joins.html)
+* [subqueries](slides/sql/subqueries.html)
+",,,,Using Python with SQLite
+,,10,Oct-6,Tue,"Multiple Tables with MySQL, Relational Database Design
+
+* [anomalies](slides/sql/anomalies.html)
+* [normalization](slides/sql/normalization.html)
+* [ER diagrams, mysqlworkbench](slides/sql/er-diagrams.html)
+",,"* [video: mysql](modules/sql/mysql.html)
+* [video: joins](modules/sql/joins.html)",,Relational database design
+,workshop,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design
+
+",,"* [homework #04](homework/04.html)
+
+<!-- design and joins -->
+",,Relational database design
+,,12,Oct-13,Tue,"Multiple Tables with MySQL, Relational Database Design
+
+* [indexes](slides/sql/indexes.html)
+* [reverse engineering, forward engineering](slides/sql/reverse.html)",,,,Relational database design
+,,13,Oct-15,Thu,Review,,,,Relational database design
+,exam,14,Oct-20,Tue,Midterm Exam,,,,Review
+,,15,Oct-22,Thu,"Database Driven Websites
+
+* [http](slides/web/http.html)
+* [flask](slides/web/flask.html)",,,,Exam
+,,16,Oct-27,Tue,"Database Driven Websites
+
+* [mysql and python](slides/db/mysql-python.html)
+* [flask and database](slides/web/db.html)",,"* [homework #05](homework/05.html)
+
+<!-- create er based on existing db for site;-? create web site-->
+",,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
+,,17,Oct-29,Thu,"Consuming APIs
+
+* [working with APIs](slides/web/apis.html)",,,,Multiple Tables (MySQL)
+,,18,Nov-3,Tue,"Data Visualization
+
+* [matpotlib](slides/viz/matplotlib.html)
+* manipulating visualizations
+* others? bokeh maybe?",,"* [video: create a flask app with a database](modules/web/flask.html)
+* [video: consuming an pi](modules/web/api.html)
+* [video: viusalization](modules/py/matplotlib.html)",,Multiple Tables (MySQL)
+,workshop,19,Nov-5,Thu,"Consuming APIs and Data Visualization
+
+* consume data using an api
+* display data on the web",,"* [homework #06](homework/06.html)
+
+<!-- work with an api, create data visualization  -->
+",,Multiple Tables (MySQL)
+,,20,Nov-10,Tue,"Document Store with MongoDB
+
+* [mongodb intro](slides/db/mongodb.html)
+* [mongodb create,read, update, delete](slides/db/mongodb-crud.html)
+* [mongodb import and export](slides/db/mongodb-import-export.html)
+",,,,Multiple Tables (MySQL) / Database Management
+,,21,Nov-12,Thu,"Document Store with MongoDB
+
+* [mongodb aggregation](slides/db/mongodb-aggregation.html)
+* [mongodbo design](slides/db/mongodb-design.html)
+* [mongodb and ptyhon](slides/db/mongodb-python.html)",,* [video: mongodb](modules/db/mongodb.html),,NoSQL (MongoDB)
+,workshop,22,Nov-17,Tue,"Document Store with MongoDB
+
+* demo using mongodb",,"* [homework #07](homework/07.html)
+
+<!-- TODO: hw - use mongodb  -->
+",,NoSQL (MongoDB)
+,,23,Nov-19,Thu,Data Analysis Library with Pandas,,,,Data Visualization (matplotlib)
+,,24,Nov-24,Tue,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
+
+<!-- TODO: hw - use pandas  -->
+",,Data Analysis Library (pandas)
+,holiday,,Nov-26,Thu,Holiday,,,,
+,,25,Dec-1,Tue,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 1
+,,26,Dec-3,Thu,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 2
+y,,27,Dec-8,Tue,Review,,,,Review
+y,exam,28,Dec-10,Thu,Final Exam,,,,Exam
