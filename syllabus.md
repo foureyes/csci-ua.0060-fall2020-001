@@ -7,9 +7,6 @@ nav-state: syllabus
 Syllabus
 =====
 
-Taking the Course Remotely
------
-
 Course Information
 -----
 
@@ -21,6 +18,20 @@ Course Information
 * __Course Room__: {{ site.vars.course_room }}
 * __Course Site__: {{ site.vars.course_site }}
 * __Course Site_alt__: {{ site.vars.course_site_alt }}
+
+Format
+-----
+
+This course is __fully remote__
+
+* The class will meet twice-a-week week for 1.25 hours
+* Students are expected to attend lectures through online meeting software during specified course times
+* For those that cannot attend due to time zones, lectures will be recorded 
+* Some classes will involve hands-on work during class time
+* All time sensitive quizzes and exams will have a single alternative time 
+* There will be weekly office hours available, as well as weekly tutoring sessions with the course classroom assistant
+* A platform will be provided for asking questions online as well as moderating discussions among students
+
 
 Topics
 -----
@@ -47,6 +58,80 @@ Tentatively:
 * __25%__: 7-9 x homework assignments
 * __25%__: 1 x midterm exam
 * __25%__: 1 x final exam
+
+A survey will be sent out to students after 2 weeks to determine which students will need support due to time zone differences.
+
+__Interactive Workshops__
+
+* Completed during class time (exceptions made for students in time zones where class cannot be attended)
+* Workshops will demonstrate practical application of previous lecture material
+* Group submissions may be permitted for some workshops; this will be announced prior to each workshop
+* Significant support provided by instructor(s)
+
+
+__At-Home Coding Quizzes__
+
+* Short, timed (30 minutes to an hour) coding quizzes taken online from home, to be completed within a specified number of days
+* Coding quizzes will allow students to assess their understanding of the course material
+* Late submissions are not accepted, with the following exceptions (with documentation and request via online form)
+	* Illness
+	* Religious observance
+	* Quiz platform is unavailable
+	* This policy may be revised by the instructor to accommodate special circumstances.
+* All work must be your own:
+	* Do not copy (clone, download, etc.) anyone else's code
+	* Do not distribute/publish your code (including publishing to a public git repository or posting in a forum)
+	* Please see the department's page on academic integrity for full policy and potential disciplinary action: [https://cs.nyu.edu/home/undergrad/policy.html](https://cs.nyu.edu/home/undergrad/policy.html)
+* You may use your own notes, course materials posted by your instructor (slides, videos, example code, etc.) or books
+
+__At-Home General Quizzes__
+
+* Quizzes composed of short answer questions, multiple choice, etc. to be taken online from home
+* These quizzes will reinforce readings, videos and may provide background material for future workshops or lectures
+* Late submissions are not accepted, with the following exceptions (with documentation and request via online form)
+	* Illness
+	* Religious observance
+	* Quiz platform is unavailable
+	* This policy may be revised by the instructor to accommodate special circumstances.
+* All work must be your own:
+	* Do not copy (clone, download, etc.) anyone else's code
+	* Do not distribute/publish your code (including publishing to a public git repository or posting in a forum)
+	* Please see the department's page on academic integrity for full policy and potential disciplinary action: [https://cs.nyu.edu/home/undergrad/policy.html](https://cs.nyu.edu/home/undergrad/policy.html)
+* You may use your own notes, course materials posted by your instructor (slides, videos, example code, etc.) or books
+
+__Homework Assignments__
+
+* Small projects assigned approximately every 1-2 weeks
+* Late submissions are not accepted, with the following exceptions (with documentation and request via online form)
+	* Illness
+	* Religious observance
+	* Quiz platform is unavailable
+	* This policy may be revised by the instructor to accommodate special circumstances.
+* All work must be your own:
+	* Do not copy (clone, download, etc.) anyone else's code
+	* Do not distribute/publish your code (including publishing to a public git repository or posting in a forum)
+	* Please see the department's page on academic integrity for full policy and potential disciplinary action: [https://cs.nyu.edu/home/undergrad/policy.html](https://cs.nyu.edu/home/undergrad/policy.html)
+* You may use your own notes, course materials posted by your instructor (slides, videos, example code, etc.) or books
+
+__Exams__
+
+* Administered online during specified time
+* An alternate time will be provided for students in a time zone where attending the exam time is not possible
+* All work must be your own:
+	* Do not copy (clone, download, etc.) anyone else's code
+	* Do not distribute/publish your code (including publishing to a public git repository or posting in a forum)
+	* Please see the department's page on academic integrity for full policy and potential disciplinary action: [https://cs.nyu.edu/home/undergrad/policy.html](https://cs.nyu.edu/home/undergrad/policy.html)
+* You may use your own notes, course materials posted by your instructor (slides, videos, example code, etc.) or books
+
+Required Software
+-----
+
+* Python 3.x
+	* pandas
+	* matplotlib
+* SQLite
+* MySQL
+* MongoDB
 
 Books
 -----
