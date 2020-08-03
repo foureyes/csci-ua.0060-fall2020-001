@@ -18,6 +18,12 @@ Course Information
 * __Course Room__: {{ site.vars.course_room }}
 * __Course Site__: {{ site.vars.course_site }}
 * __Course Site_alt__: {{ site.vars.course_site_alt }}
+* __Required Courses__: CSCI-UA.0002/CSCI-UA.0003
+
+This course may fulfill a requirement for students in:
+
+1. {:.fragment} the data science minor
+2. {:.fragment} the web minor
 
 Format
 -----
@@ -26,10 +32,8 @@ This course is __fully remote__
 
 * The class will meet twice-a-week week for 1.25 hours
 * Students are expected to attend lectures through online meeting software during specified course times
-* For those that cannot attend due to time zones, lectures will be recorded 
-* Some classes will involve hands-on work during class time
-* All time sensitive quizzes and exams will have a single alternative time 
-* There will be weekly office hours available, as well as weekly tutoring sessions with the course classroom assistant
+* Some classes __will involve hands-on work during class time__
+* There will be weekly office hours available, as well as weekly tutoring sessions with the course classroom assistant or tutor
 * A platform will be provided for asking questions online as well as moderating discussions among students
 
 
@@ -52,26 +56,34 @@ Course work
 
 Tentatively:
 
-* __10%__: 5 x interactive workshops
-* __10%__: 4 x at-home coding quizzes
+{% comment %} * __10%__: 5 x in-class interactive workshops {% endcomment %}
+
+* __20%__: 4-6 x in-class coding quizzes or workshops
 * __5%__: 6-8 x at-home general quizzes
 * __25%__: 7-9 x homework assignments
 * __25%__: 1 x midterm exam
 * __25%__: 1 x final exam
 
-A survey will be sent out to students after 2 weeks to determine which students will need support due to time zone differences.
+A survey will be sent out to students to determine which students will need support due to time zone differences.
 
+Generally ⚠️  __all work should be your own__ (unless specified explicitly in assignment or workshop directions).  Do not copy , clone, distribute, etc. your work. See below for details.
+
+
+{% comment #}
 __Interactive Workshops__
 
 * Completed during class time (exceptions made for students in time zones where class cannot be attended)
 * Workshops will demonstrate practical application of previous lecture material
 * Group submissions may be permitted for some workshops; this will be announced prior to each workshop
 * Significant support provided by instructor(s)
+{% endcomment #}
 
 
-__At-Home Coding Quizzes__
+__In-Class Coding Quizzes or Workshops__
 
-* Short, timed (30 minutes to an hour) coding quizzes taken online from home, to be completed within a specified number of days
+* Short, timed (30 minutes to an hour) coding quizzes taken during class __or__ small project to be submitted during class time
+* Quizzes will be announced during class on day that quiz will be given
+* Workshops will be announced prior to class
 * Coding quizzes will allow students to assess their understanding of the course material
 * Late submissions are not accepted, with the following exceptions (with documentation and request via online form)
 	* Illness
@@ -138,11 +150,6 @@ Books
 
 * to be posted
 
-Homework Policy
------
-
-Exam Policy
------
 
 <!--
 
