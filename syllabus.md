@@ -17,7 +17,6 @@ Course Information
 * __Course Time__: {{ site.vars.course_time }}
 * __Course Room__: {{ site.vars.course_room }}
 * __Course Site__: {{ site.vars.course_site }}
-* __Course Site_alt__: {{ site.vars.course_site_alt }}
 * __Required Courses__: CSCI-UA.0002/CSCI-UA.0003
 
 This course may fulfill a requirement for students in:
@@ -32,7 +31,7 @@ This course is __fully remote__
 
 * The class will meet twice-a-week week for 1.25 hours
 * Students are expected to attend lectures through online meeting software during specified course times
-* Some classes __will involve hands-on work during class time__
+* Some classes __will involve hands-on work during class time__ (timezone differences will be accommodated)
 * There will be weekly office hours available, as well as weekly tutoring sessions with the course classroom assistant or tutor
 * A platform will be provided for asking questions online as well as moderating discussions among students
 
@@ -58,25 +57,25 @@ Tentatively:
 
 {% comment %} * __10%__: 5 x in-class interactive workshops {% endcomment %}
 
-* __20%__: 4-6 x in-class coding quizzes or workshops
+* __15%__: 4-6 x "in-class" coding quizzes / workshops
 * __5%__: 6-8 x at-home general quizzes
-* __25%__: 7-9 x homework assignments
+* __30%__: 7-9 x homework assignments
 * __25%__: 1 x midterm exam
 * __25%__: 1 x final exam
 
-A survey will be sent out to students to determine which students will need support due to time zone differences.
+👀 A survey will be sent out to students to determine which students will need support due to time zone 🕛 differences.
 
 Generally ⚠️  __all work should be your own__ (unless specified explicitly in assignment or workshop directions).  Do not copy , clone, distribute, etc. your work. See below for details.
 
 
-{% comment #}
+{% comment %}
 __Interactive Workshops__
 
 * Completed during class time (exceptions made for students in time zones where class cannot be attended)
 * Workshops will demonstrate practical application of previous lecture material
 * Group submissions may be permitted for some workshops; this will be announced prior to each workshop
 * Significant support provided by instructor(s)
-{% endcomment #}
+{% endcomment %}
 
 
 __In-Class Coding Quizzes or Workshops__

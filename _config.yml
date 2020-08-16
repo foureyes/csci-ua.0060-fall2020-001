@@ -24,7 +24,7 @@ vars:
   course_name: "Database Design and Implementation"
   course_semester: "Fall 2020"
   course_time: "T and TH, 12:30PM-1:45PM"
-  course_room: "Silv 411"
+  course_room: "Remote"
   course_site: https://cs.nyu.edu/courses/spring20/CSCI-UA.0479-001/ 
   course_site_alt: http://cs.nyu.edu/~jversoza
   

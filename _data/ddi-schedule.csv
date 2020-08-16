@@ -2,10 +2,10 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 ,,1,Sep-3,Thu,"Introduction, Python Review
 
 * [intro](slides/intro/intro.html)
-* [basic types and operators](slides/py/types.html)
+* [types, variables, operators](slides/py/types.html)
 * [control structures](slides/py/control.html)
 * [function and modules](slides/py/functions-modules.html)
-* [unicode and strings 📓](notebooks/py/unicode-bytes-strings.ipynb)",,,,Introduction to the class
+* [unicode and strings ?](notebooks/py/unicode-bytes-strings.ipynb)",,,,Introduction to the class
 ,,2,Sep-8,Tue,"Python and Data Cleaning
 
 * [sequences (lists and strings) review](slides/py/sequences.html)
