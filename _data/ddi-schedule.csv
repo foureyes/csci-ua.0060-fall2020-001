@@ -1,41 +1,57 @@
 draft,type,num,date,day,slides,readings,assignments,,old schedule
-,,1,Sep-3,Thu,"Introduction, Python Review
+,,1,Sep-3,Thu,"Introduction, Tools, Python Review
+
 
 * [intro](slides/intro/intro.html)
+* [tools](slides/intro/tools.html)
 * [types, variables, operators](slides/py/types.html)
 * [control structures](slides/py/control.html)
-* [function and modules](slides/py/functions-modules.html)
-* [unicode and strings ?](notebooks/py/unicode-bytes-strings.ipynb)",,,,Introduction to the class
-,,2,Sep-8,Tue,"Python and Data Cleaning
+",,"* [homework #00](homework/00.html)
 
+<!-- TODO: hw – send github username -->",,Introduction to the class
+,,2,Sep-8,Tue,"Sequences and Abstraction
+
+* [unicode and strings ?](notebooks/py/unicode-bytes-strings.ipynb)
 * [sequences (lists and strings) review](slides/py/sequences.html)
+* [function and modules](slides/py/functions-modules.html)
 * [classes](slides/py/classes.html)
-* [file io](slides/py/fileio.html)
-* [file formats](slides/py/file-formats.html)
 
-<!-- TODO: demo -->",,"* [video: working with files in Python](modules/py/files.html)
-* [homework #01](homework/01.html)
+
+<!-- TODO: demo -->",,"* [homework #01](homework/01.html)
+
+<!-- TODO: hw – create csv class for in memory string? create list manipulation functions, create string class? -->
+
+
+
+",,Python and Data Scrubbing (includes Python review notes)
+,,3,Sep-10,Thu,"Working with Files, Data Cleaning
+* [file i/o](slides/py/fileio.html)
+* [file formats](slides/py/file-formats.html)
+",,"
 
 <!-- TODO: video - python file io -->
-<!-- TODO: hw - write csv module -->",,Python and Data Scrubbing (includes Python review notes)
-,workshop,3,Sep-10,Thu,"Python and Data Cleaning
 
+* [video: working with files in Python](modules/py/files.html)",,Python and Data Scrubbing (includes Python review notes)
+,workshop,4,Sep-15,Tue,"Data Cleaning
 
-* load and clean existing data set",,,,Python and Data Scrubbing (includes Python review notes)
-,,4,Sep-15,Tue,"Python and Data Cleaning
+* load and clean existing data set
+* using git
+",,,,Python and Data Scrubbing (includes Python review notes)
+,,5,Sep-17,Thu,"Data Cleaning
 
+* [bad data](slides/data/bad.html)
 * [descriptive statistics](slides/stats/stats.html)
 * [csv module](slides/py/csv.html)
 * data services - guest speaker",,"* [homework #02](homework/02.html)
 
-<!-- TODO: hw choose data set, descriptive -->
-",,Python and Data Scrubbing (includes Python review notes)
-,,5,Sep-17,Thu,"Single Table with SQLite
+<!-- TODO:  Hw choose data set, descriptive -->
+",,SQLite
+,,6,Sep-22,Tue,"Single Table with SQLite
 
 * [databases intro](slides/sql/databases.html)
 * [sqlite intro](slides/sql/sqlite.html)
 * [create, read, update, delete](slides/sql/crud.html)",,,,SQLite
-,,6,Sep-22,Tue,"Single Table with SQLite
+,,7,Sep-24,Thu,"Single Table with SQLite
 
 * [importing data](slides/sql/sqlite-import.html)
 * [aggregation](slides/sql/aggregation.html)
@@ -43,57 +59,56 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 <!--  TODO: video - sqlite basics -->
 <!--  TODO: video - crud -->",,SQLite
-,workshop,7,Sep-24,Thu,"Single Table with SQLite
+,workshop,8,Sep-29,Tue,"Single Table with SQLite
 
 * analyze data set, case study",,"* [homework #03](homework/03.html)
 
 <!-- TODO: hw import data set and aggregations -->
 ",,SQLite
-,,8,Sep-29,Tue,"Client Server, Working on Remote System
+,,9,Oct-1,Thu,"Client Server, Working on Remote System, Multiple Tables with MySQL
 
 * [client-server, remote](slides/sql/client-server.html)
 * [mysql intro](slides/sql/mysql.html)
 * [mysql types, create, read, update, delete](slides/sql/mysql-types-crud.html)
-",,,,SQLite
-,,9,Oct-1,Thu,"Multiple Tables with MySQL, Relational Database Design
-
-* [joins](slides/sql/joins.html)
-* [subqueries](slides/sql/subqueries.html)
-",,,,Using Python with SQLite
+* [joins](slides/sql/joins.html)",,,,Using Python with SQLite
 ,,10,Oct-6,Tue,"Multiple Tables with MySQL, Relational Database Design
 
-* [anomalies](slides/sql/anomalies.html)
+* [joins review](slides/sql/joins-review.html)
+* [subqueries](slides/sql/subqueries.html)
+* [anomalies](slides/sql/anomalies.html)",,,,Relational database design
+,,11,Oct-8,Thu,"Relational Database Design
+
 * [normalization](slides/sql/normalization.html)
 * [ER diagrams, mysqlworkbench](slides/sql/er-diagrams.html)
+* [reverse engineering, forward engineering](slides/sql/reverse.html)
 ",,"* [video: mysql](modules/sql/mysql.html)
-* [video: joins](modules/sql/joins.html)",,Relational database design
-,workshop,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design
-
-",,"* [homework #04](homework/04.html)
+* [video: joins](modules/sql/joins.html)
+* [homework #04](homework/04.html)
 
 <!-- design and joins -->
 ",,Relational database design
-,,12,Oct-13,Tue,"Multiple Tables with MySQL, Relational Database Design
+,workshop,12,Oct-13,Tue,"Relational Database Design
 
-* [indexes](slides/sql/indexes.html)
-* [reverse engineering, forward engineering](slides/sql/reverse.html)",,,,Relational database design
+",,,,Relational database design
 ,,13,Oct-15,Thu,Review,,,,Relational database design
 ,exam,14,Oct-20,Tue,Midterm Exam,,,,Review
-,,15,Oct-22,Thu,"Database Driven Websites
+,,15,Oct-22,Thu,"Database Administration
 
-* [http](slides/web/http.html)
-* [flask](slides/web/flask.html)",,,,Exam
+* [indexes](slides/sql/indexes.html)
+* backup / restore",,,,Exam
 ,,16,Oct-27,Tue,"Database Driven Websites
 
+* [http](slides/web/http.html)
+* [flask](slides/web/flask.html)",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
+,,17,Oct-29,Thu,"Database Driven Websites, Using an API
+
 * [mysql and python](slides/db/mysql-python.html)
-* [flask and database](slides/web/db.html)",,"* [homework #05](homework/05.html)
+* [flask and database](slides/web/db.html)
+* [working with APIs](slides/web/apis.html)",,"* [homework #05](homework/05.html)
 
 <!-- create er based on existing db for site;-? create web site-->
-",,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
-,,17,Oct-29,Thu,"Consuming APIs
-
-* [working with APIs](slides/web/apis.html)",,,,Multiple Tables (MySQL)
-,,18,Nov-3,Tue,"Data Visualization
+",,Multiple Tables (MySQL)
+,,18,Nov-3,Tue,"Using an API, Data Visualization
 
 * [matpotlib](slides/viz/matplotlib.html)
 * manipulating visualizations
