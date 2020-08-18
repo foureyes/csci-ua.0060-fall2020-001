@@ -8,7 +8,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 * [control structures](slides/py/control.html)
 ",,"* [homework #00](homework/00.html)
 
-<!-- TODO: hw – send github username -->",,Introduction to the class
+<!-- TODO: hw send github username -->",,Introduction to the class
 ,,2,Sep-8,Tue,"Sequences and Abstraction
 
 * [unicode and strings ?](notebooks/py/unicode-bytes-strings.ipynb)
@@ -19,7 +19,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 <!-- TODO: demo -->",,"* [homework #01](homework/01.html)
 
-<!-- TODO: hw – create csv class for in memory string? create list manipulation functions, create string class? -->
+<!-- TODO: hw create csv class for in memory string? create list manipulation functions, create string class? -->
 
 
 
