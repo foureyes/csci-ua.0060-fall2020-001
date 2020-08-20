@@ -11,9 +11,9 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 <!-- TODO: hw send github username -->",,Introduction to the class
 ,,2,Sep-8,Tue,"Sequences and Abstraction
 
-* [unicode and strings ?](notebooks/py/unicode-bytes-strings.ipynb)
-* [sequences (lists and strings) review](slides/py/sequences.html)
-* [function and modules](slides/py/functions-modules.html)
+* [unicode and strings](notebooks/py/unicode-bytes-strings.html) [📓](notebooks/py/unicode-bytes-strings.ipynb)
+* [sequences (lists and strings) review](notebooks/py/sequences.html) [📓](notebooks/py/sequences.ipynb)
+* [function and modules](notebooks/py/functions.html) [📓](notebooks/py/functions.ipynb)
 * [classes](slides/py/classes.html)
 
 
