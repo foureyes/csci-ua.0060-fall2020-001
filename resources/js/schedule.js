@@ -1,10 +1,6 @@
 // handle jekyll site variables in data file
 // (liquid variables in data files like csvs and yml are not processed)
 function processSiteVars(config) {
-
-	// const config = {};
-	
-	
 	const re = /(site\.\w*)/g  
 	const table = document.querySelector('table');
 
@@ -16,8 +12,6 @@ function processSiteVars(config) {
 			table.innerHTML = table.innerHTML.replace(new RegExp('{{ ' + s + ' }}', 'g'), config[k]);
 		}
 	}
-	
-	// console.log(config);
 }
 
 // replace links to notebooks with links to:
@@ -34,7 +28,9 @@ function createNotebookLinks() {
 			nb.href = a.href;
 			nb.textContent = '📓';
 			a.parentNode.appendChild(nb);
-			a.href = a.href.replace('ipynb', 'html');
+      const pattern = /notebooks\/(\w*)/;
+			a.href = a.href.replace(pattern,'notebooks\/$1\/html').replace('ipynb', 'html');
+      console.log(a.href);
 		}
 	} 
 }
