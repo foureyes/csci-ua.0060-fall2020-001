@@ -137,18 +137,43 @@ __Exams__
 Required Software
 -----
 
-* Python 3.x
-	* pandas
-	* matplotlib
-* SQLite
-* MySQL
-* MongoDB
+Programming Environment
+
+* [Python 3.x](https://www.python.org/downloads/)
+	* [sqlite3](https://docs.python.org/2/library/sqlite3.html) (installed with Python 3.x)
+* [PyMySQL](https://pymysql.readthedocs.io/en/latest/) (install with pip or conda)
+* [matplotlib](https://matplotlib.org/) (install with pip or preinstalled with Anaconda)
+* [pandas](https://pandas.pydata.org/) (install with pip or preinstalled with Anaconda)
+
+
+Database Management Systems
+
+* [SQLite](https://www.sqlite.org/index.html)
+* MySQL - provided on i6
+* MongoDB - provided on i6
+
+Tools 
+
+* git client (commandline or graphical)
+* text editor
 
 Books
 -----
 
-* to be posted
+All books are available online:
 
+* via "Online Access" through NYU Libraries / O'Reilly Safari
+* free html / ebook versions supplied by author or publisher
+* database platform's documentation
+
+Readings will be selected from the following books
+
+1. [Python for Everybody: Exploring Data Using Python 3 by Charles Severance](https://open.umn.edu/opentextbooks/textbooks/336)
+2. [Bad data handbook Q. Ethan McCallum](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005835927&context=L&vid=NYU&lang=en_US)
+3. [Using SQLite by Jay A. Kreibich](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph007031845&context=L&vid=NYU&lang=en_US)
+4. [Database Design by Adrienne Watt (primary author)](https://opentextbc.ca/dbdesign01/)
+5. [Learning MySQL and MariaDB : heading in the right direction with MySQL and MariaDB by Russell J. T. Dyer](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005573381&context=L&vid=NYU&lang=en_US)
+6. [MongoDB Manual](https://docs.mongodb.com/manual/introduction/)
 
 <!--
 
