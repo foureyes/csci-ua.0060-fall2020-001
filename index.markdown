@@ -59,38 +59,21 @@ function init() {
 </tbody>
 </table>
 
-<script>
-// handle jekyll site variables in data file
-// (liquid variables in data files like csvs and yml are not processed)
-function processSiteVars() {
+<script src='resources/js/schedule.js'> </script>
 
+<script>
+function init() {
 	const config = {};
-	
-	/*
-	config contains site variables from config.yml
-	...only variables under site.vars are included
-	*/
+	/* config contains site variables from config.yml
+	...only variables under site.vars are included */
 	{% for obj in site.vars %}
 	config["{{ obj[0] }}"] = `{{ obj[1] }}`;
 	{% endfor %}
-	
-	const re = /(site\.\w*)/g  
-	const table = document.querySelector('table');
-
-	console.log(table);
-	const result = table.innerHTML.match(re);
-	console.log(result);
-	for(const s of result) {
-		const k = s.replace('site.', '');
-		{% raw %}
-		table.innerHTML = table.innerHTML.replace(new RegExp('{{ ' + s + ' }}', 'g'), config[k]);
-		{% endraw %}
-	}
-	
-	// console.log(config);
+	processSiteVars(config);
+	createNotebookLinks();
 }
 
-document.addEventListener('DOMContentLoaded', processSiteVars);
+document.addEventListener('DOMContentLoaded', init);
 </script>
 
 <style>
@@ -111,12 +94,6 @@ document.addEventListener('DOMContentLoaded', processSiteVars);
 	text-align: center;
 	padding: 0.25em;
 	margin: 0.25em;
-	/*
-	padding-top: 0.25em;
-	padding-bottom: 0.25em;
-	padding-left: 0.25em;
-	padding-right: 0.25em;
-	*/
 }
 
 td:nth-child(3) {
