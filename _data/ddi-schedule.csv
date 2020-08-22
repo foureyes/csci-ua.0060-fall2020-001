@@ -12,9 +12,9 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 ,,2,Sep-8,Tue,"Sequences and Abstraction
 
 * [unicode and strings](notebooks/py/unicode-bytes-strings.ipynb)
-* [sequences (lists and strings) review](notebooks/py/sequences.ipynb)
+* [containers (sequences, mapping types, etc.)](notebooks/py/sequences-mapping.ipynb)
 * [function and modules](notebooks/py/functions.ipynb)
-* [classes](slides/py/classes.html)
+* [classes](slides/py/oop.html)
 
 
 <!-- TODO: demo -->",,"* [homework #01](homework/01.html)

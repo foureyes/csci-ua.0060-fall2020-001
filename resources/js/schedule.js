@@ -22,15 +22,26 @@ function createNotebookLinks() {
 	const notebookLinks = document.querySelectorAll('td.topics ul > li > a');
 	for (const a of notebookLinks) {
 		if(a.href.endsWith('ipynb')) {
-			console.log(a.href);
-			a.textContent += ' ';
+
+      const originalPath = a.href;
+
+      // create link to notebook as html
 			const nb = document.createElement('a');
-			nb.href = a.href;
+      const pattern = /notebooks\/(\w*)/;
+			nb.href = originalPath.replace(pattern,'notebooks\/$1\/html').replace('.ipynb', '.html');
 			nb.textContent = '📓';
 			a.parentNode.appendChild(nb);
-      const pattern = /notebooks\/(\w*)/;
-			a.href = a.href.replace(pattern,'notebooks\/$1\/html').replace('ipynb', 'html');
-      console.log(a.href);
+
+      // create download link
+      const download = document.createElement('a');
+      download.href = originalPath 
+      download.textContent = '⬇';
+      a.parentNode.appendChild(download);
+
+      // modify original link so that it points to slides
+			a.textContent += ' ';
+      // grab path from notebook html link and insert slides
+			a.href = nb.href.replace('.html', '.slides.html');
 		}
 	} 
 }

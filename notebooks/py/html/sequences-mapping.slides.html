@@ -1,13 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8" />
+<head>
 
-<title>unicode-bytes-strings</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<title>sequences-mapping slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/reveal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/theme/simple.css" id="theme">
 
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+
+</script>
+
+<!--[if lt IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Loading the mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+<!-- Get Font-awesome from cdn -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -13021,297 +13072,245 @@ ul.typeahead-list  > li > a.pull-right {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-body {
-  overflow: visible;
-  padding: 8px;
+.reveal {
+  font-size: 160%;
 }
-
-div#notebook {
-  overflow: visible;
-  border-top: none;
-}@media print {
-  div.cell {
-    display: block;
-    page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
-  }
-  div.output { 
-    display: block;
-    page-break-inside: avoid; 
-  }
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal i {
+  font-style: normal;
+  font-family: FontAwesome;
+  font-size: 2em;
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
+}
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
+}
+div.input_area {
+  padding: 0.06em;
+}
+div.code_cell {
+  background-color: transparent;
+}
+div.prompt {
+  width: 11ex;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  text-align: right;
+}
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+div.output_prompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+div.text_cell.rendered .rendered_html {
+  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
+  overflow-y: hidden;
+}
+a.anchor-link {
+  /* There is still an anchor, we are only hidding it */
+  display: none;
+}
+.rendered_html p {
+  text-align: inherit;
+}
+::-webkit-scrollbar
+{
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar *
+{
+  background:transparent;
+}
+::-webkit-scrollbar-thumb
+{
+  background: #727272 !important;
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-<!-- Loading mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration --></head>
+</head>
+
+
 <body>
-  <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+
+<div class="reveal">
+<div class="slides">
+<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Unicode,-Encoding,-Bytes-and-Strings">Unicode, Encoding, Bytes and Strings<a class="anchor-link" href="#Unicode,-Encoding,-Bytes-and-Strings">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="How-Does-a-Computer-Store-Data?">How Does a Computer Store Data?<a class="anchor-link" href="#How-Does-a-Computer-Store-Data?">&#182;</a></h2><p>Bits! ... 0's and 1's.</p>
-<p><strong>How do we encode numbers into 0's and 1's... what about characters?</strong> &rarr;</p>
+<h2 id="Compound-Types">Compound Types<a class="anchor-link" href="#Compound-Types">&#182;</a></h2><p>In Python, there are types with values that consist of a collection of values. <strong>Some broad categories of compound types are</strong> &rarr;</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Straightforward-for-Numbers:-Binary!">Straightforward for Numbers: Binary!<a class="anchor-link" href="#Straightforward-for-Numbers:-Binary!">&#182;</a></h2>
-</div>
-</div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>use some set number of bits to represent:</li>
-<li>whole numbers... or floating point numbers</li>
-<li>maybe some bits can be reserved for:<ul>
-<li>where to place decimal point</li>
-<li>positive or negative</li>
-</ul>
-</li>
-<li>need <em>moar</em> values? add more bits!</li>
+<li>sequences</li>
+<li>maps (dictionaries)</li>
+<li>sets </li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="For-Text:-Map-Numbers-to-Characters">For Text: Map Numbers to Characters<a class="anchor-link" href="#For-Text:-Map-Numbers-to-Characters">&#182;</a></h2>
+<h2 id="Sequence-Types">Sequence Types<a class="anchor-link" href="#Sequence-Types">&#182;</a></h2><p><strong>In Python, what are some <em>sequence</em> types?</strong> &rarr;</p>
+<p>(That is, a type that has composite values - values composed of an ordered sequence of other values)</p>
+
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Map numbers (<em>code points</em>) to corresponding characters...</p>
 <ul>
-<li>for example: 65 -&gt; A</li>
-<li>you may have a table of mappings from code points to characters (something like <a href="http://www.asciitable.com">http://www.asciitable.com</a></li>
-<li>those mappings have to be encoded into (some number of) bits</li>
+<li>strings - <code>str</code>, ordered collection of strings</li>
+<li>lists - <code>list</code>, ordered collection of values</li>
+<li>range objects 🤔 - <code>range</code>, an arithmetic sequence</li>
+<li>tuples 😵 - <code>tuple</code>, ordered collection of immutable values</li>
 </ul>
 
 </div>
 </div>
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Prove-It!-(In-&#128013;)">Prove It! (In &#128013;)<a class="anchor-link" href="#Prove-It!-(In-&#128013;)">&#182;</a></h2>
+<h2 id="Sequence-Operations">Sequence Operations<a class="anchor-link" href="#Sequence-Operations">&#182;</a></h2><p><strong>What are some operations that are common among sequence types</strong> &rarr;</p>
+
 </div>
 </div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>iterate (<code>for</code> loop)</li>
+<li>index (<code>[]</code>)</li>
+<li>built-in functions: <code>len</code></li>
+<li>concatenation and repetition <code>+</code> and <code>*</code></li>
+<li><code>in</code> and <code>not in</code></li>
+<li>slicing <code>[start:stop:step]</code></li>
+</ul>
+
 </div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Indexing">Indexing<a class="anchor-link" href="#Indexing">&#182;</a></h2><p><strong>How does indexing work? What happens if an index doesn't exist?</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>each element in a sequence has a position</li>
+<li>the position is called an <strong>index</strong></li>
+<li>indexes start at 0</li>
+<li>indexing with a position that doesn't exist causes a runtime error, an exception: <code>IndexError</code></li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Slicing">Slicing<a class="anchor-link" href="#Slicing">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ord and chr will convert to and from a character and code</span>
-<span class="c1"># point</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rambutan&#39;</span><span class="p">,</span> <span class="s1">&#39;jackfruit&#39;</span><span class="p">,</span> <span class="s1">&#39;lychee&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="ASCII">ASCII<a class="anchor-link" href="#ASCII">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>ASCII is encoded using 7 bits (or 8 for extended!)<ul>
-<li>this is ~ 128 different values</li>
-<li>good for a-z, A-Z, 0-9 etc.</li>
-<li>not so good if you live in Korea, Pakistan or any other country with a language that contains different character sets</li>
-<li>not so good if you want to send 🤢 or other emoji</li>
-</ul>
-</li>
-<li>ASCII is both the name of the mapping and name of the encoding</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Other-Encodings"><em>Other Encodings</em><a class="anchor-link" href="#Other-Encodings">&#182;</a></h2><ul>
-<li>Because ASCII was limited, <em>many</em> other encodings were created. I mean, <a href="https://en.wikipedia.org/wiki/Character_encoding#Common_character_encodings">many encodings</a>. </li>
-<li>These encodings weren't guaranteed to have common mappings, even if they were meant to represent the same character set! 😩</li>
-</ul>
-<p><strong>What to do?</strong> &rarr;</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unicode">Unicode<a class="anchor-link" href="#Unicode">&#182;</a></h2><p>Unicode is the name of a mapping of <em>code points</em> only (it does not specify encoding!). It can represent over 1 million characters! Everything from Cyrillic to all of your fav emoji 🙌 🤯.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="MOAR-Unicode">MOAR Unicode<a class="anchor-link" href="#MOAR-Unicode">&#182;</a></h2><p>The links below show some tables. Code points may be represented in binary, decimal, and hexidecimal. Many tables use hexadecimal... but resulting code point is still same value.</p>
-<ul>
-<li>unicode.org has all the charts: <a href="https://unicode.org/charts/">https://unicode.org/charts/</a></li>
-<li>the first 128 characters are backward compatible with ASCII: <a href="https://unicode.org/charts/PDF/U0000.pdf">https://unicode.org/charts/PDF/U0000.pdf</a></li>
-<li>here are some emoji mappings if want 'em 🙏: <a href="https://unicode.org/emoji/charts/full-emoji-list.html">https://unicode.org/emoji/charts/full-emoji-list.html</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Encodings-for-Unicode">Encodings for Unicode<a class="anchor-link" href="#Encodings-for-Unicode">&#182;</a></h2><p>Again, unicode is just the name of the mapping from code points to characters. Want to actually <em>encode</em> a character? You haz some choices:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="utf-8">utf-8<a class="anchor-link" href="#utf-8">&#182;</a></h2><p>Can store characters in 1 byte or as many as 4 bytes (variable length encoding)</p>
-<ul>
-<li>even though only 8 bits / 1 byte, can represent other unicode characters by adding additional bytes </li>
-<li>higher bytes (left most) specify whether or not other bytes should be combined </li>
-<li>for example, if left-most bit is 0, then character can be represented by a single byte</li>
-<li>if first bit is 1, then multiple bytes needed to represent character!</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="utf-8,-Multiple-Bytes">utf-8, Multiple Bytes<a class="anchor-link" href="#utf-8,-Multiple-Bytes">&#182;</a></h2><ul>
-<li>starting with 110xxxxx means two bytes needed</li>
-<li>starting with 1110xxxx means three bytes needed</li>
-<li><strong>see a pattern?</strong> &rarr;</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="utf-8,-Multiple-Bytes">utf-8, Multiple Bytes<a class="anchor-link" href="#utf-8,-Multiple-Bytes">&#182;</a></h2><ul>
-<li>number of 1's specifies number of bytes to represent character</li>
-<li>additional / continuation bytes are prefixed with 10</li>
-<li>so, take the binary representation of a code point and fill in the x's</li>
-<li>for something that needs 4 bytes to represent:<ul>
-<li><code>11110xxx</code> <code>10xxxxxx</code> <code>10xxxxxx</code> <code>10xxxxx</code></li>
-<li>first 4 1's and 0 mean 4 bytes</li>
-<li>remaing 3 bytes are prefixed with 10</li>
-<li>fill in x's with bits from binary representation of code point</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What?-&#129300;...-Here's-an-actual-example:">What? &#129300;... Here's an actual example:<a class="anchor-link" href="#What?-&#129300;...-Here's-an-actual-example:">&#182;</a></h2><p>First, you can find a nice <a href="https://stackoverflow.com/a/44568131">explanation on stackoverlow</a>.</p>
-<p><strong>But for now, let's check out 😂 (<a href="https://www.fileformat.info/info/unicode/char/1f602/index.htm">tears of joy</a>)</strong> &rarr;</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="&#128514;-(tears-of-joy)">&#128514; (<a href="https://www.fileformat.info/info/unicode/char/1f602/index.htm">tears of joy</a>)<a class="anchor-link" href="#&#128514;-(tears-of-joy)">&#182;</a></h2><ul>
-<li>Its unicode code point, in decimal is: <code>128514</code></li>
-<li>In binary, <code>128514</code> is <code>000011111011000000010</code> (with some 0 padding)</li>
-<li>This can't be represented in a single byte or even 3 bytes in utf-8... but we can do it with 4 bytes</li>
-<li>Here's the pattern for 4 bytes: <code>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</code></li>
-<li>Breaking up our binary representation of the code point to fit in the x's above, we have: <code>000 011111 011000 000010</code></li>
-<li>And, finally: <code>11110000 10011111 10011000 10000010</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Let's-prove-that-this-works...">Let's prove that this works...<a class="anchor-link" href="#Let's-prove-that-this-works...">&#182;</a></h2><p>The following shows that we can encode and decode using utf-8 using the rules above.</p>
-<ul>
-<li>we can do it with a little bit of Python.</li>
-<li>(it's a bit much; just knowing it's <em>possible</em> is fine)</li>
-</ul>
-<p>👇</p>
-
-</div>
-</div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># here is tears of joy...</span>
-<span class="n">ch</span> <span class="o">=</span> <span class="s1">&#39;😂&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tears of joy: </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="se">\n</span><span class="s1">============&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fruits</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># start (inclusive) to end (exclusive)</span>
 </pre></div>
 
     </div>
@@ -13324,74 +13323,42 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Tears of joy: 😂
-============
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;jackfruit&#39;, &#39;lychee&#39;]</pre>
 </div>
 
 </div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># let&#39;s see the code point using ord</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Let</span><span class="se">\&#39;</span><span class="s1">s see the utf-8 encoding of </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s1">!</span><span class="se">\n</span><span class="s1">----&#39;</span><span class="p">)</span>
-      
-<span class="n">code_point</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;code point for </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="s1"> is: </span><span class="si">{</span><span class="n">code_point</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># works with other sequence types, like strings</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;is this a fruit?&#39;</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Let&#39;s see the utf-8 encoding of 😂!
-----
-code point for 😂 is: 128514
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># let&#39;s see the binary version of the code point</span>
-
-<span class="c1"># this format specifier, 021b, means:</span>
-<span class="c1"># * pad with 0&#39;s</span>
-<span class="c1"># * there should be 21 total characters (# of x&#39;s based on pattern)</span>
-<span class="c1"># * format as binary number</span>
-<span class="n">format_as_padded_bin</span> <span class="o">=</span> <span class="s1">&#39;021b&#39;</span>
-
-<span class="c1"># use the format specifier as nested variable in </span>
-<span class="c1"># format string after colon</span>
-<span class="n">padded_bin</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">code_point</span><span class="si">:{</span><span class="n">format_as_padded_bin</span><span class="si">}}</span><span class="s1">&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">code_point</span><span class="si">}</span><span class="s1"> is in binary is: </span><span class="si">{</span><span class="n">padded_bin</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># leave off beginning or end to start from beginning or go through end</span>
+<span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>
 </pre></div>
 
     </div>
@@ -13404,30 +13371,43 @@ code point for 😂 is: 128514
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>128514 is in binary is: 000011111011000000010
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;it?&#39;</pre>
 </div>
 
 </div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Chaining-Slices-(and-Indexes)">Chaining Slices (and Indexes)<a class="anchor-link" href="#Chaining-Slices-(and-Indexes)">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>What happens if we chain slices and indexes? For example: <code>fruits[-3:][-1][:2]</code></strong> &rarr;</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># distribute into 4 bytes: UTF-8 FTW!</span>
-<span class="c1"># fill bits into the x&#39;s in the pattern below:</span>
-<span class="c1"># 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">padded_bin</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">padded_bin</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">],</span> <span class="n">padded_bin</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">15</span><span class="p">],</span> <span class="n">padded_bin</span><span class="p">[</span><span class="mi">15</span><span class="p">:]</span>
-<span class="n">encoded</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;11110</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">10</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">10</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">10</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;encoded as utf-8, in binary: </span><span class="si">{</span><span class="n">encoded</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rambutan&#39;</span><span class="p">,</span> <span class="s1">&#39;jackfruit&#39;</span><span class="p">,</span> <span class="s1">&#39;lychee&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="c1"># we get a list back</span>
 </pre></div>
 
     </div>
@@ -13440,30 +13420,27 @@ code point for 😂 is: 128514
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>encoded as utf-8, in binary: 11110000100111111001100010000010
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;lychee&#39;, &#39;apple&#39;, &#39;orange&#39;]</pre>
 </div>
 
 </div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ok, let&#39;s test if this is encoded correctly by decoding it!</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Let</span><span class="se">\&#39;</span><span class="s1">s go from utf-8 back to the actual character (decode), </span><span class="si">{</span><span class="n">ch</span><span class="si">}</span><span class="se">\n</span><span class="s1">----&#39;</span><span class="p">)</span>
-
-<span class="c1"># let&#39;s turn this into a sequence of bytes, with each byte shown in binary (as a string)</span>
-<span class="n">bytes_as_bin</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">encoded</span><span class="p">[</span><span class="n">i</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;these are our bytes as strings in a list: </span><span class="si">{</span><span class="n">bytes_as_bin</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># we get a string back</span>
 </pre></div>
 
     </div>
@@ -13476,33 +13453,27 @@ code point for 😂 is: 128514
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-Let&#39;s go from utf-8 back to the actual character (decode), 😂
-----
-these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39;, &#39;10011000&#39;, &#39;10000010&#39;]
-</pre>
-</div>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;orange&#39;</pre>
 </div>
 
 </div>
-</div>
 
 </div>
+</div>
+
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># convert each string into an int, and use that to create a bytes object</span>
-<span class="c1"># call decode on bytes object to get back character</span>
-<span class="c1"># decode will decode a series of bytes using utf-8 </span>
-<span class="c1"># (though you can specify an encoding as a keyword arg)</span>
-<span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">bytes_as_bin</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;decode those bytes to get the original character:&#39;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fruits</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:][</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># we can slice into that string!</span>
 </pre></div>
 
     </div>
@@ -13515,267 +13486,285 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>decode those bytes to get the original character: 😂
-</pre>
-</div>
-</div>
 
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;or&#39;</pre>
 </div>
 
 </div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>🛑</p>
-
+<h2 id="Membership">Membership<a class="anchor-link" href="#Membership">&#182;</a></h2>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Addendum">Addendum<a class="anchor-link" href="#Addendum">&#182;</a></h2><ul>
-<li>Most of the characters in unicode (character sets from natural languages) are in the first ~65,000 code points (called the <em>Basic Multilingual Plane</em>). </li>
-<li>Emoji exist above that, and typically require 4 bytes to represent.</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Others-Encoding-Schemes:-utf-16,-utf-32">Others Encoding Schemes: utf-16, utf-32<a class="anchor-link" href="#Others-Encoding-Schemes:-utf-16,-utf-32">&#182;</a></h2><ul>
-<li>If using mostly ASCII characters, then utf-8 is a great choice. </li>
-<li>However, if using many characters that can only be encoded in more than one byte, utf-32 (or, I guess, utf-16), might be a better option. </li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-use-utf-8-(usually)?">Why use utf-8 (usually)?<a class="anchor-link" href="#Why-use-utf-8-(usually)?">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>if most of your characters can be encoded in 1 byte; use it! </li>
-<li>it saves space... (why use 4 bytes to represent <code>A</code> when you can use 1?)</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Why-use-utf-32-instead?">Why use utf-32 instead?<a class="anchor-link" href="#Why-use-utf-32-instead?">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>if using lots of code points that require multiple bytes, it's a bit more complex decoding utf-8, since the number of bytes used per character has to be determined</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Er?-Y-Does-This-Matter?">Er? Y Does This Matter?<a class="anchor-link" href="#Er?-Y-Does-This-Matter?">&#182;</a></h2><p><strong>Why might knowing about encodings be useful?</strong> &rarr;</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>...Sometimes you source a file, but you don’t know what encoding it is!</li>
-<li>(but how do you know what encoding it is?)</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Decoding-a-File">Decoding a File<a class="anchor-link" href="#Decoding-a-File">&#182;</a></h2><p><strong>How might you determine the encoding of a file?</strong> &rarr;</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>If you have a series of bytes, you can decode with a scheme of your choice (utf-8, latin-1, etc.?)</li>
-<li>Automatic detection of encoding is tricky! (no standard for embedding encoding a file, usually encoding not specified!)</li>
-<li>Editors/viewers will use different strategies, but no guarantee guess will be right! 😮</li>
-<li>btw, some tools: file and enca to guess at encoding... sublime, atom, etc. to load in different encoding</li>
-<li>and, of course, Python can read files with different encodings (though default is utf-8)</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Example-/-Mystery!">Example / Mystery!<a class="anchor-link" href="#Example-/-Mystery!">&#182;</a></h2><p>Download this file in the same directory as your notebook:</p>
-<p><a href="https://www.gutenberg.org/files/4909/old/olavg10.txt">https://www.gutenberg.org/files/4909/old/olavg10.txt</a></p>
-<p>Try to figure out how to <em>read</em> it correctly. 🕵</p>
-<ul>
-<li>open it in a text editor, what do you see?</li>
-<li>reopen, but change encoding in your text editor of your choice; does that fix things?</li>
-<li>note that most text editors, like sublime and atom, can be set to use a specific encoding</li>
-<li>choose CP1251 or Window-1251</li>
-</ul>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Examining-Our-Text-with-&#128013;">Examining Our Text with &#128013;<a class="anchor-link" href="#Examining-Our-Text-with-&#128013;">&#182;</a></h2><p>If you're unable to change the encoding, we can look at it with python too 👀:</p>
-<ol>
-<li>first as utf-8 (which causes an exception)</li>
-<li>then as cp1251 (which shows us cyrillic)</li>
-</ol>
-<p>👇</p>
-
-</div>
-</div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># we try to read the file with open</span>
-<span class="c1"># by default, it&#39;ll read it as utf-8</span>
-<span class="c1"># there are some invalid continuation characters</span>
-<span class="c1"># ... so we&#39;ll get an exception</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;hello&#39;</span>
+<span class="n">greetings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hola&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;howdy&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;lo&#39;</span> <span class="ow">in</span> <span class="s1">&#39;hello&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[80]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;bye&#39;</span> <span class="ow">in</span> <span class="n">greetings</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[50]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Concatenation,-Repetition">Concatenation, Repetition<a class="anchor-link" href="#Concatenation,-Repetition">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># repetition with strings</span>
+<span class="n">greetings</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[83]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;hola&#39;, &#39;hello&#39;, &#39;howdy&#39;, &#39;hola&#39;, &#39;hello&#39;, &#39;howdy&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># repetition with lists</span>
+<span class="p">[</span><span class="s1">&#39;hey&#39;</span><span class="p">,</span> <span class="s1">&#39;hej&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[84]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;hey&#39;, &#39;hej&#39;, &#39;hey&#39;, &#39;hej&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># concatenation and lists</span>
+<span class="n">greetings</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;hey&#39;</span><span class="p">,</span> <span class="s1">&#39;hej&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[85]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;hola&#39;, &#39;hello&#39;, &#39;howdy&#39;, &#39;hey&#39;, &#39;hej&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Adding-Elements-to-a-List?">Adding Elements to a List?<a class="anchor-link" href="#Adding-Elements-to-a-List?">&#182;</a></h2><p><strong>Will this work?</strong> &rarr;</p>
+
+<pre><code>nums = [1, 2]
+nums += 3</code></pre>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;olavg10.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR!!!!!! plz download https://www.gutenberg.org/files/4909/old/olavg10.txt into same directory as this notebook first. k thx bai.&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">UnicodeDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Welp! Cannot decode this file... we are trying utf-8, but. it. is. not. that.&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="n">nums</span> <span class="o">+=</span> <span class="mi">3</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nope!&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Welp! Cannot decode this file... we are trying utf-8, but. it. is. not. that.
-&#39;utf-8&#39; codec can&#39;t decode byte 0xce in position 1494: invalid continuation byte
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now let&#39;s use codecs.open so we can read the file with a specific encoding</span>
-<span class="kn">import</span> <span class="nn">codecs</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;olavg10.txt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;cp1251&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a line in our text:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">lines</span><span class="p">[</span><span class="mi">51</span><span class="p">][:</span><span class="mi">100</span><span class="p">])</span>
-<span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ERROR!!!!!! plz download https://www.gutenberg.org/files/4909/old/olavg10.txt into same directory as this notebook first. k thx bai.&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># concatentation works if both operands are same type</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>a line in our text:
- Той и сам не знае кога е роден, но като го запитат, казва, че сега е на 36 години. Родното му градче, Грасдорф, е скътано в една гънка от росните поли на Харц, оная величествена планина, която лежи ка
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>🛑</p>
-
+<h2 id="List-Methods-for-Adding-Elements">List Methods for Adding Elements<a class="anchor-link" href="#List-Methods-for-Adding-Elements">&#182;</a></h2>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Strings-vs-Bytes">Strings vs Bytes<a class="anchor-link" href="#Strings-vs-Bytes">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Strings">Strings<a class="anchor-link" href="#Strings">&#182;</a></h2><p>From the docs: "The default encoding for Python source code is UTF-8, so you can simply include a Unicode character in a string literal"... see below!</p>
-
-</div>
-</div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;this is clearly a string&quot;</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;also a string ☃&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># add single value to end</span>
+<span class="n">nums</span>
 </pre></div>
 
     </div>
@@ -13788,86 +13777,13 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>also a string ☃
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="s2">&quot;not sure 🙃&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>not sure 🙃
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="bytes-Objects">bytes Objects<a class="anchor-link" href="#bytes-Objects">&#182;</a></h2><p>From Python docs: "Bytes objects are immutable sequences of single bytes." ...</p>
-<p><strong>one way to do this is with a sequence (for example, a list) of ints <code>0</code> - <code>255</code></strong></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">([</span><span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">])</span>
-<span class="n">b</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[32]:</div>
+    <div class="prompt output_prompt">Out[68]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>b&#39;CAB&#39;</pre>
+<pre>[5, 6, 7]</pre>
 </div>
 
 </div>
@@ -13875,33 +13791,14 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="bytes-Can-Also-Simply-be-Created-with-Strings">bytes Can Also Simply be Created with Strings<a class="anchor-link" href="#bytes-Can-Also-Simply-be-Created-with-Strings">&#182;</a></h2>
-</div>
-</div>
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;hello&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[34]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span> <span class="c1"># add all values as individual, separate, values to end</span>
+<span class="n">nums</span>
 </pre></div>
 
     </div>
@@ -13914,13 +13811,13 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[34]:</div>
+    <div class="prompt output_prompt">Out[64]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>104</pre>
+<pre>[4, 5, 6, 7, 8, 9, 7, 8, 9]</pre>
 </div>
 
 </div>
@@ -13928,13 +13825,14 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 </div>
 </div>
 
-</div>
+</div></div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nums</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># insert value before index</span>
+<span class="n">nums</span>
 </pre></div>
 
     </div>
@@ -13947,13 +13845,13 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[35]:</div>
+    <div class="prompt output_prompt">Out[65]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>104</pre>
+<pre>[4, 4, 5, 6, 7, 8, 9, 7, 8, 9]</pre>
 </div>
 
 </div>
@@ -13961,21 +13859,234 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 </div>
 </div>
 
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wait,-Isn't-That-Just-a-String?">Wait, Isn't That Just a String?<a class="anchor-link" href="#Wait,-Isn't-That-Just-a-String?">&#182;</a></h2>
+<h2 id="List-Methods">List Methods<a class="anchor-link" href="#List-Methods">&#182;</a></h2><p><strong>⚠ Note that most list methods do not return a value unless otherwise specified</strong></p>
+<ul>
+<li>for example, calling some_list.append('some value')</li>
+<li>... returns <code>None</code></li>
+</ul>
+
+<pre><code>result = some_list.append('some value')
+print(result) # None</code></pre>
+<p><strong>Can you name other list methods?</strong> &rarr;</p>
+
 </div>
 </div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Other-List-Methods">Other List Methods<a class="anchor-link" href="#Other-List-Methods">&#182;</a></h2>
 </div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Getting rid of elements</p>
+<ul>
+<li><code>remove('value')</code> - removes first element with value, <code>value</code></li>
+<li><code>pop()</code> - return and remove last element</li>
+</ul>
+<p>Misc</p>
+<ul>
+<li><code>index('value')</code> - returns index of element with value <code>value</code></li>
+<li><code>count('value')</code> - count number of times <code>value</code> occurs in list</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lists-vs-Strings">Lists vs Strings<a class="anchor-link" href="#Lists-vs-Strings">&#182;</a></h2><p><strong>What are some differences between lists and strings?</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>strings <strong>immutable</strong>, strings can be changed</li>
+<li>string methods return a new value, list methods often change the original list (and don't return a value)</li>
+<li>(and obvs - syntax, types of values they can contain)</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Lists-to-Strings-and-Back">Lists to Strings and Back<a class="anchor-link" href="#Lists-to-Strings-and-Back">&#182;</a></h2><p><strong>What methods can be called on a <code>str</code> to change it to a <code>list</code>... or the other way around?</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split and join</span>
+<span class="n">created_date</span> <span class="o">=</span> <span class="s2">&quot;09/02/2020&quot;</span>
+<span class="n">created_date_parts</span> <span class="o">=</span> <span class="n">created_date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">created_date_parts</span><span class="p">)</span>
+<span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">year</span> <span class="o">=</span> <span class="n">created_date_parts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;month and year are:&#39;</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[&#39;09&#39;, &#39;02&#39;, &#39;2020&#39;]
+month and year are: 09 2020
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2020-09-02
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Little-About-Range">A Little About Range<a class="anchor-link" href="#A-Little-About-Range">&#182;</a></h2><p><strong>A <code>range</code> is an immutable sequence type!</strong></p>
+<ul>
+<li>you can loop over it</li>
+<li>as well as index</li>
+<li>...but you can't assign</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">r</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 1 2 3 4 </pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assignment-Will-Raise-a-TypeError!">Assignment Will Raise a TypeError!<a class="anchor-link" href="#Assignment-Will-Raise-a-TypeError!">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">b</span> <span class="o">+</span> <span class="s1">&#39;!!!!!&#39;</span>
+    <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">21</span>
 <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
 </pre></div>
@@ -13994,7 +14105,7 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>&lt;class &#39;TypeError&#39;&gt; can&#39;t concat str to bytes
+<pre>&lt;class &#39;TypeError&#39;&gt; &#39;range&#39; object does not support item assignment
 </pre>
 </div>
 </div>
@@ -14002,349 +14113,35 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[37]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[37]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>bytes</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Use-decode-Method-to-Convert-to-a-String">Use <code>decode</code> Method to Convert to a String<a class="anchor-link" href="#Use-decode-Method-to-Convert-to-a-String">&#182;</a></h2><p><strong>Interpret a series of bytes as utf-8 using using a <code>byte</code> object's <code>decode</code> method</strong> &rarr;</p>
-<ul>
-<li>it takes a single argument</li>
-<li>the encoding to use when decoding the bytes</li>
-</ul>
+<h2 id="Tuples-are-Also-an-Immutable-Sequence-Type">Tuples are Also an Immutable Sequence Type<a class="anchor-link" href="#Tuples-are-Also-an-Immutable-Sequence-Type">&#182;</a></h2><p>Think of it as: <strong>a list that can't be changed</strong></p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;hello!&#39;</span>
-<span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-<span class="c1"># ... works as you expect!</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[40]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;hello!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
+</div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Now-Let's-Try-utf-16">Now Let's Try utf-16<a class="anchor-link" href="#Now-Let's-Try-utf-16">&#182;</a></h2><p><strong>What do you think will happen if we use <code>utf-16</code> as the encoding?</strong></p>
-
-<pre><code>b.decode('utf-16')</code></pre>
-
+<h2 id="Tuples-Can-be-Created-with-Commas-(and-Just-Commas)">Tuples Can be Created with Commas (and Just Commas)<a class="anchor-link" href="#Tuples-Can-be-Created-with-Commas-(and-Just-Commas)">&#182;</a></h2>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="prompt input_prompt">In&nbsp;[103]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span>
-<span class="c1"># ... how about same bytes as utf-16</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># only commas!</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
 
-    </div>
-</div>
-</div>
+<span class="c1"># with one element, element and comma</span>
+<span class="n">one_element</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[41]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;敨汬Ⅿ&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="String-Formatting">String Formatting<a class="anchor-link" href="#String-Formatting">&#182;</a></h1><p>(String "interpolation" / templates / alternatives to concatenation)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-the-.format-method-on-a-str-Object">Using the <code>.format</code> method on a <code>str</code> Object<a class="anchor-link" href="#Using-the-.format-method-on-a-str-Object">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;joe&#39;</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">food</span> <span class="o">=</span> <span class="s1">&#39;apple pies&#39;</span>
-<span class="s2">&quot;Hi, my name is </span><span class="si">{}</span><span class="s2">, and I have </span><span class="si">{}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">food</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[42]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;Hi, my name is joe, and I have 20 apple pies!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-format-with-Positions">Using <code>format</code> with Positions<a class="anchor-link" href="#Using-format-with-Positions">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;Hi, my name is </span><span class="si">{2}</span><span class="s2">, and I have </span><span class="si">{0}</span><span class="s2"> </span><span class="si">{1}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">food</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[43]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;Hi, my name is joe, and I have 20 apple pies!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-.format-with-Positions-and-Format-Specifier">Using <code>.format</code> with Positions and <em>Format Specifier</em><a class="anchor-link" href="#Using-.format-with-Positions-and-Format-Specifier">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="s2">&quot;Hi, my name is </span><span class="si">{2:s}</span><span class="s2">, and I have </span><span class="si">{0:.2f}</span><span class="s2"> </span><span class="si">{1:s}</span><span class="s2">!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">food</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[47]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;Hi, my name is joe, and I have 20.00 apple pies!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Format-String-Literals">Format String Literals<a class="anchor-link" href="#Format-String-Literals">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[48]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sa">f</span><span class="s2">&quot;Hi, my name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and I have </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">food</span><span class="si">}</span><span class="s2">!&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[48]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;Hi, my name is joe, and I have 20 apple pies!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[49]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sa">f</span><span class="s2">&quot;Hi, my name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and I have </span><span class="si">{</span><span class="n">num</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">food</span><span class="si">}</span><span class="s2">!&quot;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[49]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;Hi, my name is joe, and I have 20.00 apple pies!&#39;</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Using-the-%-Operator">Using the % Operator<a class="anchor-link" href="#Using-the-%-Operator">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[50]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">food</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">one_element</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14361,7 +14158,830 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>20 apple pies
+<pre>(1, 2, 3)
+(2,)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="There-are-Some-Instances-Where-You-Need-Parentheses">There are Some Instances Where You Need Parentheses<a class="anchor-link" href="#There-are-Some-Instances-Where-You-Need-Parentheses">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[104]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># note that if you want a tuple literal as an argument</span>
+<span class="c1"># ...it has to be wrapped in parentheses</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(1, 2, 3) 4
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Again-Immutable!">Again Immutable!<a class="anchor-link" href="#Again-Immutable!">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;please change!&#39;</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;TypeError&#39;&gt; &#39;tuple&#39; object does not support item assignment
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Unpacking...">Unpacking...<a class="anchor-link" href="#Unpacking...">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[101]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">word1</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>foo
+bar
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[102]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t2</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span>
+<span class="n">word1</span><span class="p">,</span> <span class="n">word2</span> <span class="o">=</span> <span class="n">t2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>foo
+bar
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Tuples-in-a-List">Tuples in a List<a class="anchor-link" href="#Tuples-in-a-List">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+    <span class="c1"># type is tuple on each iteration...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;tuple&#39;&gt;
+(1, 2)
+&lt;class &#39;tuple&#39;&gt;
+(3, 4)
+&lt;class &#39;tuple&#39;&gt;
+(5, 6)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Accessing-Each-Tuple-Element">Accessing Each Tuple Element<a class="anchor-link" href="#Accessing-Each-Tuple-Element">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[96]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># printing out both the x and y components</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+    <span class="c1"># this requires indexing...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x 1
+y 2
+x 3
+y 4
+x 5
+y 6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Unpacking-Directly-in-Loop-Variable">Unpacking Directly in Loop Variable<a class="anchor-link" href="#Unpacking-Directly-in-Loop-Variable">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>x 1
+y 2
+x 3
+y 4
+x 5
+y 6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Index-(Position)-and-Element">Index (Position) and Element<a class="anchor-link" href="#Index-(Position)-and-Element">&#182;</a></h2><p><strong>Sometimes it's useful to have both the element and element's position</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Using Range</span>
+<span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yes&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">,</span> <span class="s1">&#39;🤷️&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">options</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">options</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 yes
+1 no
+2 🤷️
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Index-and-Element-with-enumerate">Index and Element with <code>enumerate</code><a class="anchor-link" href="#Index-and-Element-with-enumerate">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[107]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[107]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;enumerate at 0x7fa5d8a769c0&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[108]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[108]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(0, &#39;yes&#39;), (1, &#39;no&#39;), (2, &#39;🤷️&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># enumerate and unpacking!</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">option_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">options</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">option_label</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0 yes
+1 no
+2 🤷‍♀️
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dictionaries">Dictionaries<a class="anchor-link" href="#Dictionaries">&#182;</a></h2><p><strong>Hey - what's a dictionary again?</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>type / <em>constructor</em> is <code>dict</code></li>
+<li>it's a collection of pairs of keys and their associated values</li>
+<li>empty dictionary is <code>{}</code></li>
+<li>can be "keyed" into using <code>[]</code>: <code>d[k]</code></li>
+<li>new key / val can be added with <code>[]</code> and assignment: <code>d[new_k] = 'new value'</code></li>
+<li><code>KeyError</code> if key doesn't exist</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Quick-Dictionary-Example">Quick Dictionary Example<a class="anchor-link" href="#Quick-Dictionary-Example">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">d</span><span class="p">[</span><span class="s1">&#39;some key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;some value&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;some key&#39;</span><span class="p">])</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;wut?&#39;</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;uh oh - that key does not exist!&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>some value
+uh oh - that key does not exist!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Dictionaries-and-Printing">Dictionaries and Printing<a class="anchor-link" href="#Dictionaries-and-Printing">&#182;</a></h2><p><strong>Let's try to print the following dictionary's keys AND values</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;first&quot;</span><span class="p">:</span><span class="s2">&quot;joe&quot;</span><span class="p">,</span> <span class="s2">&quot;last&quot;</span><span class="p">:</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;middle&quot;</span><span class="p">:</span> <span class="s2">&quot;j&quot;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">person</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>first
+last
+middle
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">person</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>joe
+v
+j
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Let's-Do-the-Same-with-.items">Let's Do the Same with <code>.items</code><a class="anchor-link" href="#Let's-Do-the-Same-with-.items">&#182;</a></h2><p>Calling <code>.items()</code> on a <code>dict</code> will give back a list of 2-element tuples, each composed of a the key as the first element and the value as the second.</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[28]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;first&#39;, &#39;joe&#39;), (&#39;last&#39;, &#39;v&#39;), (&#39;middle&#39;, &#39;j&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">person</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>first joe
+last v
+middle j
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id=".values()-and-.keys()"><code>.values()</code> and <code>.keys()</code><a class="anchor-link" href="#.values()-and-.keys()">&#182;</a></h2><p><strong>To retrieve a collection of only values or keys, use the method corresponding methods, <code>.values</code> and <code>.keys</code></strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vals</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="n">person</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">vals</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_values([&#39;joe&#39;, &#39;v&#39;, &#39;j&#39;])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">keys</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_keys([&#39;first&#39;, &#39;last&#39;, &#39;middle&#39;])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sets">Sets<a class="anchor-link" href="#Sets">&#182;</a></h2><p><strong>Sets are an unordered collection of distinct elements</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># use curly braces</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;}
 </pre>
 </div>
 </div>
@@ -14370,11 +14990,407 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 </div>
 
 </div>
-    </div>
-  </div>
-</body>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creating an empty set ({} is an empty dictionary, not a n empty set)</span>
+<span class="n">empty</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+</pre></div>
 
- 
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;qux&#39;</span><span class="p">,</span><span class="s1">&#39;corge&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Set-Operators-and-Methods">Set Operators and Methods<a class="anchor-link" href="#Set-Operators-and-Methods">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">words2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[109]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;bar&#39;, &#39;baz&#39;, &#39;corge&#39;, &#39;foo&#39;, &#39;qux&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[110]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words</span> <span class="o">|</span> <span class="n">words2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[110]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;bar&#39;, &#39;baz&#39;, &#39;corge&#39;, &#39;foo&#39;, &#39;qux&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[111]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">words2</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;quxx&#39;</span><span class="p">,</span> <span class="s1">&#39;idk&#39;</span><span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[111]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;bar&#39;, &#39;baz&#39;, &#39;corge&#39;, &#39;foo&#39;, &#39;idk&#39;, &#39;qux&#39;, &#39;quxx&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words</span> <span class="o">&amp;</span> <span class="p">{</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[112]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;bar&#39;, &#39;baz&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Set-Elements">Set Elements<a class="anchor-link" href="#Set-Elements">&#182;</a></h2><ul>
+<li>⚠ Set elements must be immutable</li>
+<li>Set elements are distinct</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># set elements cannot be mutable!</span>
+    <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]}</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;TypeError&#39;&gt; unhashable type: &#39;list&#39;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[114]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[114]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{1, 2, 3}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sets-and-Interaction-with-Other-Types">Sets and Interaction with Other Types<a class="anchor-link" href="#Sets-and-Interaction-with-Other-Types">&#182;</a></h2>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[115]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[116]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># methods may take iterables, and methods like union will work</span>
+<span class="n">words</span><span class="o">.</span><span class="n">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[116]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{1, 2, 3, &#39;bar&#39;, &#39;baz&#39;, &#39;foo&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[117]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="c1"># set operators will raise exception if there are different types</span>
+    <span class="n">words</span> <span class="o">|</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;TypeError&#39;&gt; unsupported operand type(s) for |: &#39;set&#39; and &#39;list&#39;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div></div></section></section>
+</div>
+</div>
+
+<script>
+
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/head.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+
+            transition: "slide",
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.5.0/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
+</body>
 
 
 </html>

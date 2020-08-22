@@ -1,0 +1,20 @@
+body {
+	font-size: 20px;	
+}
+div.prompt {
+	display: none;
+	min-width: 0px;
+	width: 0px;
+}
+
+.slides section {
+	top: 0px !important;
+}
+
+li > code {
+	background-color: #ccddff !important; 
+}
+
+section .rendered_html h2:first-child {
+	margin-top: 0px;
+}
