@@ -168,12 +168,13 @@ All books are available online:
 
 Readings will be selected from the following books
 
-1. [Python for Everybody: Exploring Data Using Python 3 by Charles Severance](https://open.umn.edu/opentextbooks/textbooks/336)
-2. [Bad data handbook Q. Ethan McCallum](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005835927&context=L&vid=NYU&lang=en_US)
-3. [Using SQLite by Jay A. Kreibich](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph007031845&context=L&vid=NYU&lang=en_US)
-4. [Database Design by Adrienne Watt (primary author)](https://opentextbc.ca/dbdesign01/)
-5. [Learning MySQL and MariaDB : heading in the right direction with MySQL and MariaDB by Russell J. T. Dyer](https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005573381&context=L&vid=NYU&lang=en_US)
-6. [MongoDB Manual](https://docs.mongodb.com/manual/introduction/)
+1. [{{ site.vars.book_python_full }}{% if site.vars.book_python_author %} by {{ site.vars.book_python_author }}{% endif %}]({{ site.vars.book_python_link }}) {% unless site.vars.book_python_full == site.vars.book_python %} ({{ site.vars.book_python }}) {% endunless %}
+2. [{{ site.vars.book_data_full  }}{% if site.vars.book_data_author %} by {{ site.vars.book_data_author }}{% endif %}]({{ site.vars.book_data_link }}) {% unless site.vars.book_data_full == site.vars.book_data %} ({{ site.vars.book_data }}) {% endunless %}
+3. [{{ site.vars.book_sqlite_full  }}{% if site.vars.book_sqlite_author %} by {{ site.vars.book_sqlite_author }}{% endif %}]({{ site.vars.book_sqlite_link }}) {% unless site.vars.book_sqlite_full == site.vars.book_sqlite %} ({{ site.vars.book_sqlite }}) {% endunless %}
+4. [{{ site.vars.book_db_design_full  }}{% if site.vars.book_db_design_author %} by {{ site.vars.book_db_design_author }}{% endif %}]({{ site.vars.book_db_design_link }}) {% unless site.vars.book_db_design_full == site.vars.book_db_design %} ({{ site.vars.book_db_design }}) {% endunless %}
+5. [{{ site.vars.book_mysql_full  }}{% if site.vars.book_mysql_author %} by {{ site.vars.book_mysql_author }}{% endif %}]({{ site.vars.book_mysql_link }}) {% unless site.vars.book_mysql_full == site.vars.book_mysql %} ({{ site.vars.book_mysql }}) {% endunless %}
+6. [{{ site.vars.book_mongodb_full  }}{% if site.vars.book_mongodb_author %} by {{ site.vars.book_mongodb_author }}{% endif %}]({{ site.vars.book_mongodb_link }}) {% unless site.vars.book_mongodb_full == site.vars.book_mongodb %} ({{ site.vars.book_mongodb }}) {% endunless %}
+
 
 <!--
 

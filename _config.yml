@@ -42,26 +42,35 @@ vars:
   final_room: "N/A"
   
   
-#  book1: "Python for Data Analysis Book, 2nd Edition"
-#  book1_link: "https://learning-oreilly-com.proxy.library.nyu.edu/library/view/python-for-data/9781491957653/"
-#  book1_author: "Wes McKinney"
-#
-#  book2: "Practical SQL"
-#  book2_link: "https://learning-oreilly-com.proxy.library.nyu.edu/library/view/practical-sql/9781492067580/"
-#  book2_author:  "Anthony DeBarros"
-#  
-#  book3: "Think Stats"
-#  book3_link: "http://greenteapress.com/thinkstats/"
-#  book3_author: "Allen B. Downey"
-#
-#  book4: "Data Science from Scratch, 2nd Edition"
-#  book4_link: "https://learning-oreilly-com.proxy.library.nyu.edu/library/view/data-science-from/9781492041122/"
-#  book4_author: "Joel Grus"
-#  
-#  book5: "Relational Database Design and Implementation, 3rd Edition"
-#  book5_link: "https://learning-oreilly-com.proxy.library.nyu.edu/library/view/relational-database-design/9780123747303/"
-#  book5_author: "Jan L. Harrington"
+  
+  book_python_full: "Python for Everybody: Exploring Data Using Python 3"
+  book_python: "py4e"
+  book_python_link: "https://www.py4e.com/html3/"
+  book_python_author: "Charles Severance"
 
+  book_data_full: "Bad Data Handbook"
+  book_data: "Bad Data Handbook"
+  book_data_link: "https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005835927&context=L&vid=NYU&lang=en_US"
+  book_data_author:  "Q. Ethan McCallum"
+  
+  book_sqlite_full: "Using SQLite"
+  book_sqlite: "Using SQLite"
+  book_sqlite_link: "https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph007031845&context=L&vid=NYU&lang=en_US"
+  book_sqlite_author: "Jay A. Kreibich"
+
+  book_db_design_full: "Database Design "
+  book_db_design: "Database Design "
+  book_db_design_link: "https://opentextbc.ca/dbdesign01/"
+  book_db_design_author: "Adrienne Watt (primary author)"
+  
+  book_mysql_full: "Learning MySQL and MariaDB: heading in the right direction with MySQL and MariaDB "
+  book_mysql: "Learning MySQL and MariaDB"
+  book_mysql_link: "https://bobcat.library.nyu.edu/primo-explore/fulldisplay?docid=nyu_aleph005573381&context=L&vid=NYU&lang=en_US"
+  book_mysql_author: "Russell J. T. Dyer"
+
+  book_mongodb_full: "MongoDB Manual"
+  book_mongodb: "MongoDB Manual"
+  book_mongodb_link: "https://docs.mongodb.com/manual/introduction/"
 
 # Welcome to Jekyll!
 #

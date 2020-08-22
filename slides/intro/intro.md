@@ -82,6 +82,23 @@ __This course is fully remote 💻, but it is not fully asynchronous__ &rarr;
 * [course work](../../syllabus.html#course-work) (quizzes, exams, assignments, etc.)
 * [required software](../../syllabus.html#required-software)
 * [books](../../syllabus.html#books)
+	* (all are available electronically for free either through the library or the publisher)
+	* (most will only be used for a few chapters rather than the whole book)
+</section>
+
+<section markdown="block">
+## Course Work
+
+__All course work (exams, assignments, etc.), unless specified by the instructor, should be your own__ &rarr;
+
+This means that you should not 
+
+* {:.fragment} use someone else's work
+* {:.fragment} share or distribute your work
+
+__For assignments (not exams, though), if you use code from an online resource or tutorial, that's OK!__
+
+__ ⚠️  ... just make sure to  cite the source in a comment in your code  (a url would be sufficient)
 
 </section>
 
@@ -89,11 +106,11 @@ __This course is fully remote 💻, but it is not fully asynchronous__ &rarr;
 ## Remember 🧠
 
 
-⚠️ __Only 3 things to  remember from these slides...__ &rarr;
+⚠️ __Only 3a few things to  remember from these slides...__ &rarr;
 
 1. this course __is fully remote__, but format requires __in-class attendance__
 2. there's a __non-trivial amount of work__
-3. __don't copy or share your work__
+3. 🚫 __don't copy or share your work__
 
 </section>
 

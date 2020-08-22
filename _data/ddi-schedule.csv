@@ -6,18 +6,37 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 * [tools](slides/intro/tools.html)
 * [types, variables, operators](slides/py/types.html)
 * [control structures](slides/py/control.html)
-",,"* [homework #00](homework/00.html)
+","[{{ site.book_python }}]({{ site.book_python_link }})
+
+* [Chapter 2: Variables](https://www.py4e.com/html3/02-variables)
+* [Chapter 3: Conditionals](https://www.py4e.com/html3/03-conditional)
+* [Chapter 5: Iterations](https://www.py4e.com/html3/05-iterations)","* [homework #00](homework/00.html)
 
 <!-- TODO: hw send github username -->",,Introduction to the class
-,,2,Sep-8,Tue,"Sequences and Abstraction
+,,2,Sep-8,Tue,"Sequences and Other Containers
 
-* [unicode and strings](notebooks/py/unicode-bytes-strings.ipynb)
-* [containers (sequences, mapping types, etc.)](notebooks/py/sequences-mapping.ipynb)
-* [function and modules](notebooks/py/functions.ipynb)
+* [strings and encoding](notebooks/py/unicode-bytes-strings.ipynb)
+* [containers](notebooks/py/sequences-mapping.ipynb)
+
+Abstraction
+
+* [functions](notebooks/py/functions.ipynb)
+* [modules](slides/py/modules.html)
 * [classes](slides/py/oop.html)
+* [testing](notesbooks/py/testing.html)
 
 
-<!-- TODO: demo -->",,"* [homework #01](homework/01.html)
+<!-- TODO: demo -->","[{{ site.book_python }}]({{ site.book_python_link }})
+
+* [Chapter 4: Functions](https://www.py4e.com/html3/04-functions)
+* [Chapter 6: Strings](https://www.py4e.com/html3/06-strings)
+* [Chapter 8: Lists](https://www.py4e.com/html3/08-lists)
+* [Chapter 9: Dictionaries](https://www.py4e.com/html3/09-dictionaries)
+* [Chapter 10: Tuples](https://www.py4e.com/html3/10-tuples)
+
+Articles
+
+* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","* [homework #01](homework/01.html)
 
 <!-- TODO: hw create csv class for in memory string? create list manipulation functions, create string class? -->
 
@@ -25,6 +44,7 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 ",,Python and Data Scrubbing (includes Python review notes)
 ,,3,Sep-10,Thu,"Working with Files, Data Cleaning
+
 * [file i/o](slides/py/fileio.html)
 * [file formats](slides/py/file-formats.html)
 ",,"
