@@ -24,7 +24,7 @@ function init() {
 -->
 
 <div id="quick-links">
-<h3 style="text-align: center;"><a href="syllabus.html">Homework and Quiz Policy</a> | <a href="{{site.vars.piazza}}">Piazza and Tutoring</a> | <a href="data-sets.html">Data Sets</a></h3>
+<h3 style="text-align: center;"><a href="syllabus.html">Homework and Quiz Policy</a> | <a href="{{site.vars.forums}}">Forums and Tutoring</a> | <a href="data-sets.html">Data Sets</a></h3>
 </div>
 <table class="table table-striped table-hover">
 <thead>
