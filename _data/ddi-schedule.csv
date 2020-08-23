@@ -10,9 +10,13 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 
 * [Chapter 2: Variables](https://www.py4e.com/html3/02-variables)
 * [Chapter 3: Conditionals](https://www.py4e.com/html3/03-conditional)
-* [Chapter 5: Iterations](https://www.py4e.com/html3/05-iterations)","* [homework #00](assignments/00.html)
+* [Chapter 5: Iterations](https://www.py4e.com/html3/05-iterations)","Due Today, 9/3, by 11pm
 
-<!-- TODO: hw send github username -->",,Introduction to the class
+* [homework #00](assignments/00.html)
+
+Due Monday, 8/7, by 11pm
+
+* quiz #1",,Introduction to the class
 ,,2,Sep-8,Tue,"Sequences and Other Containers
 
 * [strings and encoding](notebooks/py/unicode-bytes-strings.ipynb)
@@ -36,9 +40,11 @@ Abstraction
 
 Articles
 
-* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","* [homework #01](assignments/01.html)
+* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","Due Monday, 9/14, by 11pm
 
-<!-- TODO: hw create csv class for in memory string? create list manipulation functions, create string class? -->
+* [homework #01](assignments/01.html)
+
+<!-- TODO: hw create csv class for in memory string? create list manipulation functions, create string class or interactive program for unicode, special string class composed of bytes? -->
 
 
 
