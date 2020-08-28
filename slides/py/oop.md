@@ -516,6 +516,89 @@ print(obj.say_hello()) # hello
 
 
 <section markdown="block">
+## Static Methods Without Decorator
+
+__It's possible to get similar static method behavior without a decorator__
+
+* {:.fragment} define a function within a class, but...
+* {:.fragment} don't define self as the first argument
+* {:.fragment} only call from class name
+
+```
+class Foo:
+    def bar():
+        print('static')
+Foo.bar()
+```
+{:.fragment}
+
+⚠️ Note, however, that this will not be callable via the instance (like a function decorated with `@staticmethod` would).
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## An Aside on Self
+
+
+__Remember... when an instance method is called:__ &rarr;
+
+1. {:.fragment} the original object (instance) that the method was called on... 
+2. {:.fragment} is passed in as the first argument implicitly / automatically
+3. {:.fragment} The actual definition has to accommodate this first argument!
+
+
+</section>
+
+<section markdown="block">
+## Another Perspective on `self`
+
+__Now that we know about static methods, we could also think of calling an instance method _like_ this__ &rarr;
+
+
+Given this code:
+{:.fragment}
+
+```
+class Foo:
+    def bar(self):
+        print('baz')
+f = Foo()
+```
+{:.fragment}
+
+
+Calling an instance method is similar to calling it like a static method, but with the instance passed in as the argument:
+{:.fragment}
+
+```
+f.bar()
+Foo.bar(f)
+```
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## Lastly - Class Methods
+
+__You may also encounter a `@classmethod` decorator__ &rarr;
+
+```
+class Example:
+    @classmethod
+    def say_hello_from(cls):
+        print('hello from ', cls)
+
+Example.say_hello_from()
+
+```
+
+Similar to a static method, but the class itself is passed in automatically (much like the instance for an instance method) as the first argument.
+
+</section>
+
+<section markdown="block">
 ## Magic Methods
 
 If you name and implement a method with a special name, it'll have the ability to perform magic! (Not really). __Magic methods__ are methods that add defined functionality to your class. 
@@ -533,6 +616,7 @@ Some examples of __magic methods include__: &rarr;
 
 *  {:.fragment} `__init__` - constructor (initializing your object)
 *  {:.fragment} `__str__` - nicely formatted string representation
+
 *  {:.fragment} `__repr__` - actual string representation .... doesn't have to be formatted nicely
 *  {:.fragment} `__add__` - lets you use + operator
 *  {:.fragment} `__eq__`, `__gt__`
@@ -764,7 +848,7 @@ __Now... `Student` can inherit from `Person`__ using the following syntax: `clas
 class Student(Person):
     def __init__(self, title, first, last, netid):
         # when we call super, we get access to the 
-		# super / parent class methods
+        # super / parent class methods
         # use super when you're in the class
         super().__init__(title, first, last)
         self.netid = netid
