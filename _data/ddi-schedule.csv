@@ -6,21 +6,29 @@ draft,type,num,date,day,slides,readings,assignments,,old schedule
 * [tools](slides/intro/tools.html)
 * [types, variables, operators](slides/py/types.html)
 * [control structures](slides/py/control.html)
-","[{{ site.book_python }}]({{ site.book_python_link }})
+
+Sequences and Other Containers
+
+* [lists](slides/py/lists-methods-constructor-comprehension.html)
+* [containers](notebooks/py/sequences-mapping.ipynb)
+* [set and dict comprehensions](notebooks/py/comprehensions.ipynb)","[{{ site.book_python }}]({{ site.book_python_link }})
 
 * [Chapter 2: Variables](https://www.py4e.com/html3/02-variables)
 * [Chapter 3: Conditionals](https://www.py4e.com/html3/03-conditional)
-* [Chapter 5: Iterations](https://www.py4e.com/html3/05-iterations)","Due Today, 9/3, by 11pm
+* [Chapter 5: Iterations](https://www.py4e.com/html3/05-iterations)
+* [Chapter 6: Strings](https://www.py4e.com/html3/06-strings)
+* [Chapter 8: Lists](https://www.py4e.com/html3/08-lists)
+* [Chapter 9: Dictionaries](https://www.py4e.com/html3/09-dictionaries)
+* [Chapter 10: Tuples](https://www.py4e.com/html3/10-tuples)","Due Today, 9/3, by 11pm
 
 * [homework #00](assignments/00.html)
 
-Due Monday, 8/7, by 11pm
+Due Monday, 9/7, by 11pm
 
 * quiz #1",,Introduction to the class
-,,2,Sep-8,Tue,"Sequences and Other Containers
+,,2,Sep-8,Tue,"Strings
 
 * [strings and encoding](notebooks/py/unicode-bytes-strings.ipynb)
-* [containers](notebooks/py/sequences-mapping.ipynb)
 
 Abstraction
 
@@ -33,10 +41,7 @@ Abstraction
 <!-- TODO: demo -->","[{{ site.book_python }}]({{ site.book_python_link }})
 
 * [Chapter 4: Functions](https://www.py4e.com/html3/04-functions)
-* [Chapter 6: Strings](https://www.py4e.com/html3/06-strings)
-* [Chapter 8: Lists](https://www.py4e.com/html3/08-lists)
-* [Chapter 9: Dictionaries](https://www.py4e.com/html3/09-dictionaries)
-* [Chapter 10: Tuples](https://www.py4e.com/html3/10-tuples)
+
 
 Articles
 
