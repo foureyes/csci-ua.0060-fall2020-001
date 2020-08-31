@@ -14,6 +14,7 @@ exclude: [bower_components, README.md, bower.json, gruntfile.js, node_modules]
 
 vars:
   survey_github: ""
+  github_org: https://github.com/nyu-csci-ua-0060-001-fall-2020
   forums: "https://campuswire.com/"
   email: "jversoza at cs dot nyu dot edu"
   slides_img_prefix: "../../resources/img"

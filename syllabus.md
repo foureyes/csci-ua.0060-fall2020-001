@@ -30,7 +30,7 @@ Format
 This course is __fully remote__
 
 * The class will meet twice-a-week week for 1.25 hours
-* Students are expected to attend lectures through online meeting software during specified course times
+* Students are encouraged to attend lectures through online meeting software during specified course times, and weekly reviews will be held by the class tutor for students that have timezone conflicts 
 * Some classes __will involve hands-on work during class time__ (timezone differences will be accommodated)
 * There will be weekly office hours available, as well as weekly tutoring sessions with the course classroom assistant or tutor
 * A platform will be provided for asking questions online as well as moderating discussions among students
@@ -57,11 +57,13 @@ Tentatively:
 
 {% comment %} * __10%__: 5 x in-class interactive workshops {% endcomment %}
 
-* __15%__: 4-6 x "in-class" coding quizzes / workshops
+* __15%__: 4-6 x "in-class"\*  workshops, quizzes, and participation
 * __5%__: 6-8 x at-home general quizzes
 * __30%__: 7-9 x homework assignments
 * __25%__: 1 x midterm exam
 * __25%__: 1 x final exam
+
+\* note that accommodations will be made for students with timezone conflicts
 
 👀 A survey will be sent out to students to determine which students will need support due to time zone 🕛 differences.
 
@@ -78,12 +80,17 @@ __Interactive Workshops__
 {% endcomment %}
 
 
-__In-Class Coding Quizzes or Workshops__
+__In-Class Coding Quizzes, Workshops, and Participation__
 
-* Short, timed (30 minutes to an hour) coding quizzes taken during class __or__ small project to be submitted during class time
-* Quizzes will be announced during class on day that quiz will be given
-* Workshops will be announced prior to class
-* Coding quizzes will allow students to assess their understanding of the course material
+* Participation 
+	* Polls, surveys and forms to be filled out during in-class lecture
+* Quizzes
+	* Short, timed (30 minutes to an hour) coding quizzes taken during class 
+	* Quizzes will be announced during class on day that quiz will be given
+	* Coding quizzes will allow students to assess their understanding of the course material
+* Workshops
+	* Small project to be submitted during class time
+	* Workshops will be announced prior to class
 * Late submissions are not accepted, with the following exceptions (with documentation and request via online form)
 	* Illness
 	* Religious observance
