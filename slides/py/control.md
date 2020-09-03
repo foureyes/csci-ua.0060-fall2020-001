@@ -19,25 +19,24 @@ title: "Basic Control Structures"
 ##  Anatomy of an If Statement
 
 __Write an if statement testing if a and b are _not_ equal.  If they're not equal, print the value of a and b twice.__ &rarr;
-{% highlight python %}
+```
 a, b = "foo", "bar"
-{% endhighlight %}
+```
 
-<div class="incremental" markdown="block">
 * begin with keyword __if__
 * condition
 * colon - ends the condition / marks that a block of code is about to come up
 * if + condition + colon usually is considered the _if-statement header_
 * body of if statement ends when indentation goes back one level
 * blank lines don't count as ending a block of code!
-</div>
+{:.fragment}
 </section>
 
 <section markdown="block">
 ##  Let's See That Again
 <aside>Now With More Blank Lines</aside>
 
-{% highlight python %}
+```
 a, b = "foo", "bar"
 if a != b:
 	# totally ok?  yes!
@@ -50,7 +49,7 @@ if a != b:
 	print b
 
 	print b
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
@@ -68,7 +67,7 @@ We can use __else__ to execute code if the original condition was not met
 ##  What About Multiple Chained Conditions?
 What if __else__ is not fine-grained enough?  For example, how about a program that asks for cake and handles a yes, no, or anything other than...
 
-{% highlight python %}
+```
 """
 Do you want cake?
 > yes
@@ -82,15 +81,14 @@ Do you want cake?
 > blearghhh
 I do not understand.
 """
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
 ##  Consecutive Ifs
 __One way to do it is consecutive if statements...__ &rarr;
 
-<div class="incremental" markdown="block">
-{% highlight python %}
+```
 answer = input("Do you want cake?\n> ")
 if answer == 'yes':
         print("Here, have some cake.")
@@ -98,8 +96,8 @@ if answer == 'no':
         print("No cake for you.")
 if answer != 'yes' and answer != 'no':
         print("I do not understand.")
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -123,8 +121,7 @@ We can use __elif__ to chain a series of conditions, where only one path of code
 <aside>Let's have some more cake...</aside>
 __How would we redo the cake exercise with elif?__ &rarr;
 
-<div class="incremental" markdown="block">
-{% highlight python %}
+```
 answer = input("Do you want cake?\n> ")
 if answer == 'yes':
         print("Here, have some cake.")
@@ -132,8 +129,8 @@ elif answer == 'no':
         print("No cake for you.")
 else:
         print("I do not understand.")
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -158,12 +155,12 @@ Here's a contrived exercise:
 
 Here's an implementation.  __What gets printed if n = 200?  What gets printed if n = 101?__   &rarr;
 
-{% highlight python %}
+```
 if n > 100:
 	print("more than 100")
 elif n == 101:
 	print("exactly 101")
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
@@ -172,7 +169,7 @@ elif n == 101:
 
 __Will this code work??__ &rarr;
 
-{% highlight python %}
+```
 answer = input("Do you want cake?\n> ")
 if answer == 'yes':
         print("Here, have some cake.")
@@ -181,11 +178,10 @@ if answer == 'no':
         print("No cake for you.")
 else:
         print("I do not understand.")
-{% endhighlight %}
+```
 
-<div class="incremental" markdown="block">
 It does something unexpected!  If the user enters yes, we get both "Here, have some cake" __and__ "I do not understand."  Be careful when using consecutive __ifs__
-</div>
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -204,22 +200,21 @@ It does something unexpected!  If the user enters yes, we get both "Here, have s
 
 __How would you simplify this? &rarr;__
 
-{% highlight python %}
+```
 a = 100
 if a > 25:
 	if a < 200:
 		print("I'm in here")
 print("We're out there")
-{% endhighlight %}
+```
 
-<div class="incremental" markdown="block">
-{% highlight python %}
+```
 a = 100
 if a > 25 and a < 200:
 	print("I'm in here")
 print("We're out there")
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -231,11 +226,10 @@ print("We're out there")
 
 __What are some modules we've used, and what do they do? &rarr;__
 
-<div class="incremental" markdown="block">
 * math
 * random
 * sys (we didn't realize use sys that much, though...)
-</div>
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -268,7 +262,7 @@ __What are some modules we've used, and what do they do? &rarr;__
 
 __Write a program that continually asks the user for numbers, and asks them if they'd like to keep going.  In the end, it should output the average of all of the numbers entered&rarr;__
 
-{% highlight python %}
+```
 I'll calculate the average for you!
 Current total: 0
 Numbers summed: 0
@@ -283,13 +277,13 @@ Please enter a number to add
 Do you want to continue adding numbers (yes/no)?
 > no
 The average is 11.0
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
 ##  A Potential Solution
 
-{% highlight python %}
+```
 total = 0
 count = 0
 answer = 'yes'
@@ -301,7 +295,7 @@ while answer == 'yes':
         count = count + 1
         answer = input("Do you want to continue adding numbers (yes/no)?\n> ")
 print("The average is "+ str(total / count))
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
@@ -343,13 +337,12 @@ print(str(ones) + " of 1000 rolls were ones")
 
 __When should you use them? &rarr;__
 
-<div class="incremental" markdown="block">
 * you know ahead of time how many iterations you'll have to go through
 * you have to go through every element in an _iterable_ object 
 	* every number in a sequence of numbers
 	* every _item_ in a list
 	* every character in a string
-</div>
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -357,11 +350,10 @@ __When should you use them? &rarr;__
 
 __When should you use them? &rarr;__
 
-<div class="incremental" markdown="block">
 * when you don't know how many iterations you'll have to go through!
 * when you must repeat something until some condition is met
 * generally not a great option for counting (need to keep track of counter separately)
-</div>
+{:.fragment}
 </section>
 
 

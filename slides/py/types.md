@@ -40,23 +40,28 @@ Maybe also...
 
 __What are the possible values that a bit can hold?__ &rarr;
 
-<div class="incremental" markdown="block">
 
 0 and 1
+{:.fragment}
 
 __How many bits are in a byte?__ &rarr;
+{:.fragment}
 
 8
+{:.fragment}
 
 __What is 00001111 in decimal?__ &rarr;
+{:.fragment}
 
 15
+{:.fragment}
 
 __What is 2 in binary _ _ _ _ _ _ _ _ ?__ &rarr;
+{:.fragment}
 
 00000010
+{:.fragment}
 
-</div>
 </section>
 
 <section markdown="block">
@@ -138,7 +143,6 @@ SyntaxError: invalid syntax
 * if you forget to close your quotes (you have a start quote, but no end)
 * ... you'll also get a syntax error
 {:.fragment}
-</div>
 </section>
 
 <section markdown="block">
@@ -155,6 +159,7 @@ __What are the three ways to quote strings?__
 'single quoted string'
 """more than
 ```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -210,7 +215,7 @@ print("escaping using \"backslash\"")
 print("single  quotes ''''") 
 print("""some "double quotes"""")
 </code></pre>
-</div>
+{:.fragment}
 
 </section>
 
@@ -288,16 +293,16 @@ __float__  - floating point numbers
 
 __What order are these numeric operators evaluated in? &rarr;__
 
-<div class="incremental" markdown="block">
 * as you would expect - follows PEMDAS 
 * (parentheses, exponentiation, multiplication, division, addition, subtraciton)
 * __what would (5 + 15) * 2 ** 2 + 20 result in? &rarr;__
+{:.fragment}
 
-{% highlight pycon %}
+```
 >>> (5 + 15) * 2 ** 2 + 20
 100
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -318,12 +323,10 @@ __What are the resulting values and types after evaluating the following express
 * 28 % 10
 * 28 / "7"
 
-<div class="incremental" markdown="block">
-* 4.0 - float
-* 2 - int
-* 8 - int
-* Error
-</div>
+* {:.fragment} 4.0 - float
+* {:.fragment} 2 - int
+* {:.fragment} 8 - int
+* {:.fragment} Error
 </section>
 
 <section markdown="block">
@@ -333,14 +336,13 @@ An obvious use case for these numeric operations is implementing a formula.
 
 For example: __find the hypotenuse of a right triangle using this formula... h = &radic;(x&sup2; + y&sup2;), where x is 8 and y is 6 &rarr;__
 
-<div class="incremental" markdown="block">
-{% highlight python %}
+```
 import math
 x, y = 8, 6
 #  you can also use (some value) ** 0.5
 h = math.sqrt(x ** 2 + y ** 2)
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -348,10 +350,10 @@ h = math.sqrt(x ** 2 + y ** 2)
 
 There's a shortcut to add a value to an existing variable (the same exists for subtraction as well).  __What is the syntactic sugar that we use to increment and decrement variables?__ &rarr;
 
-<div class="incremental" markdown="block">
 __-=__ and __+=__ are shortcuts for decrementing or incrementing a variable...
+{:.fragment}
 
-{% highlight python %}
+```
 a = 0
 
 #  increment a by some value, just set the variable, a, equal to a + 5
@@ -359,8 +361,8 @@ a = a + 5
 
 #  or... alternatively, use a shortcut +=:
 a += 5
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -371,23 +373,19 @@ a += 5
 ##  The bool Type
 Python has a __bool__ type to represent Boolean values.  __Tell me everything you know about the bool type.__ &rarr;
 
-<div class="incremental" markdown="block">
-* True or False
-* note the uppercase 'T' and 'F'
-* just like other values, can be assigned to variables
-* bools can be combined into expressions using __logical operators__
-</div>
+* {:.fragment} True or False
+* {:.fragment} note the uppercase 'T' and 'F'
+* {:.fragment} just like other values, can be assigned to variables
+* {:.fragment} bools can be combined into expressions using __logical operators__
 </section>
 
 <section markdown="block">
 ##  Range Objects
 One last type / class / kind of data that we've encountered was a __range__ object. __Describe what a range object is.__ &rarr;
 
-<div class="incremental" markdown="block">
-* __range__ objects represent an arithmetic sequence.
-* they are __iterable__ and can be used to drive a for loop
-* they are created using the __range__ function
-</div>
+* {:.fragment} __range__ objects represent an arithmetic sequence.
+* {:.fragment} they are __iterable__ and can be used to drive a for loop
+* {:.fragment} they are created using the __range__ function
 </section>
 
 <section markdown="block">
@@ -448,15 +446,15 @@ __range()__ is special in that it can take 1, 2 or 3 parameters to create a rang
 
 * note that __int()__ and __float()__ will only accept int and float _"like"_ values... "5" will be converted (even with spaces), but "five" will cause an error
 * these can be used to avoid errors when using numeric or string operators 
-{% highlight python %}
+```
 num = 99
 print(str(num) + " red balloons")
-{% endhighlight %}
+```
 * remember - you don't have to convert if your value is already the type you're converting to
-{% highlight python %}
+```
 num = "99" # no need to convert
 print(num + " red balloons")
-{% endhighlight %}
+```
 
 </section>
 
@@ -465,14 +463,12 @@ print(num + " red balloons")
 
 __Name some built-in functions!__ &rarr;
 
-<div class="incremental" markdown="block">
-* __print__ - outputs value to screen; returns nothing
-* __input__ - prompts user for input; returns a str
-* __type__ - returns the type of the value passed in; returns a type object
-* __round__ - rounds a number; returns an int (when called with one argument) ...(we used this in a homework)
-* __abs__ - absolute value; returns a numeric type
-* obv, all of the conversion functions
-</div>
+* {:.fragment} __print__ - outputs value to screen; returns nothing
+* {:.fragment} __input__ - prompts user for input; returns a str
+* {:.fragment} __type__ - returns the type of the value passed in; returns a type object
+* {:.fragment} __round__ - rounds a number; returns an int (when called with one argument) ...(we used this in a homework)
+* {:.fragment} __abs__ - absolute value; returns a numeric type
+* {:.fragment} obv, all of the conversion functions
 </section>
 
 <section markdown="block">
@@ -499,9 +495,9 @@ __Name some built-in functions!__ &rarr;
 	* name on left
 	* value on right
 
-{% highlight python %}
+```
 some_variable_name = "a value"
-{% endhighlight %}
+```
 
 </section>
 
@@ -510,15 +506,14 @@ some_variable_name = "a value"
 
 Don't confuse the assignment operator with the equality operator! __What's the difference between the two?__ &rarr;
 
-<div class="incremental" markdown="block">
-{% highlight pycon %}
+```
 #  one equal sign is assignment
 a = 1  
 
 #  two equal signs mean test for equality
 a == 1
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -527,12 +522,12 @@ a == 1
 * you can reassign or rebind
 * __let's see that in action__ &rarr;
 
-{% highlight pycon %}
+```
 >>> a = 23
 >>> a
 23
 >>> a = "foo"
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
@@ -540,13 +535,13 @@ a == 1
 
 You can assign multiple variables in one line.
 
-{% highlight pycon %}
+```
 >>> a, b = 50, 60
 >>> a
 50
 >>> b
 60
-{% endhighlight %}
+```
 </section>
 
 
@@ -595,14 +590,13 @@ __Are these valid variable names? &rarr;__
 
 __Name six comparison operators?&rarr;__
 
-<div class="incremental" markdown="block"> 
 * __==__ - equals (can be called logical equivalence or equality operator)
 * __!=__ - not equal
 * __>__ - greater than
 * __<__ - less than
 * __>=__ - greater than / equal
 * __<=__ - less than / equal
-</div>
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -639,23 +633,22 @@ __Logical Operators are operators that combine Boolean values.__
 
 __Name 3 logical operators, how many operands they take, and what operands they need to return True.__ &rarr;
 
-<div class="incremental" markdown="block">
-1. __and__ - 
+1. {:.fragment} __and__ - 
 	* takes two operands, one on each side 
 	* to return True, both sides of the operator must evaluate to True &rarr;
-2. __or__ - 
+2. {:.fragment} __or__ - 
 	* takes two operands, one on each side
 	* to return True,at least one side of the operator must evaluate to True &rarr;
-3. __not__ - 
+3. {:.fragment} __not__ - 
 	* only takes one operand to the right
 	* to return True, the original value on the right must evaluate to False &rarr;
 	* two nots cancel eachother out (fun!) &rarr;
-</div>
 </section>
 
 <section markdown="block">
 ##   Logical Operators _in Action_
-{% highlight pycon %}
+
+```
 >>> True and False
 False
 >>> True and True
@@ -666,7 +659,7 @@ True
 False
 >>> not not True
 True
-{% endhighlight %}
+```
 </section>
 
 <section markdown="block">
@@ -676,8 +669,7 @@ __and__ takes two operands.  Each operand can be True or False (or will evaluate
 
 __Can you guess how many possible combinations ther are for these two operands?__  __What will the Truth Table look like?__ &rarr;
 
-<div class="incremental" markdown="block"> 
-{% highlight python %}
+```
 """
 (using p and q to represent the operands
 ...and t and f for true and false)
@@ -688,8 +680,7 @@ __Can you guess how many possible combinations ther are for these two operands?_
  t | f | f
  t | t | t
 """
-{% endhighlight %}
-</div>
+```
 </section>
 
 <section markdown="block">
@@ -697,8 +688,7 @@ __Can you guess how many possible combinations ther are for these two operands?_
 
 Let's fill out a truth table for __or__! &rarr;
 
-<div class="incremental" markdown="block"> 
-{% highlight python %}
+```
 """
 (using p and q to represent the operands
 ...and t and f for true and false)
@@ -709,8 +699,8 @@ Let's fill out a truth table for __or__! &rarr;
  t | f | t
  t | t | t
 """
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -718,8 +708,7 @@ Let's fill out a truth table for __or__! &rarr;
 
 Let's fill out a truth table for __p and not q and r__! &rarr;
 
-<div class="incremental" markdown="block"> 
-{% highlight python %}
+```
 """
 (using p and q to represent the operands
 ...and t and f for true and false)
@@ -734,8 +723,8 @@ Let's fill out a truth table for __p and not q and r__! &rarr;
  f | f | t | f
  f | f | f | f
 """
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
@@ -758,15 +747,14 @@ You can chain together operators to make complex Boolean expressions!
 * they can be arbitrarily complex!  (don't do that)
 
 __What do you think this evaluates to?__ &rarr;
-{% highlight python %}
+```
 -10 ** 2 <= -100 or "foo" == "bar" and 100 >= 100
-{% endhighlight %}
+```
 
-<div class="incremental" markdown="block"> 
-{% highlight python %}
+```
 True
-{% endhighlight %}
-</div>
+```
+{:.fragment}
 </section>
 
 <section markdown="block">
