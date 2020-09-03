@@ -70,3 +70,10 @@ __We'll be using a source code management tool called git to keep track of, subm
 	* {:.fragment} [GitKraken](https://www.gitkraken.com/)
 
 </section>
+
+<section markdown="block">
+## Test
+
+<script src="https://www.polleverywhere.com/multiple_choice_polls/1q3cjc96wBo1abJNvZTPr/web.js?height=250&results_count_format=percent&width=300"></script>
+<iframe src="https://embed.polleverywhere.com/multiple_choice_polls/qyN6q10doVzlfHWFn0Lpv?controls=none&short_poll=true" width="800" height="600" frameBorder="0"></iframe>
+</section>
