@@ -53,7 +53,7 @@ If you are a CS/DS __major__, you should _probably_ not be in this class as it w
 __Six main parts:__ &rarr;
 
 
-1. {:.fragment} __Python__ and File Processing <span class="fragment">with Python 🐍</span>
+1. {:.fragment} __File Processing__ <span class="fragment">with Python 🐍</span>
 2. {:.fragment} Basic __SQL__ <span class="fragment">with SQLite 💡</span>
 3. {:.fragment} __Relational Database Design__ <span class="fragment">with MySQL 🗄️</span>
 4. {:.fragment} __Visualization__ and __Consuming / Publishing Data on the Web__ with <span class="fragment">matplotlib, flask, etc. 📈 🕸️ </span>
@@ -108,7 +108,7 @@ __⚠️  ... just make sure to  cite the source in a comment in your code  (a u
 ## Remember 🧠
 
 
-⚠️ __Only 3a few things to  remember from these slides...__ &rarr;
+⚠️ __Only a few things to  remember from these slides...__ &rarr;
 
 1. this course __is fully remote__, but format requires __in-class attendance__
 2. there's a __non-trivial amount of work__
