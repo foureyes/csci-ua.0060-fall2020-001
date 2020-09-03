@@ -22,7 +22,7 @@ __By the end of this class, you'll have:__ &rarr;
 1. {:.fragment} strengthened your __Python programming__ skills 💪
 2. {:.fragment} gained hands-on experience using __various databases__ (SQLite, MySQL, MongoDB, and perhaps others time permitting) 📦 
 3. {:.fragment} worked with commonly used libraries in __data analysis__ (such as matplotlib, pandas, etc.)
-4. {:.fragment} worked with commonly used libraries in __consuming / publishing data on the web__ (such as matplotlib, flask, etc.)
+4. {:.fragment} worked with commonly used libraries in __consuming / publishing data on the web__ (such as requests, flask, etc.)
 
 </section>
 
@@ -97,8 +97,10 @@ This means that you should not
 * {:.fragment} share or distribute your work
 
 __For assignments (not exams, though), if you use code from an online resource or tutorial, that's OK!__
+{:.fragment}
 
-__ ⚠️  ... just make sure to  cite the source in a comment in your code  (a url would be sufficient)
+__⚠️  ... just make sure to  cite the source in a comment in your code  (a url would be sufficient)__
+{:.fragment}
 
 </section>
 
