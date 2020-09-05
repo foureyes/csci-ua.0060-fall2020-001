@@ -30,8 +30,8 @@ vars:
   course_site_alt: http://cs.nyu.edu/~jversoza
   
   # office hours
-  office_hours: "<br>TBD"
-  office_hours_room: WWH 422
+  office_hours: "Wednesday 7:45am - 9:15am EDT, Thursday: 3:30pm - 5:00pm EDT"
+  office_hours_room: Remote
   
   # midterm
   midterm1_date: "N/A"
