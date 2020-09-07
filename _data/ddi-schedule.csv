@@ -38,7 +38,17 @@ Abstraction
 * [functions](notebooks/py/functions.ipynb)
 * [modules](slides/py/modules.html)
 * [classes](slides/py/oop.html)
-* [testing](notesbooks/py/testing.html)
+* testing
+
+Homework Tools, Logistics
+
+
+* using git
+* installing / using an IDE
+* running tests
+* if name == main
+* participation and workshops
+
 
 
 <!-- TODO: demo -->","[{{ site.book_python }}]({{ site.book_python_link }})
