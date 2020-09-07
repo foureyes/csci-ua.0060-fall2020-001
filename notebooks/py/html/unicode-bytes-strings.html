@@ -13225,6 +13225,18 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><code>utf-8</code>: variable length (1 to 4 bytes)</li>
+<li><code>utf-16</code>: (2 bytes or 4 bytes)</li>
+<li><code>utf-32</code>: (4 bytes)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="utf-8">utf-8<a class="anchor-link" href="#utf-8">&#182;</a></h2><p>Can store characters in 1 byte or as many as 4 bytes (variable length encoding)</p>
 <ul>
 <li>even though only 8 bits / 1 byte, can represent other unicode characters by adding additional bytes </li>
@@ -13270,7 +13282,408 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What?-&#129300;...-Here's-an-actual-example:">What? &#129300;... Here's an actual example:<a class="anchor-link" href="#What?-&#129300;...-Here's-an-actual-example:">&#182;</a></h2><p>First, you can find a nice <a href="https://stackoverflow.com/a/44568131">explanation on stackoverlow</a>.</p>
+<h2 id="Before-We-Go-On...-Strings,-chr,-ord,-Bytes,-and-Strings-vs-Bytes">Before We Go On... Strings, chr, ord, Bytes, and Strings vs Bytes<a class="anchor-link" href="#Before-We-Go-On...-Strings,-chr,-ord,-Bytes,-and-Strings-vs-Bytes">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Strings">Strings<a class="anchor-link" href="#Strings">&#182;</a></h2><p>From the docs: "The default encoding for Python source code is UTF-8, so you can simply include a Unicode character in a string literal"... see below!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;this is clearly a string&quot;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="s2">&quot;also a string ☃&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>also a string ☃
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="s2">&quot;not sure 🙃&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>not sure 🙃
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="chr-and-ord">chr and ord<a class="anchor-link" href="#chr-and-ord">&#182;</a></h2><p><strong>What do these two built-in functions do again</strong> &rarr;</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">They</span> <span class="nb">map</span> <span class="n">unicode</span> <span class="n">characters</span> <span class="n">to</span> <span class="ow">and</span> <span class="kn">from</span> <span class="nn">unicode</span> <span class="n">code</span> <span class="n">points</span> <span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+    
+<span class="o">*</span> <span class="err">`</span><span class="nb">ord</span><span class="err">`</span> <span class="o">-</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">unicode</span> <span class="n">code</span> <span class="n">point</span> <span class="n">of</span> <span class="n">the</span> <span class="n">character</span> <span class="n">passed</span> <span class="ow">in</span>
+<span class="o">*</span> <span class="err">`</span><span class="nb">chr</span><span class="err">`</span> <span class="o">-</span> <span class="n">retursn</span> <span class="n">the</span> <span class="n">character</span> <span class="n">that</span> <span class="n">the</span> <span class="n">code</span> <span class="n">point</span> <span class="n">passed</span> <span class="ow">in</span> <span class="n">maps</span> <span class="n">to</span>
+
+<span class="n">__</span><span class="err">⚠</span><span class="n">These</span> <span class="n">two</span> <span class="n">functions</span> <span class="n">handle</span> <span class="n">mapping</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">a</span> <span class="n">character</span><span class="o">!</span>__
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="bytes-Objects">bytes Objects<a class="anchor-link" href="#bytes-Objects">&#182;</a></h2><p><strong>If we want to deal with how character data is actually stored in bits/bytes, we can work with a <code>bytes</code> object:</strong></p>
+<p>From Python docs: "Bytes objects are immutable sequences of single bytes." ...</p>
+<p><strong>one way to do this is with a sequence (for example, a list) of ints <code>0</code> - <code>255</code></strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">([</span><span class="mi">67</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">66</span><span class="p">])</span>
+<span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[32]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>b&#39;CAB&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="bytes-Can-Also-Simply-be-Created-with-Strings">bytes Can Also Simply be Created with Strings<a class="anchor-link" href="#bytes-Can-Also-Simply-be-Created-with-Strings">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;hello&quot;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[34]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>104</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[35]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>104</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Wait,-Isn't-That-Just-a-String?">Wait, Isn't That Just a String?<a class="anchor-link" href="#Wait,-Isn't-That-Just-a-String?">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">b</span> <span class="o">+</span> <span class="s1">&#39;!!!!!&#39;</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;class &#39;TypeError&#39;&gt; can&#39;t concat str to bytes
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[37]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>bytes</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Use-decode-Method-to-Convert-to-a-String">Use <code>decode</code> Method to Convert to a String<a class="anchor-link" href="#Use-decode-Method-to-Convert-to-a-String">&#182;</a></h2><p><strong>Interpret a series of bytes as utf-8 using using a <code>byte</code> object's <code>decode</code> method</strong> &rarr;</p>
+<ul>
+<li>it takes a single argument</li>
+<li>the encoding to use when decoding the bytes</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;hello!&#39;</span>
+<span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="c1"># ... works as you expect!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[40]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;hello!&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-Let's-Try-utf-16">Now Let's Try utf-16<a class="anchor-link" href="#Now-Let's-Try-utf-16">&#182;</a></h2><p><strong>What do you think will happen if we use <code>utf-16</code> as the encoding?</strong></p>
+
+<pre><code>b.decode('utf-16')</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span>
+<span class="c1"># ... how about same bytes as utf-16</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[41]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;敨汬Ⅿ&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What?-&#129300;...-Here's-an-actual-example-of-utf8:">What? &#129300;... Here's an actual example of utf8:<a class="anchor-link" href="#What?-&#129300;...-Here's-an-actual-example-of-utf8:">&#182;</a></h2><p>First, you can find a nice <a href="https://stackoverflow.com/a/44568131">explanation on stackoverlow</a>.</p>
 <p><strong>But for now, let's check out 😂 (<a href="https://www.fileformat.info/info/unicode/char/1f602/index.htm">tears of joy</a>)</strong> &rarr;</p>
 
 </div>
