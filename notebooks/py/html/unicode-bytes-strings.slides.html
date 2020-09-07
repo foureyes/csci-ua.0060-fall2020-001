@@ -13667,6 +13667,7 @@ these are our bytes as strings in a list: [&#39;11110000&#39;, &#39;10011111&#39
 <h2 id="Addendum">Addendum<a class="anchor-link" href="#Addendum">&#182;</a></h2><ul>
 <li>Most of the characters in unicode (character sets from natural languages) are in the first ~65,000 code points (called the <em>Basic Multilingual Plane</em>). </li>
 <li>Emoji exist above that, and typically require 4 bytes to represent.</li>
+<li>There are some sequences of bytes that are invalid: for example, although <code>11000000 10XXXXXX</code> looks valid (110 means one continuation byte), this is not valid because XXXXXX can be 64 at most, which can be expressed as 1 byte (a valid start byte for a 2 byte sequence must be <code>11000010</code>)</li>
 </ul>
 
 </div>
