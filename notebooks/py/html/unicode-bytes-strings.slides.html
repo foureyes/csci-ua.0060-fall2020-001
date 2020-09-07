@@ -13242,6 +13242,127 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Refresher">A Refresher<a class="anchor-link" href="#A-Refresher">&#182;</a></h2><p><strong>Do you remember how binary numbers work?</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>a <strong>binary number</strong> is composed of bits</li>
+<li>a <strong>bit</strong> can contain a 0 or 1</li>
+<li>a <strong>byte</strong> is 8 bits</li>
+<li>in a byte (assuming a specific architecture), the least significant bit (last bit) is the number of 2^0 or 1's, follwed by 2's, 4's, 8's, 16's, etc.</li>
+<li>the most significant bit in a byte is 128's</li>
+<li>to calculate the value in based 10, sum the prodcuts of the bits and their places</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="An-Example">An Example<a class="anchor-link" href="#An-Example">&#182;</a></h2><p><strong>What is <code>10000011</code> in decimal</strong> &rarr;</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>1   | 0   | 0   | 0   | 0   | 0   | 1   | 1
+----+-----+-----+-----+-----+-----+-----+-----
+2^7 | 2^6 | 2^5 | 2^4 | 2^3 | 2^2 | 2^1 | 2^0
+128 | 64  | 32  | 16  | 8   | 4   | 2   | 1</code></pre>
+
+<pre><code>(1 * 128) + (1 * 2) + (1 * 1)</code></pre>
+
+<pre><code>10000011 = 131</code></pre>
+
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-Useful-Tools">Some Useful Tools<a class="anchor-link" href="#Some-Useful-Tools">&#182;</a></h2><p>You can use <code>int</code> and <code>format</code> to convert binary to decimal and decimal to binary:</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>4</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div><div class="fragment">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">format</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[6]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;100&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div></div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="For-Text:-Map-Numbers-to-Characters">For Text: Map Numbers to Characters<a class="anchor-link" href="#For-Text:-Map-Numbers-to-Characters">&#182;</a></h2>
 </div>
 </div>
@@ -13252,7 +13373,7 @@ a.anchor-link {
 <p>Map numbers (<em>code points</em>) to corresponding characters...</p>
 <ul>
 <li>for example: 65 -&gt; A</li>
-<li>you may have a table of mappings from code points to characters (something like <a href="http://www.asciitable.com">http://www.asciitable.com</a></li>
+<li>you may have a table of mappings from code points to characters (something like <a href="http://www.asciitable.com">http://www.asciitable.com</a>)</li>
 <li>those mappings have to be encoded into (some number of) bits</li>
 </ul>
 
@@ -13491,25 +13612,23 @@ a.anchor-link {
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">They</span> <span class="nb">map</span> <span class="n">unicode</span> <span class="n">characters</span> <span class="n">to</span> <span class="ow">and</span> <span class="kn">from</span> <span class="nn">unicode</span> <span class="n">code</span> <span class="n">points</span> <span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
-    
-<span class="o">*</span> <span class="err">`</span><span class="nb">ord</span><span class="err">`</span> <span class="o">-</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">unicode</span> <span class="n">code</span> <span class="n">point</span> <span class="n">of</span> <span class="n">the</span> <span class="n">character</span> <span class="n">passed</span> <span class="ow">in</span>
-<span class="o">*</span> <span class="err">`</span><span class="nb">chr</span><span class="err">`</span> <span class="o">-</span> <span class="n">retursn</span> <span class="n">the</span> <span class="n">character</span> <span class="n">that</span> <span class="n">the</span> <span class="n">code</span> <span class="n">point</span> <span class="n">passed</span> <span class="ow">in</span> <span class="n">maps</span> <span class="n">to</span>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>They map unicode characters to and from unicode code points (numbers):</p>
+<ul>
+<li><code>ord</code> - returns the unicode code point of the character passed in</li>
+<li><code>chr</code> - retursn the character that the code point passed in maps to</li>
+</ul>
 
-<span class="n">__</span><span class="err">⚠</span><span class="n">These</span> <span class="n">two</span> <span class="n">functions</span> <span class="n">handle</span> <span class="n">mapping</span> <span class="n">a</span> <span class="n">number</span> <span class="n">to</span> <span class="n">a</span> <span class="n">character</span><span class="o">!</span>__
-</pre></div>
+<pre><code>ord('A') # 65
+chr(65) # B</code></pre>
+<p><strong>⚠These two functions handle mapping a number to a character!</strong></p>
 
-    </div>
 </div>
 </div>
-
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
