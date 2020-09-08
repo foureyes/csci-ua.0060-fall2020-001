@@ -47,6 +47,7 @@ Homework Tools, Logistics
 * installing / using an IDE
 * running tests
 * if name == main
+* late enrollment; quizzes
 
 
 
@@ -58,7 +59,7 @@ Homework Tools, Logistics
 
 Articles
 
-* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","Due Monday, 9/14, by 11pm
+* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","Due Wednesday, 9/16, by 11pm
 
 * [homework #01](assignments/01.html)
 
@@ -87,7 +88,10 @@ Workshop Logistics
 
 Articles
 
-* [Reading and Writing Files in Python](https://realpython.com/read-write-files-python/)","
+* [Reading and Writing Files in Python](https://realpython.com/read-write-files-python/)","Due , 9/14, by 11pm
+
+* Quiz #3 (Exceptions and Files) in NYU Classes
+
 
 <!-- TODO: video - python file io -->
 <!--
