@@ -28,7 +28,7 @@ Sequences and Other Containers
 
 Due Monday, 9/7, by 11pm
 
-* Quizzes #1A, #1B, #1C (Python Review)",,Introduction to the class
+* Quizzes #1A, #1B, #1C (Python Review) in NYU Classes",,Introduction to the class
 ,,2,Sep-8,Tue,"Strings
 
 * [strings and encoding](notebooks/py/unicode-bytes-strings.ipynb)
@@ -42,7 +42,7 @@ Abstraction
 
 Homework Tools, Logistics
 
-
+* [github org invite](https://github.com/orgs/nyu-csci-ua-0060-001-fall-2020/invitation)
 * using git
 * installing / using an IDE
 * running tests
@@ -61,6 +61,11 @@ Articles
 * [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)","Due Monday, 9/14, by 11pm
 
 * [homework #01](assignments/01.html)
+
+
+Due Monday, 9/8, by 11pm
+
+* Quiz #2 (Classes) in NYU Classes
 
 <!-- TODO: hw create csv class for in memory string? create list manipulation functions, create string class or interactive program for unicode, special string class composed of bytes? -->
 
