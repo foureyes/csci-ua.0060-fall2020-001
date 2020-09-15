@@ -72,24 +72,23 @@ The entire workshop should be approximately 45 minutes
 			1. give others a chance to contribute (take turns suggesting what to write next)
 			2. take a moment to make sure everyone understands
 		* assume that the data file is in the same directory that your program is running from
-		* remove all rows that do not include data, with the exception of a single row containing the column header names (`Year`, `Jan`, `Feb`...)
-		* remove all columns that are not a month, with the exception of the first year column
-		* convert all temperature anomalies values from 0.01 degrees Celsius to degrees Fahrenheit
-			* the formula to do this can be found within the data set
-			* format the results so that there's one decimal place (use [format](https://docs.python.org/3/library/functions.html#format) with `.1f` as the second argument)
-		* write out a new version of file, and call the file `to_f_output.txt`
+		* find the maxiumum and minimum temperature anomaly for each year
+		* convert these values to degrees celsius (values in data file are in 0.01 degrees celsius)
+		* write out a new version of file, and call the file `workshop01_output.txt`
+			* there should be three columns: `year`, `min`, and `max`
+			* there should be a single row at the top of the file that contains these header names
 			* each row should be pipe `|` delimited
-			* there should be a single row at the top of the file that contains the header names
-			* each subsequent row should contain data
-		* the content of the new file, `to_f_output.txt` should look like this (`.`s represent additional data not shown in example output) though ⚠️  __some values may be slighty different depending on when you download the original data file__:
+			* each subsequent row should contain your calculated data
+			* format the results so that there's two decimal places (use [format](https://docs.python.org/3/library/functions.html#format) with `.2f` as the second argument)
+		* the content of the new file, `workshop01_output.txt` should look like this (`.`s represent additional data not shown in example output)... though ⚠️  __some values may be slighty different depending on when you download the original data file__:
 			```
-Year|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
-1880|-0.3|-0.4|-0.1|-0.3|-0.1|-0.4|-0.3|-0.2|-0.2|-0.4|-0.4|-0.3
-1881|-0.3|-0.2|0.1|0.1|0.1|-0.3|0.0|-0.0|-0.3|-0.4|-0.3|-0.1
+year|min|max
+1880|-0.23|-0.08
+1881|-0.20|0.07
 .
 .
-2017|1.8|2.1|2.1|1.7|1.7|1.3|1.5|1.6|1.4|1.6|1.6|1.7
-2018|1.5|1.5|1.6|1.6|1.5|1.4|1.5|1.4|1.4|1.8|1.5|1.7
+2006|0.48|0.79
+2007|0.50|1.02
 .
 . 
 ```
