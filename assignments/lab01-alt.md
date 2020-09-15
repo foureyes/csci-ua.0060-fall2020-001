@@ -42,7 +42,7 @@ For this workshop:
 The entire workshop should be approximately 45 minutes
 
 1. `5-10 min`: form, introductions and roles
-	* __open the [workshop form](https://forms.gle/PFJnzQviaKkqdqfC7)__: fill this out as your progress through the workshop
+	* __open the [workshop form](https://forms.gle/fy2WKFZV9M25aSDK8)__: fill this out as your progress through the workshop
 		* you must be logged in to your NYU Google account to do this
 		* each group member must submit an individual form
 		* it's ok if the answers for each group member are very similar / the same
@@ -93,7 +93,7 @@ year|min|max
 . 
 ```
 3. `5 min`: closing
-	* fill out the remaining questions in the [submission form](https://forms.gle/PFJnzQviaKkqdqfC7):
+	* fill out the remaining questions in the [submission form](https://forms.gle/fy2WKFZV9M25aSDK8):
 		* list 3 things that made extracting data from / working with the file challenging
 		* fill out feedback regarding your group work
     * remember to submit your form! 
