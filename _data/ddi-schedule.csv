@@ -101,10 +101,12 @@ Articles
 
 * review paths from previous class
 * review file io from previous class
-* workshop",,"Due today (9/15) by end of class
+* workshop",,"<!--
+Due today (9/15) by end of class
 
+* [workshop #01 submission form](https://forms.gle/PFJnzQviaKkqdqfC7)
 * [workshop #01 - file io](assignments/lab01.html)
-
+-->
 <!-- Due , 9/14, by 11pm  * Quiz #3 (Exceptions and Files) in NYU Classes   TODO: video - python file io 
 --> 
 <!-- * [video: working with files in Python](modules/py/files.html) -->",,Python and Data Scrubbing (includes Python review notes)
