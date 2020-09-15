@@ -1,9 +1,9 @@
 ---
 layout: homework
-title: "Workshop #1"
+title: "Workshop #1" (Alternate)
 ---
 
-# Workshop #1 - File IO
+# Workshop #1 - File IO (Alternate)
 
 ## Overview
 
