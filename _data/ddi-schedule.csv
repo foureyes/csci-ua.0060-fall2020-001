@@ -88,7 +88,7 @@ Workshop Logistics
 
 Articles
 
-* [Reading and Writing Files in Python](https://realpython.com/read-write-files-python/)","Due , 9/14, by 11pm
+* [Reading and Writing Files in Python](https://realpython.com/read-write-files-python/)","Due 9/14, by 11pm
 
 * Quiz #3 (Exceptions and Files) in NYU Classes
 
@@ -99,11 +99,15 @@ Articles
 -->",,Python and Data Scrubbing (includes Python review notes)
 ,workshop,4,Sep-15,Tue,"Data Cleaning (Workshop)
 
-* workshop link to be posted
-* workshop goals:
-  * use python to read file(s)
-  * without using modules, parse file
-  * without using modules, transform and analyze data",,,,Python and Data Scrubbing (includes Python review notes)
+* review paths from previous class
+* review file io from previous class
+* workshop",,"Due today (9/15) by end of class
+
+* [workshop #01 - file io](assignments/lab01.html)
+
+<!-- Due , 9/14, by 11pm  * Quiz #3 (Exceptions and Files) in NYU Classes   TODO: video - python file io 
+--> 
+<!-- * [video: working with files in Python](modules/py/files.html) -->",,Python and Data Scrubbing (includes Python review notes)
 y,,5,Sep-17,Thu,"Data Cleaning
 
 * [bad data](slides/data/bad.html)
