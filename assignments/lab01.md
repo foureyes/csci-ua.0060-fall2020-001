@@ -74,11 +74,12 @@ For this workshop:
 		* remove all columns that are not a month, with the exception of the first year column
 		* convert all temperature anomalies values from 0.01 degrees Celsius to degrees Fahrenheit
 			* the formula to do this can be found within the data set
-		* write out new version of file, and call the file `to_f_output.txt`
+			* format the results so that there's one decimal place (for example, use [format](https://docs.python.org/3/library/functions.html#format) or [round](https://docs.python.org/3/library/functions.html#round))
+		* write out a new version of file, and call the file `to_f_output.txt`
 			* each row should be pipe `|` delimited
 			* there should be a single row at the top of the file that contains the header names
 			* each subsequent row should contain data
-		* example output file format:
+		* the content of the new file, `to_f_output.txt` should look like this (`.`s represent additional data not shown in example output):
 			```
 Year|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
 1880|-0.3|-0.4|-0.1|-0.3|-0.1|-0.4|-0.3|-0.2|-0.2|-0.4|-0.4|-0.3
@@ -88,7 +89,7 @@ Year|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
 2017|1.8|2.1|2.1|1.7|1.7|1.3|1.5|1.6|1.4|1.6|1.6|1.7
 2018|1.5|1.5|1.6|1.6|1.5|1.4|1.5|1.4|1.4|1.8|1.5|1.7
 .
-.
+. 
 ```
 3. `5 min`: closing
 	* fill out the remaining questions in the [submission form](https://forms.gle/PFJnzQviaKkqdqfC7):
