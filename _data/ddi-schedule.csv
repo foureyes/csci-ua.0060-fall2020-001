@@ -110,13 +110,27 @@ Due today (9/15) by end of class
 <!-- Due , 9/14, by 11pm  * Quiz #3 (Exceptions and Files) in NYU Classes   TODO: video - python file io 
 --> 
 <!-- * [video: working with files in Python](modules/py/files.html) -->",,Python and Data Scrubbing (includes Python review notes)
-y,,5,Sep-17,Thu,"Data Cleaning
+,,5,Sep-17,Thu,"Data Cleaning and Sourcing Data
 
+<!--
 * [bad data](slides/data/bad.html)
 * [descriptive statistics](slides/stats/stats.html)
 * [csv module](slides/py/csv.html)
-* data services - guest speaker",,"* [homework #02](homework/02.html)
+-->
 
+* [workshop survey results](slides/py/workshop01-results.html)
+* workshop solution
+* file types (from class 3)
+* [data “munging”](slides/py/clean.html)
+* sourcing / finding data - guest speaker
+","[{{ site.book_python }}]({{ site.book_python_link }})  
+
+* [Chapter 2. Is It Just Me, or Does This Data Smell Funny?](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/bad-data-handbook/9781449324957/ch02.htmls) 
+  * (focus on validation and simple statistics)
+* [Chapter 4.Bad Data Lurking in Plain Text](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/bad-data-handbook/9781449324957/ch04.html)","<!--
+
+* [homework #02](homework/02.html)
+-->
 <!-- TODO:  Hw choose data set, descriptive -->
 ",,SQLite
 y,,6,Sep-22,Tue,"Single Table with SQLite

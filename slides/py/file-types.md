@@ -55,7 +55,7 @@ __Tab-delimited__ and <strong>C</strong>omma <strong>S</strong>eparated <strong>
 These files are “human-readable” and can be easily imported into spreadsheets and databases. ... Some examples:
 {:.fragment}
 
-* {:.fragment} [Tab-delimited: U.S. Census School districts](http://www.census.gov/geo/maps-data/data/gazetteer2010.html)
+* {:.fragment} [Tab-delimited: U.S. Census School districts](https://www.census.gov/geographies/reference-files/time-series/geo/gazetteer-files.html)
 * {:.fragment} [Comma-separated values or comma-delimited: NYC Open data list of colleges](https://data.cityofnewyork.us/Education/Colleges-and-Universities/4kym-4xw5) 
 
 __Let's check out some of these files in a text editor, as well as a spreadsheet...__ &rarr;
@@ -93,6 +93,45 @@ qux, quux, corge
 </code></pre>
 {:.fragment}
 </section>
+
+<section markdown="block">
+## Parsing CSVs
+
+__Although parsing `.csv`s with `split(...)` is possible in some trivial cases, it's better to use a pre-built library__ &rarr;
+
+The `csv` module ([documentation](https://docs.python.org/3/library/csv.html)) comes with Python and it can be used for reading and writing delimited files:
+
+```
+import csv
+with open('data.csv') as f:
+    csv_reader = csv.reader(f)
+    for row in csv_reader:
+        print(row)
+```
+{:.fragment}
+
+__Note that `.reader` can be called with [keyword arguments](https://docs.python.org/3/library/csv.html) to specify delimiter, quote character, etc.__
+{:.fragment}
+</section>
+
+<section markdown="block">
+## Other Options
+
+__To read as a dictionary, the `csv` module also provides `DictReader`__ &rarr;
+
+```
+import csv
+with open('data.csv') as f:
+    csv_reader = csv.DictReader(f)
+    for row in csv_reader:
+        print(row)
+```
+{:.fragment}
+
+__As with the other formats mentioned in these slides, `pandas`, a data analysis library can handle working with csvs__
+{:.fragment}
+</section>
+
 <section markdown="block">
 ## Markup Languages
 
@@ -183,6 +222,16 @@ Typically, __viewing XML in a text editor (or even your browser) results in all 
 </section>
 
 <section markdown="block">
+## Parsing XML and HTML
+
+Don't [try to parse XML or HTML manually](https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags) ... __Instead, use libraries specific to the markup language you're using__ &rarr;
+
+* {:.fragment} [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) for HTML (we'll cover this later in the semester);
+* {:.fragment} [Multiple libraries](https://docs.python.org/3/library/xml.html) exist for XML
+
+</section>
+
+<section markdown="block">
 ## JSON
 
 JSON: <strong>J</strong>avaScript <strong>O</strong>bject <strong>N</strong>otation 
@@ -205,6 +254,31 @@ __Unlike XML, JSON does not require a predefined schema__. With that said, you'l
 	* {:.fragment} [stats.nba.com](https://stats.nba.com) loads data from [json files](http://stats.nba.com/js/data/widgets/home_playoffs.json) (check out Chrome's developer tools)
 	* {:.fragment} JSON is a very __common data interchange format for the web__ 
 
+</section>
+
+<section markdown="block">
+## Parsing JSON
+
+__Python has a built-in module for parsing JSON__ &rarr;
+
+```
+import json
+```
+
+Converting a json string into a `dict`
+
+```
+d = json.loads('{"greeting":"hello"}')
+# d is {'greeting': 'hello'}
+```
+
+Creating a json string from a `dict`
+
+```
+d = {'greeting': 'hello'}
+s = json.dumps(d)
+# s is '{"greeting": "hello"}'
+```
 </section>
 
 <section markdown="block">
