@@ -20,11 +20,8 @@ These generalizations hold true for _a lot_ of the databases you'll encounter, b
 
 
 * {:.fragment} there are likely databases out there that are outside of these generalizations
-* {:.fragment} existing databases have lesser known features that share the same functionality as other competing databases 
-* {:.fragment} although Postgres is known as a relational database...
-	* {:.fragment} like MongoDB, you can use it to store JSON documents (really Binary JSON - _JSONB_) documents
-	* {:.fragment} like Redis, you can use it to store key/value pairs
-	* {:.fragment} (MongoDB and Redis have many other features that differentiate them from Postgres)
+* {:.fragment} existing databases may share the same functionality as other competing databases
+	* but the features that support this functionality may not be as well known
 </section>
 
 <section markdown="block">
@@ -39,9 +36,8 @@ So far, as we've been working with data in class and in our homework, __where wa
 __What are some downsides to storing data in `.csv`s, `.txt` files or even `.html` (😮)?__ &rarr;
 {:.fragment}
 
-* {:.fragment} it's difficult to manipulate that data <span class="fragment">unless you use another tool, like `DataFrame`</span>
-* {:.fragment} if you're using `pandas` and reading a file in-memory as a `DataFrame`, what other problems might you encounter?
-* {:.fragment} you're gonna run out of memory 🤷
+* {:.fragment} it's difficult to manipulate that data <span class="fragment">unless you use another tool, like the `csv` module (and, as we'll see later `DataFrame`s)</span>
+* {:.fragment} depending on your tooling, another potential issue is memory management (again, if sing `pandas`, the entire file is read into memory) 
 </section>
 
 <section markdown="block">
@@ -67,17 +63,16 @@ __Enough `.csv` files__ We'll be using a database now! <span class="fragment">__
 
 __A <span class="hl">database</span> is... <span class="fragment">a repository or _organized_ collection of data</span>__ &rarr;
 
-Uh. That could be _anything_. A bunch of post-it notes on my desk. Or directories and files on my laptop (not that different from csvs, amirite)? 🤔
+* {:.fragment} Uh. That could be _anything_. A bunch of post-it notes on my desk... 
+* {:.fragment} Or directories and files on my laptop (not that different from csvs, amirite)? 🤔
+* {:.fragment} (when we hear "database", we tend to think of the electronic kind) 
+
+__How do we interact with a database, though?__ &rarr;
 {:.fragment}
 
-However, the term <span class="hl">database</span> also typically refers to _how_ that data is accessed, manipulated or _managed_. &rarr;
+We'll need _another tool_ to manage it...
 {:.fragment}
 
-* {:.fragment} when we think of a database, we typically think of an electronic system that... 
-* {:.fragment}<span class="hl">abstracts away how the data is physically stored on disk</span>
-* {:.fragment} as a database user, we don't have to worry about files; instead, we work with things like:
-	* {:.fragment} an interactive graphical representation of data
-	* {:.fragment} a query language with commands issued through an interactive shell
 
 </section>
 
@@ -87,42 +82,75 @@ However, the term <span class="hl">database</span> also typically refers to _how
 __Access to data in a database is mediated by a <span class="hl">Database Management System</span> (DBMS).__ &rarr;
 
 * {:.fragment} a __DBMS__ is software that gives users and applications the ability to __define, create, query and administer a database__
-* {:.fragment} it translates requests for data manipulation between the clients and the database itself
+* {:.fragment} it translates requests for data manipulation between the application and the database itself
 * {:.fragment} (it sits between the application accessing the data and the database)
 * {:.fragment} data is usually stored in a __DBMS specific format on the file system__ (though this could vary based on the DBMS... for example, in memory only)
 
 
 </section>
 
-<section markdown="block">
-## Database vs DBMS
-
-__Despite formal definitions, the term <span class="hl">database</span> (or database server) is often used to refer to both__ &rarr; 
-
-* {:.fragment} a database (an organized collection of data) or multiple databases 
-* {:.fragment} ...and the DBMS (software for managing / allowing access to _that_ collection of data).
-
-⚠️<span class="hl">This implies then that a DBMS can have __multiple databases__ (it can manage multiple collections of data)</span>
-{:.fragment}
-
-
-</section>
 
 <section markdown="block">
 ## DBMS Functionality
 
-__A DBMS typically has the following features__ &rarr;
+__A DBMS typically has the following minimum features__ &rarr;
 
 1. {:.fragment} some mechanism for <span class="hl">creating a database</span> and providing structure to the database 
 2. {:.fragment} a way to __create__, __read__, __update__ and __delete__ data
-3. {:.fragment} <span class="hl">access control</span> (some method of managing access, such as authentication and/or authorization) 
-4. {:.fragment} <span class="hl">administration</span> (performance monitoring, logging, resource management, etc.)
+3. {:.fragment} <span class="hl">administration</span> (performance monitoring, logging, resource management, etc.)
+
+__An additional feature, depending on the DBMS, may include__
+{:.fragment}
+
+* {:.fragment} <span class="hl">access control</span> (some method of managing access, such as authentication and/or authorization) 
 </section>
 
 <section markdown="block">
-## Client / Server
+## Database vs DBMS
 
-__The databases that we'll discuss in this part of the course fit under the client/server model__ &rarr;
+__TL;DR__ &rarr;
+* {:.fragment} a __database__ is an organized collection of data
+* {:.fragment} and the DBMS manages / mediates access to _that_ collection of data.
+
+⚠️<span class="hl">This implies then that a DBMS can have __multiple databases__ (it can manage multiple collections of data)</span>
+{:.fragment}
+</section>
+
+<section markdown="block">
+## But Really, Database
+
+__Despite formal definitions, the term <span class="hl">database</span> (or database server) is often used to refer to both the collection and the management__ &rarr; 
+
+The term <span class="hl">database</span> is usually also used to refer to _how_ data in the data store is accessed, manipulated or _managed_, along with the data itself. &rarr;
+{:.fragment}
+
+* {:.fragment}<span class="hl">abstracts away how the data is physically stored on disk</span>
+* {:.fragment} as a database user, we don't have to worry about files; instead, we work with things like:
+	* {:.fragment} an interactive graphical representation of data
+	* {:.fragment} a query language with commands issued through an interactive shell
+
+</section>
+
+<section markdown="block">
+## No Server, No Problem! 
+
+__In this course, we'll cover two major database interaction paradigms__ &rarr;
+
+* {:.fragment} severless 
+* {:.fragment} client / server
+
+__Serverless__ means that that:
+{:.fragment}
+
+* {:.fragment} the entire dbms is embedded into the program / application
+* {:.fragment} in the case of SQLite, a database can be contained in a single file!
+
+</section>
+
+<section markdown="block">
+##  Client / Server
+
+__In a client / server model...__ &rarr;
 
 * {:.fragment} access to the database is through a service
 * {:.fragment} the service is provided by a <span class="hl">server</span>:
@@ -130,10 +158,10 @@ __The databases that we'll discuss in this part of the course fit under the clie
 	2. {:.fragment} a cluster of servers in the same physical location (and perhaps on the same computer)
 	3. {:.fragment} several distributed servers in different physical locations
 * {:.fragment} the computer requesting the provided services is called the <span class="hl">client</span>
-	* {:.fragment} the client and server can be on the same computer, which is how we'll mostly be working with databases: everything on the same machine
+	* {:.fragment} the client and server _can_ be on the same computer
+
 
 </section>
-
 <section markdown="block">
 ## Client / Server Continued
 
@@ -249,7 +277,7 @@ __Because relational databases are usually used to model relationships between _
 
 * {:.fragment} relational databases are typically pretty rigid:
 * {:.fragment} they're highly structured
-* {:.fragment} columns and types of columns must be defined prior to inserting rows
+* {:.fragment} columns and types of columns _typically_ (we'll see that SQLite has a bit of a twist on this) must be defined prior to inserting rows
 * {:.fragment} many relational database features deal with maintaining  _data integrity_ (such user defined data constraints, foreign keys, etc.)
 
 </section>
@@ -334,6 +362,7 @@ SELECT first, last
 
 </section>
 
+<!--
 <section markdown="block">
 ## Quick Demo of Designing a Data Model for a Relational Database
 
@@ -350,12 +379,14 @@ Maybe we want to store these fields (we'll discuss this in more detail in a late
 __Let's get to it!__ &rarr;
 
 </section>
+-->
 
 <section markdown="block">
 ## Examples of Relational Databases
 
 __What are some examples of relational databases?__ &rarr;
 
+* {:.fragment} SQLite
 * {:.fragment} MySQL / MariaDB
 * {:.fragment} PostgreSQL
 * {:.fragment} Oracle
@@ -498,42 +529,39 @@ Examples: Google Spanner, Apache Ignite
 </section>
 
 <section markdown="block">
-## Postgres
+## SQLite
 
-__We'll be using PostgreSQL (also called postgres):__ &rarr;
+__We'll be using SQLite:__ &rarr;
 
-* {:.fragment} it's a hybrid _object-relational_ database
+* {:.fragment} it's relational_ database
+* {:.fragment} it's serverless
 * {:.fragment} it's _open source_ 
-* {:.fragment} it's _up there_ in terms of [relational database rankings](https://db-engines.com/en/ranking)
+* {:.fragment} it may be the most widely deployed database!
 
 Um, why?
 {:.fragment}
 
-__Mainly because of wide support in the Python community (not necessarily for data analysis, but for other libraries)__
+__Mainly because of wide support in the Python community, ubiquity, and ease of use.
 {:.fragment}
-
-Again... you'll find very few differences between mysql and postgres for the work that we do, and as new versions of each are released, they usually catch up in terms of features and performance.
-{:.fragment}
-
 
 </section>
 
 <section markdown="block">
-## Relational Database / RDBMS vs Pandas? 🐼
+## Relational Database vs Python or Pandas? 🐼
 
 __Let's discuss__ &rarr;
 
-Not really the same at all!
+Not really the same at all! 🤔
 {:.fragment}
 
-* {:.fragment} a service!
-* {:.fragment} multi-client / concurrent access
-* {:.fragment} authentication and authorization / role based access
 * {:.fragment} transactions
 * {:.fragment} ACID compliance
-* {:.fragment} replication, logging, clustering, etc.
+* {:.fragment} mostly standard query language
+* {:.fragment} concurrent access
+	* {:.fragment} in the case of SQLite, concurrent readers
+	* {:.fragment} single process write with locking
+* {:.fragment} depending on the RDBMS... multi-user 
 
 
 
 </section>
-

@@ -3,80 +3,6 @@ layout: slides
 title: "Constraints and Conventions"
 ---
 
-<section markdown="block" class="intro-slide">
-# {{ page.title }}
-
-### {{ site.vars.course_number}}-{{ site.vars.course_section }}
-
-<p><small></small></p>
-</section>
-
-<section markdown="block">
-## Postgres Casing
-
-__Postgres is a little tricky when comes to casing:__ &rarr;
-
-* {:.fragment} postgres lowercases unquoted names in statement
-* {:.fragment} to enforce casing, a name must be surrounded in quotes
-* {:.fragment} given the following table definition...
-
-<pre><code data-trim contenteditable>
-create table NaMiNg ("QUOTED" varchar(255), UNQUOTED varchar(255))
-</code></pre>
-{:.fragment}
-
-<pre><code data-trim contenteditable>
-select * from table NaMiNg; -- ok!
-</code></pre>
-{:.fragment}
-
-<pre><code data-trim contenteditable>
-select * from naming;       -- also ok
-</code></pre>
-{:.fragment}
-
-<pre><code data-trim contenteditable>
-select * from naming where QUOTED = 'foo';
--- problem! QUOTED is lowered, but the
--- table name is actually upper; use
--- double quotes: "QUOTED"
-</code></pre>
-{:.fragment}
-</section>
-
-<section markdown="block">
-## Identifiers / Names
-
-__Based on how postgres handles casing, sometimes the following rules are used for naming tables, columns, etc.__ &rarr;
-
-1. {:.fragment} always use __unquoted identifiers__
-2. {:.fragment} consequently, all table names, column names, etc. should be __lowercase__
-3. {:.fragment} lastly, if there are multiple words in a name, separate with __underscore__ (I guess this is called [snake case](https://en.wikipedia.org/wiki/Snake_case) 🐍!?)
-
-</section>
-
-<section class="danger" markdown="block">
-## Quoting
-
-__Please _just don't_ double quote names; it'll be a headache later on!__
-
-* {:.fragment} first.. the obvious is once you quote a name, it'll be case sensitive, 
-	* and consequently, if there are uppercase letters
-	* ...you'll have to quote that name _forever_
-* {:.fragment} also, quoting allows you to use wacky things for names
-	* like special characters (such as space) in names 🤢
-	* or even SQL keywords 🤮
-</section>
-<section markdown="block">
-## Don't Get Caught Up in the Feels
-
-__Sometimes people feel very strongly about naming conventions (🤷)__ &rarr;
-
-1. don't get too passionate about a particular style
-2. more important is remain consistent
-3. ...and, if working in an organization, go with the organization's standards!
-
-</section>
 
 <section markdown="block">
 ## Other Naming Considerations
@@ -92,37 +18,6 @@ __This goes without saying, but....__
 
 </section>
 
-<section markdown="block">
-## Types
-
-__We've already learned about types as we've worked with single tables__ &rarr;
-
-Types dictate:
-
-* {:.fragment} the kind of data that we can put in a column
-* {:.fragment} what kind of operations we can perform
-
-Specifying type allows us to declare rules about what the __acceptable values and operations__ are for a particular column
-{:.fragment}
-
-</section>
-<section markdown="block">
-## Aside on Types and Implicit Casting
-
-
-__Have you tried inserting an incorrect value into a column? ...what happens?__ &rarr;  
-
-* {:.fragment} maybe an error 🙅
-* {:.fragment} or maybe it just works
-* {:.fragment} (WAIT, BUT I THOUGHT TYPES VALIDATE DATA)
-
-Although SQL is strongly typed (in that functions, operators and data storage with compatible types causes errors), implicit casting does exist.
-{:.fragment}
-
-* {:.fragment} inserting an `integer` into a `text` field is ok!
-* {:.fragment} ...but inserting a "non-numeric" string into a `integer` won't
-* {:.fragment} the specifics of this can be found in some system catalogs (kind of like system tables): `pg_cast` and `pg_type`
-</section>
 
 <section markdown="block">
 ## Constraints
@@ -188,6 +83,7 @@ As a constraint, it provides the following guarantees:
 
 1. {:.fragment} the column or columns are unique in the table
 2. {:.fragment} the column or columns will always have a value (not null)
+In SQLite, PRIMARY KEY does not imply NOT NULL. This is in contradiction to the SQL standard and is considered a bug, but the behavior is so long-standing that there are concerns about fixing it and breaking existing applications. As a result, it is always a good idea to explicitly mark at least one column from each PRIMARY KEY as NOT NULL.
 
 __We've already seen primary keys , but let's look into some more details about:__ &rarr;
 {:.fragment}
