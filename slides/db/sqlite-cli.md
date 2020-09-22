@@ -40,11 +40,21 @@ __Commandline client: `sqlite3`__ &rarr;
 __The SQLite commandline tool has [_a lot_ of commands!](https://sqlite.org/cli.html)__ These are some ones we'll use frequently
 
 * `.help`
-* `.open` - [docs](https://sqlite.org/cli.html#double_click_startup_on_windows)
-* `.databases`
-* `.read`
-* `.save`
-* `.mode`
+* `.open file_name` - open an existing database file [docs](https://sqlite.org/cli.html#double_click_startup_on_windows)
+* `.databases` - list databases
+* `.read file_name` - execute file
+* `.save file_name` - if working with in-memory database, save to file
+* `.mode mode_name` - output format (`column`, `line`, `csv`, etc.)
+* `.header on` - display header
+</section>
+
+<section markdown="block">
+## Controlling Output Format
+
+The default output format is pipe separated values. __If you'd like something closer to a table__ &rarr;
+
+* {:.fragment} `.mode column` - align values into columns
+* {:.fragment} `.header on` - show headers
 
 </section>
 
