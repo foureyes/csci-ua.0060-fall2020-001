@@ -1,14 +1,14 @@
 --CREATE TABLE IF NOT EXISTS movie
 --CREATE OR REPLACE TABLE
 CREATE TABLE movie (
-	id serial PRIMARY KEY,
-	title varchar(50),
-	director varchar(100),
-	year timestamptz,
+	id integer,
+	title text,
+	director text,
+	year integer,
 	runtime integer,
-	genre varchar(255),
-	budget money,
-	gross money
+	genre text,
+	budget integer,
+	gross integer
 );
 
 INSERT INTO movie (title, director, year, runtime, genre, budget, gross)

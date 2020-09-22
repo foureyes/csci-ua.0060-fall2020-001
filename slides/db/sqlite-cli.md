@@ -46,24 +46,30 @@ __The SQLite commandline tool has [_a lot_ of commands!](https://sqlite.org/cli.
 * `.save file_name` - if working with in-memory database, save to file
 * `.mode mode_name` - output format (`column`, `line`, `csv`, etc.)
 * `.header on` - display header
+* `.nullvalue some_value` - how should nulls be displayed (default is blank)
 </section>
 
 <section markdown="block">
 ## Controlling Output Format
 
-The default output format is pipe separated values. __If you'd like something closer to a table__ &rarr;
+The default output format is pipe separated values. __If you'd like something closer to a table:__ &rarr;
 
 * {:.fragment} `.mode column` - align values into columns
 * {:.fragment} `.header on` - show headers
+* {:.fragment} `.nullvalue NULL` - show nulls as `NULL`
+
+Note that you can save these configurations by creating a file called `.sqliterc` in your home folder... and adding each command one line at a time
+{:.fragment}
 
 </section>
 
 <section markdown="block">
 ## Creating a Database
 
+SQLite starts off with an <span class="hl">in-memory</span> database. __If you'd like a persistent database saved on disk:__ &rarr;
 
-* `sqlite3 name_of_db.db`
-* `.open /path/to/name_of_db.db`
+* `sqlite3 name_of_db.db` - start sqlite with on-disk database
+* `.open /path/to/name_of_db.db` - while in sqlite, open an existing database
+* `.save /path/to/name_of_db.db` - if working with in-memory database, save to file
 </section>
-
 

@@ -125,7 +125,7 @@ __<span class="hl">DDL</span> or Data Definition Language__ consists of commands
 
 * {:.fragment} `CREATE`
 * {:.fragment} `ALTER`
-* {:.fragment} `DROP`. 
+* {:.fragment} `DROP` 
 
 These can be used on:
 {:.fragment}
@@ -151,10 +151,25 @@ See [CREATE TABLE](https://sqlite.org/lang_createtable.html) doc
 * can specify some constraints after type, such as:
 	* `NOT NULL`
 	* `UNIQUE`
-	* `PRIMARY KEY` 
+	* `PRIMARY KEY` (unique and _indexed_
 * default value specified with:
 	* `DEFAULT value_to_default_to`
 </section>
+
+<section markdown="block">
+## Primary Key
+
+If `PRIMARY KEY` is added to a column, then the primary key _is that single column_. The <span class="hl">primary key</span> of a table is the __column containing values that uniquely identify each row__.
+
+* {:.fragment} only a single `PRIMARY KEY` may be defined (though the primary key can be composed of multiple columns!)
+* {:.fragment} if the primary key is an integer for SQLite, then entering null will result in an increasing numeric id
+* {:.fragment} alternatively `AUTOINCREMENT` can be added: `INTEGER PRIMARY KEY AUTOINCREMENT` to have an increasing number as the unique identifier (with deleted keys left unused)
+
+__We'll discuss primary keys and choosing primary keys in more detail as the course progresses...__
+{:.fragment}
+
+</section>
+
 <section markdown="block">
 ## PRIMARY KEY BUG
 
@@ -171,9 +186,8 @@ The docs continue to say that this will not be changed:
 
 > SQLite could be fixed to conform to the standard, but doing so might break legacy applications. Hence, it has been decided to merely document the fact that SQLite allowing NULLs in most PRIMARY KEY columns.
 {:.fragment}
-
-
 </section>
+
 
 <section markdown="block">
 ## Creating a Table Example
@@ -294,7 +308,7 @@ __Operators__ &rarr;
 * {:.fragment} string concatenation: `||` (`'HI' || 'THERE'`)
 * {:.fragment} logical operators: `AND`, `OR`, `NOT`
 * {:.fragment} check for NULL: `IS NULL` and `IS NOT NULL` (do not use `=`)
-* {:.fragment} pattern matching, case sensitive and insensitive: `LIKE`, `ILIKE`
+* {:.fragment} pattern matching `LIKE`
 
 {% comment %}
 __Functions__ &rarr;
@@ -302,8 +316,6 @@ __Functions__ &rarr;
 
 * {:.fragment} `NOW()` (current date / time), `ROUND(val)`, etc.
 
-See [documentation on operators and functions](https://www.postgresql.org/docs/9.1/static/functions.html)
-{:.fragment}
 {% endcomment %}
 </section>
 
@@ -320,9 +332,13 @@ SELECT * FROM student;
 	<pre class="fragment"><code data-trim contenteditable>
 SELECT netid, first as fn FROM student;
 </code></pre>
-* {:.fragment} get all students, show net id and midterm grade divided by 100
+* {:.fragment} get all students, show net id and midterm grade divided by 100.0
 	<pre class="fragment"><code data-trim contenteditable>
 SELECT netid, midterm / 100 FROM student;
+</code></pre>
+* {:.fragment} get all students, show first name and last name concatenated with space between
+	<pre class="fragment"><code data-trim contenteditable>
+SELECT first || ' ' || last FROM student;
 </code></pre>
 
 </section>
@@ -348,7 +364,8 @@ SELECT DISTINCT first
 __Optionally, add a `WHERE` clause to specify _conditions_ (think filtering)__ &rarr;
 
 * conditions can use operators like `=`, `<>` (not equal), `>`, `<`
-* you can also use `LIKE` and `ILIKE` with `%` representing _wildcards_ to match on substrings (`ILIKE` is case insensitive)
+* you can also use `LIKE` with `%` representing _wildcards_ to match on substrings
+* add `COLLATE NOCASE` at end for case insensitive search
 * use `col_name IS NULL` to check for a `NULL` value
 * multiple conditions can be put together with `AND`, `OR`, `NOT`
 * parentheses can be added to specify precedence
@@ -384,8 +401,8 @@ SELECT * FROM student WHERE midterm IS NULL;
 * {:.fragment} get the netid and first name of students with that have a netid that has `jv` in it or starts with `Jo`, case insensitive
 	<pre class="fragment"><code data-trim contenteditable>
 SELECT netid, first FROM student 
-	WHERE netid LIKE '%jv%'	
-	OR first ILIKE 'Jo%';
+	WHERE netid LIKE '%jv%' 
+	OR first LIKE 'Jo%' COLLATE NOCASE;
 </code></pre>
 
 </section>
@@ -398,7 +415,7 @@ __Add an `ORDER BY` clause at the end of your `SELECT` to specify ascending orde
 <pre><code data-trim contenteditable>
 SELECT * FROM student 
 	WHERE midterm < 60
-	ORDER BY registered;
+	ORDER BY midterm;
 </code></pre>
 {:.fragment}
 
@@ -407,7 +424,7 @@ __Add `DESC` to order in descending order__ &rarr;
 
 <pre><code data-trim contenteditable>
 SELECT netid FROM student 
-	ORDER BY registered desc;
+	ORDER BY midterm desc;
 </code></pre>
 {:.fragment}
 
@@ -449,8 +466,8 @@ __Use an `UPDATE` statement to set the value of a column for a row / rows__ &rar
 * (see [docs on `UPDATE`](https://sqlite.org/lang_select.html)
 
 <pre><code data-trim contenteditable>
--- set all students' registered field to 1/1/2018
-UPDATE student SET registered = '2018-01-01';
+-- set all students' on_campus field to 1
+UPDATE student SET on_campus = 1;
 </code></pre>
 </section>
 
@@ -470,7 +487,7 @@ UPDATE student
 __Remember the value in `SET` can be an expression__ &rarr;
 
 <pre><code data-trim contenteditable>
-UPDATE student SET registered = NOW();
+UPDATE student SET midterm = midterm + 10;
 </code></pre>
 
 <pre><code data-trim contenteditable>
@@ -519,14 +536,8 @@ ALTER TABLE student DROP COLUMN final_exam_score;
 <section markdown="block">
 ## Modifying Columns
 
-__`ALTER TABLE` can also be used to modify columns__ &rarr;
+__`ALTER TABLE` can also be used to modify columns names__ &rarr;
 
-<pre><code data-trim contenteditable>
--- change data type of column
-ALTER TABLE student 
-	ALTER COLUMN netid 
-	SET DATA TYPE varchar(200);
-</code></pre>
 
 <pre><code data-trim contenteditable>
 -- rename column
@@ -534,57 +545,33 @@ ALTER TABLE student
 	RENAME COLUMN midterm TO midterm_score;
 </code></pre>
 
-See [full documentation on `ALTER TABLE`](https://sqlite.org/lang_delete.html)
+Note - modifying type affinity is not supported
+
+See [full documentation on `ALTER TABLE`](https://sqlite.org/lang_altertable.html)
+
+
 </section>
 
 
 <section markdown="block">
-## Casting
-
-__To cast a value from one type to another in a SQL statement, use a [CAST expression](https://sqlite.org/lang_delete.html)__ &rarr;
-
-* `CAST (expression as new-type)`
-
-<pre><code data-trim contenteditable>
-SELECT netid, 
-	CAST (midterm AS real) AS real_mid
-	FROM student;
-</code></pre>
-
-</section>
-
-<section markdown="block">
-## `ROUND` / formating
+## `ROUND` 
 
 __`ROUND` rounds a numeric value to a specified number of decimal places__
 
-There's a one argument version that rounds to an integer.
-
-Used in conjunction with casting, some simple formatting can be done:
-
 <pre><code data-trim contenteditable>
--- assuming midterm is now an integer
--- cast to numeric
--- so that we can round to two places
-SELECT netid, ROUND(CAST(midterm AS real), 2)
+-- round to one decimal place
+SELECT netid, ROUND(midterm/100.0, 1)
 	FROM student;
 </code></pre>
 
 </section>
 
 <section markdown="block">
-## Removing Tables / Databases
+## Removing Tables 
 
 __Use the `DROP` command to remove databases or tables__ &rarr;
 
 * `DROP TABLE table_name;`
-* `DROP DATABASE database_name;`
-
-Notes on usage:
-
-* you must connect to another database if you are planning on dropping the database that you're currently connected to
-* use `IF EXISTS` to suppress errors if the table you are dropping doesn't exist
-	* DROP TABLE IF EXISTS table_name;
 
 
 {% comment %}
