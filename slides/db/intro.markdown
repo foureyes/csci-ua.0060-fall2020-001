@@ -278,7 +278,7 @@ __Because relational databases are usually used to model relationships between _
 * {:.fragment} relational databases are typically pretty rigid:
 * {:.fragment} they're highly structured
 * {:.fragment} columns and types of columns _typically_ (we'll see that SQLite has a bit of a twist on this) must be defined prior to inserting rows
-* {:.fragment} many relational database features deal with maintaining  _data integrity_ (such user defined data constraints, foreign keys, etc.)
+* {:.fragment} many relational database features deal with maintaining  _referential and data integrity_ (such user defined data constraints, foreign keys, etc.)
 
 </section>
 
@@ -327,41 +327,12 @@ See [the ACID article on wikipedia](https://en.wikipedia.org/wiki/ACID) for more
 <section markdown="block">
 ## SQL
 
-__To query (read, update, etc.) and maintain a relational database, a domain specific language called <span class="hl">SQL</span> is used.__ &rarr;
+__Relational database typically use some dialect of <span class="hl">SQL</span> as a query language__ &rarr;
 
-* {:.fragment} it's a <span class="hl">declarative programming language </span>
-	* your program describes _what_ you want
-	* rather than _how_ you want to achieve it
-	* (describe the outcome rather than the algorithm)
-* {:.fragment} __SQL has been standardized__ by The American National Standard Institute (ANSI) and the International Standard Organization (ISO)
-* {:.fragment} despite the standardization, there are still __many dialects of SQL specific to the database platform being used__ (and are consequently _non portable_)
-* {:.fragment} SQL's theoretical foundation is [relational algebra](https://en.wikipedia.org/wiki/Relational_algebra) (which we'll discuss later in this course)
-
+* {:.fragment} it's a __declarative__ __command__ language
+* {:.fragment} each command describes an action to perform (rather than _how_)
+* {:.fragment} the basic syntax is standard, but there are many variations based on database platform
 </section>
-
-<section markdown="block">
-## Declarative Programming
-
-__Remember, <span class="hl">SQL is declarative</span>, so it describes what you want the outcome of your program to be, not how to get to the outcome__ &rarr;
-```
-# we're describing _how_ in this Python code
-oldies = []
-for user in users:
-	if user.birthday > '1990-01-01':
-		oldies.append(user)
-```
-{:.fragment}
-
-```
---we're explaining _what_ in this SQL query
-SELECT first, last 
-	FROM user 
-	WHERE birthday > '1990-01-01';
-```
-{:.fragment}
-
-</section>
-
 <!--
 <section markdown="block">
 ## Quick Demo of Designing a Data Model for a Relational Database

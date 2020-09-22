@@ -37,11 +37,14 @@ __Commandline client: `sqlite3`__ &rarr;
 <section markdown="block">
 ## `sqlite3` Commands 
 
+__The SQLite commandline tool has [_a lot_ of commands!](https://sqlite.org/cli.html)__ These are some ones we'll use frequently
+
 * `.help`
 * `.open` - [docs](https://sqlite.org/cli.html#double_click_startup_on_windows)
 * `.databases`
 * `.read`
 * `.save`
+* `.mode`
 
 </section>
 

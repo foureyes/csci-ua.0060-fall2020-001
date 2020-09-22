@@ -140,7 +140,9 @@ Due today (9/15) by end of class
 * [databases intro](slides/db/intro.html)
 * [sqlite intro](slides/db/sqlite.html)
 * [sqlite commandline tool](slides/db/sqlite-cli.html)
-* [create, read, update, delete](slides/db/basics.html)","[{{ site.book_sqlite }}]({{ site.book_sqlite_link }})   
+* [create, read, update, delete](slides/db/crud.html)
+* [movie table: movies.sql](sql/basics/movies.sql) (sql, ddl)
+* [basic selects on movies table](sql/basics/basics-transcript.sql) (sql)","[{{ site.book_sqlite }}]({{ site.book_sqlite_link }})   
 
 * [Chapter 1. What is SQLite?](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/using-sqlite/9781449394592/ch01.html)
 * [Chapter 2. Uses of SQLite](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/using-sqlite/9781449394592/ch02.html)

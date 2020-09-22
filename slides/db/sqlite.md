@@ -187,19 +187,24 @@ This is particularly tricky if you want SQL written for SQLite to work with othe
 {:.fragment}
 
 Consequently, SQLite allows the declaration of a <span class="hl">type affinity</span> for columns:
+{:.fragment}
 
 * {:.fragment} this is the recommended type for data in a column (it's not required, though)
-* the affinities are similar to the types, but without `NULL`: TEXT, NUMERIC, INTEGER, REAL
+* {:.fragment} the affinities are similar to the types:
+	* `TEXT`
+	* `NUMERIC`
+	* `INTEGER`
+	* `REAL`
+	* `BLOB`
 </section>
 
 <section markdown="block">
 ##  Type Affinity Continued
 
-__Type affinities and their behavior:__ &rarr;
+__Type affinities and their behaviors ([see the rules in the docs](https://sqlite.org/datatype3.html#type_affinity)):__ &rarr;
 
 * {:.fragment} __Text__ - stores `NULL`, `TEXT` or `BLOB`, but if given numeric data, it is coerced to `text` when stored
-* {:.fragment} __Integer or Real__ - store all types _as is_ with the exception of text, which will be converted to an integer or real, if possible... otherwise left as text 
-* {:.fragment} __Integer__ - A column with an integer affinity works essentially the same as a numeric affinity (
+* {:.fragment} __Numeric, Integer, Real__ - store all types _as is_ with the exception of text, which will be converted to an integer or real, if possible... otherwise left as text 
 * {:.fragment} __Blob__ - does not prefer one storage class over another; no attempt is made to convert to a preferred type
 
 Finally, a [stackoverflow question](https://dba.stackexchange.com/questions/203220/sqlite-what-is-the-use-of-specifying-data-types) about SQLite column types, and a [tutorial](https://www.sqlitetutorial.net/sqlite-data-types/)

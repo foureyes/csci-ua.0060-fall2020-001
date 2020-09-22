@@ -13,9 +13,43 @@ title: "SQL Basics"
 
 
 <section markdown="block">
-## Declarative
+## SQL
+
+__To query (read, update, etc.) and maintain a relational database, a domain specific language called <span class="hl">SQL</span> is used.__ &rarr;
+
+* {:.fragment} it's a <span class="hl">declarative programming language </span>
+	* your program describes _what_ you want
+	* rather than _how_ you want to achieve it
+	* (describe the outcome rather than the algorithm)
+* {:.fragment} __SQL has been standardized__ by The American National Standard Institute (ANSI) and the International Standard Organization (ISO)
+* {:.fragment} despite the standardization, there are still __many dialects of SQL specific to the database platform being used__ (and are consequently _non portable_)
+* {:.fragment} SQL's theoretical foundation is [relational algebra](https://en.wikipedia.org/wiki/Relational_algebra) (which we'll discuss later in this course)
 
 </section>
+
+<section markdown="block">
+## Declarative Programming
+
+__Remember, <span class="hl">SQL is declarative</span>, so it describes what you want the outcome of your program to be, not how to get to the outcome__ &rarr;
+```
+# we're describing _how_ in this Python code
+millenials = []
+for user in users:
+	if user.birthday > '1990-01-01':
+		millenials.append(user)
+```
+{:.fragment}
+
+```
+--we're explaining _what_ in this SQL query
+SELECT first, last 
+	FROM user 
+	WHERE birthday > '1990-01-01';
+```
+{:.fragment}
+
+</section>
+
 
 <section markdown="block">
 ## Command Language
@@ -59,14 +93,13 @@ __Whitespace (newlines, tabs) is ok within a statement, so formatting code with 
 <section markdown="block">
 ## Strings, Numbers, NULL 
 
-⚠️ __Delimit strings with single quotes `'` (single quotes)__ &rarr;
+__Syntax for literal values__ &rarr;
 
-* escape with extra `'` (`'` --> `''`)
-* `E'\t'` - prefix with E to use \ as escape character
-
-__Numbers are just numeric literals: `5`, `1.23`__
-
-__`NULL` means no value or missing value__
+* ⚠️ __Delimit strings with single quotes `'` (single quotes)__ &rarr;
+	* escape with extra `'` (`'` --> `''`)
+* __Numbers are just numeric literals: `5`, `1.23`__
+* __`NULL` means no value or missing value__
+* [see details for exponents, hex, blob, etc. in the docs](https://sqlite.org/lang_expr.html#literal_values_constants_)
 
 
 </section>
@@ -74,15 +107,19 @@ __`NULL` means no value or missing value__
 <section markdown="block">
 ## Expressions and Names
 
-* expressions can be used wherever a literal value is required: `5 + 5`
-* names, such as table and column names, can be used in these expressions: `my_table.my_column` * 2
-* functions can be called using the name of the function, followed by parentheses with optional arguments enclosed: `some_func(my_column)`
+__Syntax for using table names, column names, functions and expressions:__ &rarr;
+
+* {:.fragment} expressions can be used wherever a literal value is required: `5 + 5`
+* {:.fragment} names, such as column names, can be used in these expressions: `my_column * 2`
+* {:.fragment} column names can be prefixed with a table name and `.` to avoid ambiguity: `my_table.my_column * 2`
+* {:.fragment} functions can be called using the name of the function, followed by parentheses with optional arguments enclosed: `some_func(my_column)`
+* {:.fragment} and, of course, the result of a function call can be used in an expression: `some_func(my_column) * 2`
 
 </section>
 
 
 <section markdown="block">
-## Language Subcategories
+## DDL
 
 __<span class="hl">DDL</span> or Data Definition Language__ consists of commands for creating a database schema, such as:
 
@@ -110,27 +147,53 @@ See [CREATE TABLE](https://sqlite.org/lang_createtable.html) doc
 * followed by table name
 * in parens...
 	* comma separated list of column names and their type separated by space:
-	* `first_name` varchar(255)
+	* `first_name` text
 * can specify some constraints after type, such as:
 	* `NOT NULL`
 	* `UNIQUE`
-	* `PRIMARY KEY`
+	* `PRIMARY KEY` 
 * default value specified with:
 	* `DEFAULT value_to_default_to`
+</section>
+<section markdown="block">
+## PRIMARY KEY BUG
+
+⚠️ __In SQLite, primary keys do not imply not null, which is different from the SQL standard!__
+
+From [the docs](https://sqlite.org/lang_createtable.html#the_primary_key), in some cases NULL is allowed in a PRIMARY KEY column:
+{:.fragment}
+
+> Unfortunately, due to a bug in some early versions, this is not the case in SQLite. Unless the column is an INTEGER PRIMARY KEY or the table is a WITHOUT ROWID table or the column is declared NOT NULL, <span class="hl">SQLite allows NULL values in a PRIMARY KEY column</span>. 
+{:.fragment}
+
+The docs continue to say that this will not be changed: 
+{:.fragment}
+
+> SQLite could be fixed to conform to the standard, but doing so might break legacy applications. Hence, it has been decided to merely document the fact that SQLite allowing NULLs in most PRIMARY KEY columns.
+{:.fragment}
+
+
 </section>
 
 <section markdown="block">
 ## Creating a Table Example
 
-__Create a student table with 5 fields: netid first, last, midterm and registered__ &rarr;
+__Create a student table with 5 fields: netid first, last, midterm and on_campus__ &rarr;
 
 <pre><code data-trim contenteditable>
 CREATE TABLE student(
-	 netid text PRIMARY KEY,
-	 first text NOT NULL,
-	 last text NOT NULL,
-	 midterm integer,
-	 registered integer
+	-- unique id (um... is this a good choice?)
+	netid TEXT PRIMARY KEY NOT NULL, 
+
+	first TEXT NOT NULL,
+
+	last TEXT NOT NULL,
+
+	-- midterm score
+	midterm INTEGER,
+	
+	-- no boolean, use 0 or 1
+	on_campus INTEGER DEFAULT 0
 );
 </code></pre>
 {:.fragment}
@@ -143,10 +206,9 @@ CREATE TABLE student(
 __To add a new row to a table, use an <span class="hl">INSERT</span> statement__ &rarr;
 
 <pre><code data-trim contenteditable>
--- values in order of field names (registered
--- left out, as it has a default value)
+-- values in order of field names 
 INSERT INTO student 
-	VALUES ('fb123', 'foo', 'bar', 90);
+	VALUES ('fb123', 'foo', 'bar', 90, 1);
 </code></pre>
 {:.fragment}
 
@@ -160,7 +222,7 @@ INSERT INTO student
 {:.fragment}
 
 * {:.fragment} insert multiple rows: add commas to after each "tuple" of values
-* {:.fragment} [See docs on INSERT](https://www.postgresql.org/docs/current/static/sql-insert.html)
+* {:.fragment} [See docs on INSERT](https://sqlite.org/lang_insert.html)
 
 </section>
 
