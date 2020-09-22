@@ -47,6 +47,8 @@ __The SQLite commandline tool has [_a lot_ of commands!](https://sqlite.org/cli.
 * `.mode mode_name` - output format (`column`, `line`, `csv`, etc.)
 * `.header on` - display header
 * `.nullvalue some_value` - how should nulls be displayed (default is blank)
+* `.tables` - list tables in database
+* `.schema table_name` - show ddl for table_name
 </section>
 
 <section markdown="block">

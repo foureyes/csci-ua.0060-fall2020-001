@@ -55,11 +55,10 @@ INSERT INTO movie (title, director, year, runtime, genre, budget, gross)
 -- that's a mess of a column name; give it an alias, roi
 -- now let's show the movies sorted based on roi
 -- that's a lot of numbers after the decimal point... let's get it to just 2 places
--- using round ... btw, pg_typeof returns type of column
--- an example of casting to numeric... convert roi to numeric type!
+-- using round ... 
 -- try to find movies with negative roi ... wat!?
 -- add an roi column to movie so we can permanently have that field: alter table [table_name] add column [column_name] [type]
--- select some movies to see the new column!  currently, new column has null values (blank in psql)
+-- select some movies to see the new column!  currently, new column has null values 
 -- update all rows so that roi is set to a value based on other columns: update [table_name] set [assignment] where [cond]
 -- fix duplicate genre
 -- see... now Sci-Fi is folded into Science Fiction

@@ -1,73 +1,3 @@
-class11=# CREATE TABLE student (
-class11(# netid varchar(100) PRIMARY KEY,
-class11(# class text,
-class11(# first varchar(255) NOT NULL,
-class11(# last varchar(255) NOT NULL,
-class11(# grad_date timestamptz DEFAULT NOW(),
-class11(# debt money,
-class11(# midtermscore numeric
-class11(# ); -- creates a table called student
-CREATE TABLE
-class11=# select * from student;
- netid | class | first | last | grad_date | debt | midtermscore
--------+-------+-------+------+-----------+------+--------------
-(0 rows)
-
-class11=# -- describes the student table
-class11=# \d student
-                          Table "public.student"
-    Column    |           Type           | Collation | Nullable | Default
---------------+--------------------------+-----------+----------+---------
- netid        | character varying(100)   |           | not null |
- class        | text                     |           |          |
- first        | character varying(255)   |           | not null |
- last         | character varying(255)   |           | not null |
- grad_date    | timestamp with time zone |           |          | now()
- debt         | money                    |           |          |
- midtermscore | numeric                  |           |          |
-Indexes:
-    "student_pkey" PRIMARY KEY, btree (netid)
-
-
-class11=# insert into student (netid, class, first, last, midtermscore) values ('jjv222', 'database stuff', 'joe', 'v', 80); -- add a row to student table
-INSERT 0 1
-class11=# select netid, first from student;
- netid  | first
---------+-------
- jjv222 | joe
-(1 row)
-
-
-class11=# -- importing a file containing sql statements
-class11=# \i /tmp/movies.sql.txt 
-CREATE TABLE
-INSERT 0 17
-class11=# -- list all tables
-class11=# \d 
-              List of relations
- Schema |     Name     |   Type   |  Owner
---------+--------------+----------+----------
- public | movie        | table    | jversoza
- public | movie_id_seq | sequence | jversoza
- public | student      | table    | jversoza
-(3 rows)
-
-
-class11=# -- describe the movie table
-class11=# \d movie 
-                                      Table "public.movie"
-  Column  |           Type           | Collation | Nullable |              Default
-----------+--------------------------+-----------+----------+-----------------------------------
- id       | integer                  |           | not null | nextval('movie_id_seq'::regclass)
- title    | character varying(50)    |           |          |
- director | character varying(100)   |           |          |
- year     | timestamp with time zone |           |          |
- runtime  | integer                  |           |          |
- genre    | character varying(255)   |           |          |
- budget   | money                    |           |          |
- gross    | money                    |           |          |
-Indexes:
-    "movie_pkey" PRIMARY KEY, btree (id)
 
 class11=# -- show all movies
 class11=# select * from movie;
@@ -331,27 +261,6 @@ class11=# select title, budget, gross, (gross - budget) / budget as roi from mov
  Blade Runner                             |  $28,000,000.00 |  $33,800,000.00 | 0.207142857142857
  Dune                                     |  $40,000,000.00 |  $30,900,000.00 |           -0.2275
 
-class11=# -- an example of casting to numeric
-class11=# select title, budget, gross, ((gross - budget) / budget)::numeric as roi from movie order by roi desc;
-                  title                   |     budget      |      gross      |        roi
-------------------------------------------+-----------------+-----------------+-------------------
- Alien                                    |  $11,000,000.00 | $203,600,000.00 |  17.5090909090909
- Shape of Water                           |  $20,000,000.00 | $195,200,000.00 |              8.76
- Wonder Woman                             | $150,000,000.00 | $821,000,000.00 |  4.47333333333333
- El Laberinto del Fauno (Pan's Labyrinth) |  $19,000,000.00 |  $83,300,000.00 |  3.38421052631579
- Point Break                              |  $24,000,000.00 |  $83,500,000.00 |  2.47916666666667
- Zero Dark Thirty                         |  $40,000,000.00 | $132,800,000.00 |              2.32
- La Piel Que Habito (The Skin I Live In)  |  $13,500,000.00 |  $30,800,000.00 |  1.28148148148148
- Alien Covenant                           | $111,000,000.00 | $240,900,000.00 |  1.17027027027027
- Pacific Rim                              | $200,000,000.00 | $411,000,000.00 |             1.055
- Los Abrazos Rotos (Broken Embraces)      |  $18,000,000.00 |  $31,000,000.00 | 0.722222222222222
- 2046                                     |  $12,000,000.00 |  $19,500,000.00 |             0.625
- Hellboy                                  |  $66,000,000.00 |  $99,300,000.00 | 0.504545454545455
- Blue Velvet                              |   $6,000,000.00 |   $8,600,000.00 | 0.433333333333333
- Blade Runner 2049                        | $185,000,000.00 | $259,200,000.00 | 0.401081081081081
- Blade Runner                             |  $28,000,000.00 |  $33,800,000.00 | 0.207142857142857
- Dune                                     |  $40,000,000.00 |  $30,900,000.00 |           -0.2275
-
 class11=# -- using round (two argument version of round only works on numeric values)
 class11=# -- btw, pg_typeof returns type of column
 class11=# select title, budget, gross, round(((gross - budget) / budget)::numeric, 2) as roi from movie order by roi desc;
@@ -374,40 +283,8 @@ class11=# select title, budget, gross, round(((gross - budget) / budget)::numeri
  Blade Runner                             |  $28,000,000.00 |  $33,800,000.00 |  0.21
  Dune                                     |  $40,000,000.00 |  $30,900,000.00 | -0.23
 
-class11=# -- note that an aliased column cannot be used in where clause... wat
-class11=# select title, budget, gross, round(((gross - budget) / budget)::numeric, 2) as roi from movie where roi < 0 order by roi desc;
-ERROR:  column "roi" does not exist
-LINE 1: ...t) / budget)::numeric, 2) as roi from movie where roi < 0 or...
-                                                             ^
-class11=# -- so, use calculation in where clause
-class11=# select title, budget, gross, round(((gross - budget) / budget)::numeric, 2) as roi from movie where round(((gross - budget) / budget)::numeric, 2) < 0 order by roi desc;
-    title     |     budget     |     gross      |  roi
---------------+----------------+----------------+-------
- Dune         | $40,000,000.00 | $30,900,000.00 | -0.23
- Strange Days | $42,000,000.00 |  $8,000,000.00 | -0.81
-(2 rows)
-
 class11=# -- add an roi column to movie so we can permanently have that field
 class11=# alter table movie add column roi numeric;
-ALTER TABLE
-
-class11=# -- notice the new column!
-class11=# \d movie
-                                      Table "public.movie"
-  Column  |           Type           | Collation | Nullable |              Default
-----------+--------------------------+-----------+----------+-----------------------------------
- id       | integer                  |           | not null | nextval('movie_id_seq'::regclass)
- title    | character varying(50)    |           |          |
- director | character varying(100)   |           |          |
- year     | timestamp with time zone |           |          |
- runtime  | integer                  |           |          |
- genre    | character varying(255)   |           |          |
- budget   | money                    |           |          |
- gross    | money                    |           |          |
- roi      | numeric                  |           |          |
-Indexes:
-    "movie_pkey" PRIMARY KEY, btree (id)
-
 class11=# --currently, new column has null values
 class11=# select title, roi from movie;
                   title                   | roi
@@ -430,7 +307,7 @@ class11=# select title, roi from movie;
  Pacific Rim                              |
 
 class11=# -- update all rows so that roi is set to a value based on other columns
-class11=# update movie set roi = ((gross - budget) / budget)::numeric;
+class11=# update movie set roi = ((gross - budget) / budget);
 UPDATE 17
 class11=# select title, roi from movie;
                   title                   |        roi
@@ -495,15 +372,4 @@ class11=# select genre, count(*) from movie group by genre having count(*) > 1;
  Super Hero      |     2
  Science Fiction |     7
 (2 rows)
-
-class11=# -- oh, btw, you can get file locations of your configs with this query
-class11=# SELECT name, setting FROM pg_settings WHERE category = 'File Locations';
-       name        |                 setting
--------------------+-----------------------------------------
- config_file       | /usr/local/var/postgres/postgresql.conf
- data_directory    | /usr/local/var/postgres
- external_pid_file |
- hba_file          | /usr/local/var/postgres/pg_hba.conf
- ident_file        | /usr/local/var/postgres/pg_ident.conf
-(5 rows)
 
