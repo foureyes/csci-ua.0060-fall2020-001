@@ -259,7 +259,7 @@ __Relational databases__ organize data in a collection of tables (relations).  _
 <section markdown="block">
 ## Relations, Rows, and Keys
 
-__Eeach table row has <span class="hl">primary key</span> that:__
+__Each table row has <span class="hl">primary key</span> that:__
 
 * {:.fragment} uniquely identifies that row 
 * {:.fragment} rows in one table can be _related_ to rows in other tables by:
