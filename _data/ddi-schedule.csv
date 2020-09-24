@@ -177,8 +177,23 @@ Due today (9/15) by end of class
 <!--  TODO: video - crud -->",,SQLite
 y,workshop,8,Sep-29,Tue,"Single Table with SQLite
 
-* analyze data set, case study",,"* [homework #03](homework/03.html)
+* analyze data set, case study",,"
+Due today (9/29) by end of class
 
+* workshop materials to be posted
+
+<!--
+* [workshop #02 submission form](https://forms.gle/PFJnzQviaKkqdqfC7)
+* [workshop #02 -sqlite](assignments/lab02.html)
+-->
+<!-- Due , 9/14, by 11pm  * Quiz #3 (Exceptions and Files) in NYU Classes   TODO: video - python file io 
+--> 
+<!-- * [video: working with files in Python](modules/py/files.html) -->
+
+<!--
+
+* [homework #03](homework/03.html)
+-->
 <!-- TODO: hw import data set and aggregations -->
 ",,SQLite
 y,,9,Oct-1,Thu,"Client Server, Working on Remote System, Multiple Tables with MySQL
