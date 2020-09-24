@@ -210,3 +210,4 @@ __Type affinities and their behaviors ([see the rules in the docs](https://sqlit
 Finally, a [stackoverflow question](https://dba.stackexchange.com/questions/203220/sqlite-what-is-the-use-of-specifying-data-types) about SQLite column types, and a [tutorial](https://www.sqlitetutorial.net/sqlite-data-types/)
 {:.fragment}
 </section>
+

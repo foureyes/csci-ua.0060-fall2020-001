@@ -159,13 +159,19 @@ Due today (9/15) by end of class
 
 <!-- TODO:  Hw choose data set, descriptive -->
 ",,SQLite
-y,,7,Sep-24,Thu,"Single Table with SQLite
+,,7,Sep-24,Thu,"Single Table with SQLite
 
-* [importing data](slides/sql/sqlite-import.html)
-* [aggregation](slides/sql/aggregation.html)
-* [python integration](slides/sql/sqlite-python.html)","[{{ site.book_sqlite }}]({{ site.book_sqlite_link }})   
+* see previous slides on sql basics
+* [date time, constraints](slides/db/sqlite-dates-constraints.html)
+* [aggregation](slides/db/sqlite-groupby.html)
 
-* [Chapter 5. The SELECT Command](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/using-sqlite/9781449394592/ch05.html)","* [video: sqlite](modules/sql/sqlite.html)
+<!--
+* [importing data, python integration](slides/sql/sqlite-import-python.html)
+-->","[{{ site.book_sqlite }}]({{ site.book_sqlite_link }})   
+
+* [Chapter 5. The SELECT Command](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/using-sqlite/9781449394592/ch05.html)","<!--
+* [video: sqlite](modules/sql/sqlite.html)
+→
 
 <!--  TODO: video - sqlite basics -->
 <!--  TODO: video - crud -->",,SQLite

@@ -159,7 +159,7 @@ See [CREATE TABLE](https://sqlite.org/lang_createtable.html) doc
 <section markdown="block">
 ## Primary Key
 
-If `PRIMARY KEY` is added to a column, then the primary key _is that single column_. The <span class="hl">primary key</span> of a table is the __column containing values that uniquely identify each row__.
+If `PRIMARY KEY` is added to a column, then the primary key _is that single column_. The <span class="hl">primary key</span> of a table is the __column containing the value that uniquely identify a row__.
 
 * {:.fragment} only a single `PRIMARY KEY` may be defined (though the primary key can be composed of multiple columns!)
 * {:.fragment} if the primary key is an integer for SQLite, then entering null will result in an increasing numeric id
@@ -299,6 +299,20 @@ Using the parts of a `SELECT` statement from the previous slide, what order migh
 </section>
 
 <section markdown="block">
+## SQLite SELECT Processing
+
+Note that the process in the previous slide is generic. See 
+[the documentation](https://sqlite.org/lang_select.html) for details. 
+
+👀 ⚠️ __One major difference between  SQLite's dialect of SQL  and standard SQL is that  SQLite allows  the use of aliases in the where clause__
+
+* although the original documentation doesn't mention this explicitly, [various mailing list posts and stack overflow reference this, and anecdotal evidence shows that this is possible](https://stackoverflow.com/questions/10923107/using-a-column-alias-in-sqlite3-where-clause)
+* even though this is possible (and at times, very convenient), __avoid doing this for more portable SQL__ 🙅 
+
+
+</section>
+
+<section markdown="block">
 ## Operators and Functions
 
 __Operators__ &rarr;
@@ -334,7 +348,7 @@ SELECT netid, first as fn FROM student;
 </code></pre>
 * {:.fragment} get all students, show net id and midterm grade divided by 100.0
 	<pre class="fragment"><code data-trim contenteditable>
-SELECT netid, midterm / 100 FROM student;
+SELECT netid, midterm / 100.0 FROM student;
 </code></pre>
 * {:.fragment} get all students, show first name and last name concatenated with space between
 	<pre class="fragment"><code data-trim contenteditable>
@@ -343,6 +357,26 @@ SELECT first || ' ' || last FROM student;
 
 </section>
 
+
+<section markdown="block">
+## Casting!
+
+The previous slide used division by float to induce a floating point result.
+
+__It may be preferrable to explicitlly cast depending on the situation__ &rarr;
+{:.fragment}
+
+```
+SELECT CAST(colname as storage_class) ...
+```
+{:.fragment}
+
+```
+SELECT CAST(midterm as REAL) FROM student
+```
+{:.fragment}
+
+</section>
 <section markdown="block">
 ## `SELECT` + `DISTINCT`
 
