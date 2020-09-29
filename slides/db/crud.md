@@ -215,6 +215,36 @@ CREATE TABLE student(
 </section>
 
 <section markdown="block">
+## Aside on Booleans
+
+
+Again, despite the fact that SQLite does not support a storage class for boolean, __you can still define a column with a type affinity of boolean__ as well as __use `TRUE` and `FALSE` as aliases for 0 and 1__ &rarr;
+
+This means that, for clarity the `on_campus` field can be defined as:
+{:.fragment}
+
+
+```
+on_campus BOOLEAN DEFAULT FALSE
+```
+{:.fragment}
+
+Which means that `on_campus` will default to 0
+{:.fragment}
+
+
+</section>
+
+<section markdown="block">
+## Not Only Booleans
+
+Although __SQLite has a small set of type affinities__, it accepts __many data type specifications__ in a `CREATE` statement.
+
+Check out the table of [various types and their mappings to type affinities](https://sqlite.org/datatype3.html#affinity_name_examples)
+
+</section>
+
+<section markdown="block">
 ## Create (INSERT)
 
 __To add a new row to a table, use an <span class="hl">INSERT</span> statement__ &rarr;
@@ -241,7 +271,7 @@ INSERT INTO student
 </section>
 
 <section markdown="block">
-## Read (SELECT)
+## Reading with DQL: SELECT
 
 __Use a <span class="hl">SELECT</span> statement to _read_ data__ &rarr;
 
@@ -376,7 +406,10 @@ SELECT CAST(midterm as REAL) FROM student
 ```
 {:.fragment}
 
+Check out the [rules for casting](https://sqlite.org/lang_expr.html#castexpr)
+{:.fragment}
 </section>
+
 <section markdown="block">
 ## `SELECT` + `DISTINCT`
 
@@ -403,6 +436,25 @@ __Optionally, add a `WHERE` clause to specify _conditions_ (think filtering)__ &
 * use `col_name IS NULL` to check for a `NULL` value
 * multiple conditions can be put together with `AND`, `OR`, `NOT`
 * parentheses can be added to specify precedence
+</section>
+
+<section markdown="block">
+## Ordering with Comparison Operators
+
+
+__When comparing values of mixed storage classes, [sort order is as follows (as specified by the linked documentation)](https://www.sqlite.org/datatype3.html#sort_order)__:
+
+From greatest to least
+{:.fragment}
+
+* {:.fragment} `BLOB`
+* {:.fragment} `TEXT`
+* {:.fragment} numeric (`INTEGER` or `REAL`) 
+* {:.fragment} `NULL` 
+
+This means that for ordering purposes, `NULL` is less than any other storage class;
+{:.fragment}
+
 </section>
 
 <section markdown="block">

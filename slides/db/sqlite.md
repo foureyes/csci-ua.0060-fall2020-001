@@ -175,7 +175,11 @@ There are no storage classes for the following:
 	* {:.fragment} stored as text ('2020-01-01'), integers (seconds since Jan 1st, 1970), and even real ([???](https://simple.wikipedia.org/wiki/Julian_day#:~:text=The%20Julian%20day%20or%20Julian,multiples%20of%207%20are%20Mondays.))
 	* {:.fragment} with [date and time](https://sqlite.org/lang_datefunc.html) functions to pick up the slack of any translating to and from these types to a date or time
 
+
+⚠️ We'll see that although there's no boolean storage class, __there's support for boolean literals and a column's type affinities__ ... 
+
 </section>
+
 
 
 <section markdown="block">
@@ -197,6 +201,11 @@ Consequently, SQLite allows the declaration of a <span class="hl">type affinity<
 	* `REAL`
 	* `BLOB`
 </section>
+<section markdown="block">
+## 
+Although there is no boolean storage class, columns may have an affinity for a boolean type (which is essentially just numeric), and the literals, `TRUE` and `FALSE`, may be used as aliases for 0 and 1
+
+</section>
 
 <section markdown="block">
 ##  Type Affinity Continued
@@ -208,6 +217,39 @@ __Type affinities and their behaviors ([see the rules in the docs](https://sqlit
 * {:.fragment} __Blob__ - does not prefer one storage class over another; no attempt is made to convert to a preferred type
 
 Finally, a [stackoverflow question](https://dba.stackexchange.com/questions/203220/sqlite-what-is-the-use-of-specifying-data-types) about SQLite column types, and a [tutorial](https://www.sqlitetutorial.net/sqlite-data-types/)
+{:.fragment}
+</section>
+
+<section markdown="block">
+## Return of the Boolean
+
+Despite the fact that SQLite does not support a storage class for boolean, __you can still define a column with a type affinity of boolean__
+
+```
+sqlite> create table tmp (col_1 boolean);
+sqlite> .schema tmp
+CREATE TABLE tmp (col_1 boolean);
+```
+{:.fragment}
+
+__We'll see that even using boolean literals, like [`TRUE` and `FALSE` can be used](https://www.sqlite.org/releaselog/3_23_0.html)__ &rarr;
+{:.fragment}
+
+
+```
+sqlite> insert into tmp values(true);
+```
+{:.fragment}
+
+However, we'll see that `TRUE` and `FALSE` are aliases for 0 and 1... and 0 and 1 are what ends up stored in the database:
+{:.fragment}
+
+```
+sqlite> select * from tmp;
+col_1
+----------
+1
+```
 {:.fragment}
 </section>
 

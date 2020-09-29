@@ -53,17 +53,18 @@ Topics
 Course work
 -----
 
-Tentatively:
+
+__The final percentage allotted to each category below is at the instructor’s discretion.__ 
 
 {% comment %} * __10%__: 5 x in-class interactive workshops {% endcomment %}
 
-* __15%__: 4-6 x "in-class"\*  workshops, quizzes, and participation
-* __5%__: 6-8 x at-home general quizzes
+* __10%__: 4-6 x "in-class"\*  workshops, quizzes, and participation
+* __10%__: 6-8 x at-home general quizzes
 * __30%__: 7-9 x homework assignments
 * __25%__: 1 x midterm exam
 * __25%__: 1 x final exam
 
-\* note that accommodations will be made for students with timezone conflicts
+\* accommodations will be made for students with timezone conflicts
 
 👀 A survey will be sent out to students to determine which students will need support due to time zone 🕛 differences.
 

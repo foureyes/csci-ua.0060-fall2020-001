@@ -3,105 +3,155 @@ layout: homework
 title: "Workshop #1"
 ---
 
-# Workshop #1 - Dog Bytes
+# Workshop #2 - Dog Bytes
 
 ## Overview
 
 #### Goals
 
+* Use the SQLite commandline tool to create a database
+* Create / design a table
 * Import data into SQLite
 * Use SQL to answer questions about the data
-* (Optional) Clean up data with Python or SQL
+* Transform data with SQL
 
 #### Description
 
-* [DOHMH Dog Bite Data](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg#:~:text=NYC%20Reported%20Dog%20Bites.&text=Data%20is%20collected%20from%20reports,a%20single%20dog%20bite%20incident.)
-	* (no clear license, tho! ... but we will use it only for educational purposes)
+* [DOHMH Dog Bite Data](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg)
+* Note, there is no clear license - we will:
+	* not redistribute this data
+	* only use the data for educational purposes
+	* not reproduce the data; only interpret / analyze it
 
-For this workshop:
+For this workshop you will:
 
-1. get to know your group
-2. using the home page and FAQ, answer questions about the data set
-3. [download the most recent global-mean monthly data set of temperature anomalies](https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt).
-4. read and transform the data from the data set above
-5. submit the google form (each group member must submit their own form, but the answers can be the same)
+1. get to know / re-familiarize yourself with your group 
+2. [download the data set](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg); click on the export button and choose `csv`
+3. create a table in SQLite to store the data
+4. import the data into SQLite
+5. answer questions about the data by formulating queries
+6. alter / transform the data by running queries
+7. submit the google form (each group member must submit their own form, but queries _should_ be the same)
 
 #### Grading
 
-* `60%` - completing and submitting the form by the end of class
-* `10%` - answering short answers correctly
-* `5%` - reasonable amount of code is present in form
-* `5%` - code is runnable
-* `5%` - code results in new file written file
-* `5%` - file contains data based on original data set
-* `10%` - resulting file is _mostly_ correct
+* `50%` - completing and submitting the form by the end of class
+* `30%` - attempted queries
+* `15%` - correctness of queries
+* `5%` - answered non query questions
 
 ## Instructions
 
-
-`.mode csv`
-`.import /path/to/file`
-`.mode column`
-
 The entire workshop should be approximately 45 minutes
 
-1. `5-10 min`: form, introductions and roles
-	* __open the [workshop form](https://forms.gle/PFJnzQviaKkqdqfC7)__: fill this out as your progress through the workshop
-		* you must be logged in to your NYU Google account to do this
-		* each group member must submit an individual form
-		* it's ok if the answers for each group member are very similar / the same
-    * __introductions__: in alphabetical order by first name, introduce yourselves by saying your:
-        * name
-        * year
-        * major
-    * __group roles__: two group members should volunteer to fill the following roles:
-        1. "leader" / screen sharer - responsible for sharing their screen and IDE / text editor
-			* everyone else should follow along by writing code on their own editor as well
-        2. time keeper - responsible for keeping track of time; notifies group when there are only 5 minutes left
-	* __ice breakers__:
-		* everyone take turns answering this question: "What's one of your most embarrassing moments?" 
-			* leader starts and chooses the next person to answer by saying that person's name
-			* that person, in turn, picks the next person to go
-		* group vote: what's the _best_ breakfast food? waffles and ice cream? ramen? something else? idk 🤷
-			* come to a consensus!
-			* __add your answer to the form__
-2. `30-35 min`: work with the data set
-	1. what do the values in the file represent?
-		* the accompanying data set documentation identifies these values are  _temperature anomalies_ 
-		* go through the [FAQ](https://data.giss.nasa.gov/gistemp/faq/#q101) to answer: what _are_ temperature anomalies?
-		* add this answer to the workshop form
-	2. write code in [workshop_01.py (download)](workshop_01.py) to read and transform the downloaded data set 
-		* use plain Python to do this (no `pandas` or `csv` module)
-		* if one person seems to be dictating all of the code...
-			1. give others a chance to contribute (take turns suggesting what to write next)
-			2. take a moment to make sure everyone understands
-		* assume that the data file is in the same directory that your program is running from
-		* remove all rows that do not include data, with the exception of a single row containing the column header names (`Year`, `Jan`, `Feb`...)
-		* remove all columns that are not a month, with the exception of the first year column
-		* convert all temperature anomalies values from 0.01 degrees Celsius to degrees Fahrenheit
-			* the formula to do this can be found within the data set
-			* format the results so that there's one decimal place (use [format](https://docs.python.org/3/library/functions.html#format) with `.1f` as the second argument)
-		* write out a new version of file, and call the file `to_f_output.txt`
-			* each row should be pipe `|` delimited
-			* there should be a single row at the top of the file that contains the header names
-			* each subsequent row should contain data
-		* the content of the new file, `to_f_output.txt` should look like this (`.`s represent additional data not shown in example output) though ⚠️  __some values may be slighty different depending on when you download the original data file__:
-			```
-Year|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
-1880|-0.3|-0.4|-0.1|-0.3|-0.1|-0.4|-0.3|-0.2|-0.2|-0.4|-0.4|-0.3
-1881|-0.3|-0.2|0.1|0.1|0.1|-0.3|0.0|-0.0|-0.3|-0.4|-0.3|-0.1
-.
-.
-2017|1.8|2.1|2.1|1.7|1.7|1.3|1.5|1.6|1.4|1.6|1.6|1.7
-2018|1.5|1.5|1.6|1.6|1.5|1.4|1.5|1.4|1.4|1.8|1.5|1.7
-.
-. 
+#### `5-10 min` PART 1: form, introductions and roles
+
+* __open the [workshop form](https://forms.gle/ftbNcZpuxNBK6VsP7)__: fill this out as your progress through the workshop
+	* you must be logged in to your NYU Google account to do this
+	* each group member must submit an individual form
+	* it's ok if the answers for each group member are very similar / the same
+* __introductions__: in alphabetical order by first name, introduce yourselves by saying your:
+	* name
+	* year
+	* major
+* __group roles__: two group members should volunteer to fill the following roles:
+	1. "leader" / screen sharer - responsible for sharing their screen and IDE / text editor
+		* everyone else should follow along by writing code on their own editor as well
+	2. time keeper - responsible for keeping track of time; notifies group when there are only 5 minutes left
+
+#### `30-35 min` PART 2: import and work with the data set
+
+0. if you haven't already done so, ["install" the SQLite commandline tool](../slides/db/sqlite-cli.html#1) (if you're on MacOS, you likely will already have it installed)
+1. review the [documentation regarding the name, description and type of each column for the dog bite data](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg) (find this under "Columns in this Dataset")
+2. construct a table for the dog bite data called `dogbite`
+	* create or download the starter file, [dogbite_table.sql](lab02/dogbite_table.sql), using a text editor of your choice
+	* within the file write an SQL DDL command to construct a table called `dogbite`
+	* use the __ideal__ [type affinity](https://sqlite.org/datatype3.html#affinity_name_examples) for each column based on:
+		1. the documentation about the columns
+		2. the type affinities SQLite supports
+		3. the use of the `Age` column in numeric calculations such as `AVG`, `MAX`, etc.
+		4. naming columns using lowercase and underscore (`like_this`) rather than camelcase (`likeThis`)
+		5. avoiding string data when a more appropriate type could be used
+	* ✏️ __write the DDL command you created for your table into the form__
+	* start your sqlite commandline tool in `Terminal.app` on MacOS or by double-clicking on the `exe` file on windows: 
+		```
+sqlite3
 ```
-3. `5 min`: closing
-	* fill out the remaining questions in the [submission form](https://forms.gle/PFJnzQviaKkqdqfC7):
-		* list 3 things that made extracting data from / working with the file challenging
-		* fill out feedback regarding your group work
-    * remember to submit your form! 
+	* this should result in a prompt, `>`, waiting for SQL or commands
+	* run the SQL from `dogbite_table.sql` in the sqlite3 commandline tool by using the `.read` command: 
+		```
+.read dogbite_table.sql
+```
+		* you may have to include the absolute path if you recieve an error: `Can't open name_of_file`
+		* for example, if your sql file is in the Downloads folder on windows 10: `c:\Users\your_username\Downloads\dogbite_table.sql` ([see the docs](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/mosx_fs_layout_2x.png))
+		* on MacOS, if your sql file is on your Desktop, it may be: `/Users/your_username/Desktop/dogbite_table.sql` ([see the docs](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/mosx_fs_layout_2x.png))
+	* ensure that your table exists by running the `.tables` command: 
+		```
+.tables
+```
+		* this should show the single table that was made by reading your sql, `dogbite`
+	* verify the columns and types by using the `.schema` command to view them:
+		```
+.schema dogbite
+```
+		* this should show the columns and types of your table
+	* save you new table into a new database file called `dogbite.db`
+		```
+.save dogbite.db
+```
+		* note that you may want to use an absolute path as you did with `dogbite_table.sql`
+	* ensure that your new database was saved by quitting the sqlite3 commandline tool: 
+		```
+ctrl + d
+```
+	* then start the tool again: 
+		```
+sqlite3
+```
+	* open the database file with:
+		```
+.open dogbite.db
+```
+		* alternatively, you can start the commandline tool with your db immediately by running `sqlite3 dogbite.db`
+	* once again, check that your table, `dogbite` exists and make sure its column names and type affinities are correct
+3. import data into your new table
+	* prepare your incoming data by first removing the header; save this as a different file, `dogbites_no_header.csv`
+		* you can open the file in a text editor
+		* ...and delete the first line
+	* using the `.import` command below with an existing table requires that the headers are removed
+		* change to csv mode priot to import: 
+			```
+.mode csv
+```
+		* bring in file into the table you just created: 
+			```
+.import dogbites_no_header.csv dogbite
+```
+		* if this fails, it's likely because:
+			* the file wasn't found (check the name of the file or use an absolute path)
+			* csv mode wasn't turned on yet
+4. format the output as columns with headers and check that the import worked
+	* use column mode and turn headers on
+		```
+.mode column
+.headers on
+```
+	* run a query to see the import data
+		* `SELECT * FROM dogbite`
+5. answer questions about the dog bite data set using SQL
+	1. [download `lab02_questions.sql`](lab02/lab02_questions.sql)
+	2. open it with a text editor of your choice
+	3. `lab02_questions.sql` contains instructions and questions as SQL comments
+	4. write SQL and comments below each question within the text file itself
+	5. ✏️ when you're done (or mostly done) __upload__ the file using the file upload functionality on the google form
+
+#### `5 - 10 min` PART 4: closing
+
+* fill out the remaining questions in the [submission form](https://forms.gle/ftbNcZpuxNBK6VsP7):
+	* as a group, write a question about the data set that can be answered by sql
+	* as an individual, write a general question about SQL or SQLite, along with its answer
+	* fill out feedback regarding your group work
+* ⚠️ __remember to submit your form!__
 4. At the end of the workshop, everyone will be brought back to the main room
 
 <br>
@@ -109,12 +159,3 @@ Year|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec
 <br>
 <br>
 
-{% comment %}
-workshop
-1. coding
-	* convert to celsius 
-	* on average, which months are warmer - write the results out to the file
-2. questions
-		* which month and year had the highest temperatur anomaly
-----what's one thing that you had trouble with?
-{% endcomment %}
