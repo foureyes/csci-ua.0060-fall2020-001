@@ -36,13 +36,13 @@ For this workshop you will:
 #### Grading
 
 * `50%` - completing and submitting the form by the end of class
-* `30%` - attempted queries
-* `15%` - correctness of queries
-* `5%` - answered non query questions
+* `30%` - attempted most queries
+* `10%` - queries are correct / close to being correct
+* `10%` - answered non query questions
 
 ## Instructions
 
-The entire workshop should be approximately 45 minutes
+The entire workshop should be approximately 55 minutes
 
 #### `5-10 min` PART 1: form, introductions and roles
 
@@ -59,7 +59,7 @@ The entire workshop should be approximately 45 minutes
 		* everyone else should follow along by writing code on their own editor as well
 	2. time keeper - responsible for keeping track of time; notifies group when there are only 5 minutes left
 
-#### `30-35 min` PART 2: import and work with the data set
+#### `35-40 min` PART 2: import and work with the data set
 
 0. if you haven't already done so, ["install" the SQLite commandline tool](../slides/db/sqlite-cli.html#1) (if you're on MacOS, you likely will already have it installed)
 1. review the [documentation regarding the name, description and type of each column for the dog bite data](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg) (find this under "Columns in this Dataset")
@@ -83,7 +83,7 @@ sqlite3
 .read dogbite_table.sql
 ```
 		* you may have to include the absolute path if you recieve an error: `Can't open name_of_file`
-		* for example, if your sql file is in the Downloads folder on windows 10: `c:\Users\your_username\Downloads\dogbite_table.sql` ([see the docs](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/mosx_fs_layout_2x.png))
+		* for example, if your sql file is in the Downloads folder on windows 10: `c:\Users\your_username\Downloads\dogbite_table.sql` ([see wikipedia's article on the filesystem hierarchy](https://en.wikipedia.org/wiki/Directory_structure#Windows,_DOS_and_OS/2))
 		* on MacOS, if your sql file is on your Desktop, it may be: `/Users/your_username/Desktop/dogbite_table.sql` ([see the docs](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/mosx_fs_layout_2x.png))
 	* ensure that your table exists by running the `.tables` command: 
 		```
@@ -136,10 +136,10 @@ sqlite3
 .mode column
 .headers on
 ```
-	* run a query to see the import data
+	* run a query to see the imported data
 		* `SELECT * FROM dogbite`
 5. answer questions about the dog bite data set using SQL
-	1. [download `lab02_questions.sql`](lab02/lab02_questions.sql)
+	1. [download `lab02_queries.sql`](lab02/lab02_questions.sql)
 	2. open it with a text editor of your choice
 	3. `lab02_questions.sql` contains instructions and questions as SQL comments
 	4. write SQL and comments below each question within the text file itself
