@@ -171,18 +171,22 @@ Due today (9/15) by end of class
 
 * [Chapter 5. The SELECT Command](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/using-sqlite/9781449394592/ch05.html)","<!--
 * [video: sqlite](modules/sql/sqlite.html)
-→
+-->
 
 <!--  TODO: video - sqlite basics -->
 <!--  TODO: video - crud -->",,SQLite
 ,workshop,8,Sep-29,Tue,"Single Table with SQLite
 
 * see workshop instructions",,"
-Due today (9/29) by end of class
+Due __today (9/29) by end of class__
 
 * [workshop #02 submission form](https://forms.gle/ftbNcZpuxNBK6VsP7)
 * [workshop #02 -sqlite](assignments/lab02.html)
 
+Due __10/6 at 11pm__
+
+* [homework #03](assignments/03.html)
+* (repositories will open 9/29, 11pm)
 
 <!-- Due , 9/14, by 11pm  * Quiz #3 (Exceptions and Files) in NYU Classes   TODO: video - python file io 
 --> 
@@ -190,7 +194,7 @@ Due today (9/29) by end of class
 
 <!--
 
-* [homework #03](homework/03.html)
+
 -->
 <!-- TODO: hw import data set and aggregations -->
 ",,SQLite
