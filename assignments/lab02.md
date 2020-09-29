@@ -147,7 +147,7 @@ sqlite3
 
 #### `5 - 10 min` PART 4: closing
 
-* fill out the remaining questions in the [submission form](https://forms.gle/ftbNcZpuxNBK6VsP7):
+* ✏️ fill out the remaining questions in the [submission form](https://forms.gle/ftbNcZpuxNBK6VsP7):
 	* as a group, write a question about the data set that can be answered by sql
 	* as an individual, write a general question about SQL or SQLite, along with its answer
 	* fill out feedback regarding your group work
