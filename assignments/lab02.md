@@ -139,9 +139,9 @@ sqlite3
 	* run a query to see the imported data
 		* `SELECT * FROM dogbite`
 5. answer questions about the dog bite data set using SQL
-	1. [download `lab02_queries.sql`](lab02/lab02_questions.sql)
-	2. open it with a text editor of your choice
-	3. `lab02_questions.sql` contains instructions and questions as SQL comments
+	1. [download `lab02_queries.sql`](lab02/lab02_queries.sql)
+	2. open it with a text editor of your choice (right click, open with)
+	3. `lab02_queries.sql` contains instructions and questions as SQL comments
 	4. write SQL and comments below each question within the text file itself
 	5. ✏️ when you're done (or mostly done) __upload__ the file using the file upload functionality on the google form
 
@@ -152,7 +152,8 @@ sqlite3
 	* as an individual, write a general question about SQL or SQLite, along with its answer
 	* fill out feedback regarding your group work
 * ⚠️ __remember to submit your form!__
-4. At the end of the workshop, everyone will be brought back to the main room
+
+__At the end of the workshop, everyone will be brought back to the main room__
 
 <br>
 <br>
