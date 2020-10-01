@@ -1,7 +1,7 @@
 --CREATE TABLE IF NOT EXISTS movie
 --CREATE OR REPLACE TABLE
 CREATE TABLE movie (
-	id integer,
+	id integer primary key,
 	title text,
 	director text,
 	year integer,
