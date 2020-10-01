@@ -1,0 +1,148 @@
+LECTURE: INTRO
+=====
+
+
+
+LECTURE: MOVING AROUND THE FILE SYSTEM
+=====
+* basic format
+	* mnemonic device to remember
+	* some flags?
+* commands
+	* pwd
+	* hostname
+	* mkdir
+	* cd
+	* .
+	* ..
+	* ../..
+	* /
+	* ~
+	* -
+	* ls
+	* rmdir
+	* pushd/popd
+* verbal 'quiz'
+	
+FOLLOW ALONG: MOVING AROUND THE FILE SYSTEM
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* pwd
+	* hostname
+	* mkdir
+	* cd
+	* ls
+	* rmdir
+	* pushd/popd
+* drills
+	
+LAB: MOVING AROUND THE FILE SYSTEM
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* pwd
+	* hostname
+	* mkdir
+	* cd
+	* ls
+	* rmdir
+	* pushd/popd
+
+QUIZ: MOVING AROUND THE FILE SYSTEM
+=====
+
+
+
+
+
+LECTURE: WORKING WITH FILES
+=====
+* basic format
+	* mnemonic device to remember
+	* some flags?
+* commands
+* verbal quiz
+
+FOLLOW ALONG: WORKING WITH FILES
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* touch
+	* copy
+	* mv
+	* less
+	* more
+	* cat
+	* rm
+* drills
+	
+LAB: WORKING WITH FILES
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* touch
+	* copy
+	* mv
+	* less
+	* more
+	* cat
+	* rm
+
+QUIZ: WORKING WITH FILES
+=====
+
+DRILLS: WHAT WE LEARNED SO FAR
+=====
+
+LECTURE: PIPES/REDIRECTION, FINDING FILES
+=====
+* basic format
+	* mnemonic device to remember
+	* some flags?
+* commands
+	* pipe
+	* redirect
+	* find
+	* grep
+* verbal quiz
+
+FOLLOW ALONG: PIPES/REDIRECTION, FINDING FILES
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* pipe
+	* redirect
+	* find
+	* grep
+* drills
+	
+LAB: PIPES/REDIRECTION, FINDING FILES
+=====
+* instructions
+	* what signifies instructions?
+	* how to enter in answers
+* activity
+	* pipe
+	* redirect
+	* find
+	* grep
+
+QUIZ: PIPES/REDIRECTION, FINDING FILES
+=====
+
+EVERYTHING: WHAT WE LEARNED SO FAR
+=====
+
+GAME/CHALLENGE:
+=====

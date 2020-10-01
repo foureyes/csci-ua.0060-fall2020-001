@@ -198,18 +198,34 @@ Due __10/6 at 11pm__
 -->
 <!-- TODO: hw import data set and aggregations -->
 ",,SQLite
-y,,9,Oct-1,Thu,"Client Server, Working on Remote System, Multiple Tables with MySQL
+,,9,Oct-1,Thu,"Review Basic Queries
+
+* use movies.sql from previous class
+
+Commandline Introduction, Preparing for Working on a Remote Server
+
+* [About the Commandline](slides/cli/command-line.html)
+* [Entering Commands](slides/cli/entering-commands.html)
+* [Navigating the File System](slides/cli/file-system.html)
+* [Working with Files](slides/cli/working-with-files.html)
+
+Workshop Solution
+
+* demo using sqlite3 client
+* demo creating table and import
+* queries",,,,
+y,,10,Oct-6,Tue,"Client Server, Working on Remote System, Multiple Tables with MySQL
 
 * [client-server, remote](slides/sql/client-server.html)
 * [mysql intro](slides/sql/mysql.html)
 * [mysql types, create, read, update, delete](slides/sql/mysql-types-crud.html)
 * [joins](slides/sql/joins.html)",,,,Using Python with SQLite
-y,,10,Oct-6,Tue,"Multiple Tables with MySQL, Relational Database Design
+y,,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design
 
 * [joins review](slides/sql/joins-review.html)
 * [subqueries](slides/sql/subqueries.html)
 * [anomalies](slides/sql/anomalies.html)",,,,Relational database design
-y,,11,Oct-8,Thu,"Relational Database Design
+y,workshop,12,Oct-13,Tue,"Relational Database Design
 
 * [normalization](slides/sql/normalization.html)
 * [ER diagrams, mysqlworkbench](slides/sql/er-diagrams.html)
@@ -220,20 +236,20 @@ y,,11,Oct-8,Thu,"Relational Database Design
 
 <!-- design and joins -->
 ",,Relational database design
-y,workshop,12,Oct-13,Tue,"Relational Database Design
+y,,13,Oct-15,Thu,"Relational Database Design
 
 ",,,,Relational database design
-y,,13,Oct-15,Thu,Review,,,,Relational database design
-y,exam,14,Oct-20,Tue,Midterm Exam,,,,Review
-y,,15,Oct-22,Thu,"Database Administration
+y,exam,14,Oct-20,Tue,Review,,,,Relational database design
+y,,15,Oct-22,Thu,Midterm Exam,,,,Review
+y,,16,Oct-27,Tue,"Database Administration
 
 * [indexes](slides/sql/indexes.html)
 * backup / restore",,,,Exam
-y,,16,Oct-27,Tue,"Database Driven Websites
+y,,17,Oct-29,Thu,"Database Driven Websites
 
 * [http](slides/web/http.html)
 * [flask](slides/web/flask.html)",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
-y,,17,Oct-29,Thu,"Database Driven Websites, Using an API
+y,,18,Nov-3,Tue,"Database Driven Websites, Using an API
 
 * [mysql and python](slides/db/mysql-python.html)
 * [flask and database](slides/web/db.html)
@@ -241,44 +257,43 @@ y,,17,Oct-29,Thu,"Database Driven Websites, Using an API
 
 <!-- create er based on existing db for site;-? create web site-->
 ",,Multiple Tables (MySQL)
-y,,18,Nov-3,Tue,"Using an API, Data Visualization
+y,workshop,19,Nov-5,Thu,"Using an API, Data Visualization
 
 * [matpotlib](slides/viz/matplotlib.html)
 * manipulating visualizations
 * others? bokeh maybe?",,"* [video: create a flask app with a database](modules/web/flask.html)
 * [video: consuming an pi](modules/web/api.html)
 * [video: viusalization](modules/py/matplotlib.html)",,Multiple Tables (MySQL)
-y,workshop,19,Nov-5,Thu,"Consuming APIs and Data Visualization
+y,,20,Nov-10,Tue,"Consuming APIs and Data Visualization
 
 * consume data using an api
 * display data on the web",,"* [homework #06](homework/06.html)
 
 <!-- work with an api, create data visualization  -->
 ",,Multiple Tables (MySQL)
-y,,20,Nov-10,Tue,"Document Store with MongoDB
+y,,21,Nov-12,Thu,"Document Store with MongoDB
 
 * [mongodb intro](slides/db/mongodb.html)
 * [mongodb create,read, update, delete](slides/db/mongodb-crud.html)
 * [mongodb import and export](slides/db/mongodb-import-export.html)
 ",,,,Multiple Tables (MySQL) / Database Management
-y,,21,Nov-12,Thu,"Document Store with MongoDB
+y,workshop,22,Nov-17,Tue,"Document Store with MongoDB
 
 * [mongodb aggregation](slides/db/mongodb-aggregation.html)
 * [mongodbo design](slides/db/mongodb-design.html)
 * [mongodb and ptyhon](slides/db/mongodb-python.html)",,* [video: mongodb](modules/db/mongodb.html),,NoSQL (MongoDB)
-y,workshop,22,Nov-17,Tue,"Document Store with MongoDB
+y,,23,Nov-19,Thu,"Document Store with MongoDB
 
 * demo using mongodb",,"* [homework #07](homework/07.html)
 
 <!-- TODO: hw - use mongodb  -->
 ",,NoSQL (MongoDB)
-y,,23,Nov-19,Thu,Data Analysis Library with Pandas,,,,Data Visualization (matplotlib)
-y,,24,Nov-24,Tue,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
+y,,24,Nov-24,Tue,Data Analysis Library with Pandas,,,,Data Visualization (matplotlib)
+y,holiday,,Nov-26,Thu,Holiday,,,,
+y,,25,Dec-1,Tue,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
 
 <!-- TODO: hw - use pandas  -->
 ",,Data Analysis Library (pandas)
-y,holiday,,Nov-26,Thu,Holiday,,,,
-y,,25,Dec-1,Tue,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 1
-y,,26,Dec-3,Thu,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 2
+y,,26,Dec-3,Thu,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 1
 y,,27,Dec-8,Tue,Review,,,,Review
 y,exam,28,Dec-10,Thu,Final Exam,,,,Exam
