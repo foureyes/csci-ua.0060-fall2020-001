@@ -83,7 +83,7 @@ sqlite3
 .read dogbite_table.sql
 ```
 		* you may have to include the absolute path if you recieve an error: `Can't open name_of_file`
-		* for example, if your sql file is in the Downloads folder on windows 10: `c:\Users\your_username\Downloads\dogbite_table.sql` ([see wikipedia's article on the filesystem hierarchy](https://en.wikipedia.org/wiki/Directory_structure#Windows,_DOS_and_OS/2))
+		* for example, if your sql file is in the Downloads folder on windows 10: `'c:\Users\your_username\Downloads\dogbite_table.sql'` or c:\\Users\\your_username\\Downloads\\dogbite_table.sql' ([see wikipedia's article on the filesystem hierarchy](https://en.wikipedia.org/wiki/Directory_structure#Windows,_DOS_and_OS/2))
 		* on MacOS, if your sql file is on your Desktop, it may be: `/Users/your_username/Desktop/dogbite_table.sql` ([see the docs](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/mosx_fs_layout_2x.png))
 	* ensure that your table exists by running the `.tables` command: 
 		```
