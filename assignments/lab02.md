@@ -103,6 +103,8 @@ sqlite3
 	* ensure that your new database was saved by quitting the sqlite3 commandline tool: 
 		```
 ctrl + d
+OR on windows
+.exit 
 ```
 	* then start the tool again: 
 		```
