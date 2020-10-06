@@ -214,16 +214,47 @@ Workshop Solution
 * demo using sqlite3 client
 * demo creating table and import
 * queries",,,,
-y,,10,Oct-6,Tue,"Client Server, Working on Remote System, Multiple Tables with MySQL
+,,10,Oct-6,Tue,"Client Server, Working on Remote System, Multiple Tables with MySQL
 
-* [client-server, remote](slides/sql/client-server.html)
-* [mysql intro](slides/sql/mysql.html)
-* [mysql types, create, read, update, delete](slides/sql/mysql-types-crud.html)
-* [joins](slides/sql/joins.html)",,,,Using Python with SQLite
-y,,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design
+* use navigating / working with files to explain sqlite behavior and one workshop solution
+* [connecting to a remote server](slides/cli/remote.html)
+* [mysql and mariadb intro](slides/db/mysql.html)
+* [joins](slides/db/joins.html)
 
-* [joins review](slides/sql/joins-review.html)
-* [subqueries](slides/sql/subqueries.html)
+<!--
+* [working with mysql client and mariadb server](slides/sql/mysql-remote.html)
+* [types, create, read, update, delete](slides/sql/mysql-types-crud.html)
+-->","[{{ site.book_mysql }}]({{ site.book_mysql_link }})   
+
+* [I. The Software](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/learning-mysql-and/9781449362898/pt01.html): 
+  * 1 Introduction
+  * 3 The Basics and the mysql Client
+* [II. Database Structures](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/learning-mysql-and/9781449362898/pt02.html) (skim)
+* [III. Basics of Handling Data](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/learning-mysql-and/9781449362898/pt03.html)
+  * 9 Joining and Subquerying Data
+* [IV. Built-In Functions](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/learning-mysql-and/9781449362898/pt04.html)
+
+MariaDB Documentation
+
+* [MariaDB vs MySQL](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)
+* [Data Types in MariaDB](https://mariadb.com/kb/en/data-types/)
+
+[CIMS Database Server Documentation](https://cims.nyu.edu/webapps/content/systems/userservices/databases)
+
+","Due __10/13 at 11pm__
+
+* Homework #04-A Mini Assignment to be posted 11pm
+* Quiz #4 and #5 to be posted 11pm
+
+<!--
+* [homework #04](assignments/04.html)
+* Quiz #4 (Basic SQL) in NYU Classes
+* Quiz #5 (Joins) in NYU Classes
+-->",,Using Python with SQLite
+y,,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design 
+
+* [joins review](slides/sql/joins-review.html) 
+* [subqueries](slides/sql/subqueries.html) 
 * [anomalies](slides/sql/anomalies.html)",,,,Relational database design
 y,workshop,12,Oct-13,Tue,"Relational Database Design
 

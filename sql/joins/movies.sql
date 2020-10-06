@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS genre;
 CREATE TABLE genre (
 	genre_id integer,
 	name varchar(20),
@@ -5,8 +6,9 @@ CREATE TABLE genre (
 	PRIMARY KEY (genre_id)
 );
 
+DROP TABLE IF EXISTS movie;
 CREATE TABLE movie (
-	movie_id serial,
+	movie_id integer AUTO_INCREMENT,
 	title varchar(50) NOT NULL,
 	year smallint NOT NULL,
 	runtime smallint NOT NULL, 

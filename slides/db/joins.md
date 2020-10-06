@@ -15,21 +15,122 @@ title: "Joins"
 </section>
 
 <section markdown="block">
-## Reviewing Constraints 
+## Constraints Revisited
 
-__If you were tasked with storing course data in your database, what table name, fields, types, and constraints would you use?__ &rarr;
+__We briefly talked about constraints for SQLite... and similar constraints exist for MySQL. What are some constraints we can add to column(s)?__ &rarr;
+
+* {:.fragment} `UNIQUE`
+* {:.fragment} `NOT NULL`
+* {:.fragment} `PRIMARY KEY` - implies both `NOT NULL` and `UNIQUE`
+	* {:.fragment} note that MySQL/MariaDB enforces the not null part for a pk, unlike SQLite
+* {:.fragment} `CHECK`
+* {:.fragment} `FOREIGN KEY`
+
+</section>
+
+<section markdown="block">
+## Specifying Constraints
+
+__As you've seen, these constraints can be added at the column level__ &rarr;
+
+```
+colname1 NOT NULL,
+colname2 CHECK (colname2 > 10)
+```
+{:.fragment}
+
+However, constraints can also be specified at the table level...
+{:.fragment}
+
+
+</section>
+
+<section markdown="block">
+## Table Level Constraints
+
+__Rather than defining constraints on each column, `PRIMARY KEY`, `CHECK` and `FOREIGN KEY` can be specified at the table level__ &rarr;
+
+
+```
+CREATE TABLE t (
+	a INT, 
+	b INT, 
+	c INT, 
+	PRIMARY KEY (a, b)
+);
+```
+</section>
+
+<section markdown="block">
+## Foreign Key Constraints
+
+__Foreign keys can be defined as table level constraints__ &rarr;
+
+```
+FOREIGN KEY (col_name) REFERENCE other_table(other_col_name)
+```
+
+```
+CREATE TABLE t1(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT
+);
+```
+{:.fragment}
+
+```
+INSERT INTO t1 VALUES (null), (null);
+```
+{:.fragment}
+
+```
+CREATE TABLE t2(
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
+	t1_id INTEGER,
+	FOREIGN KEY (t1_id) REFERENCES t1(id)
+);
+```
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## Foreign Keys Explained
+
+__Foreign keys__ ensure integrity between related tables. For example, it could guarantee that a column in the first table that references a column in the second table actually has matching value in the second table.
+
+* {:.fragment} if I try to insert a row with a foreign key value...
+* {:.fragment} ... and that value doesn't exist in the related table
+* {:.fragment} then the insert won't work!
+</section>
+
+<section markdown="block">
+## Check Constraints and MySQL / MariaDB
+
+⚠️ __Constraint syntax is fully supported after MariaDB 10.2.1 and MySQL 8.0.16__ &rarr;
+
+* {:.fragment} prior to those version constraints are valid syntax, but the actual constraint is ignored! 😮
+* {:.fragment} as of fall 2020, the MariaDB version on our database server is 5.5.x 😢
+* {:.fragment} __so we can add constraints, but they'll be silently ignored__
+
+</section>
+
+<section markdown="block">
+## Constraints Exercise
+
+__If you were tasked with storing course data in a database, what table name, fields, types, and constraints would you use?__ &rarr;
 
 One potential solution might be:
 {:.fragment}
 
 <pre><code data-trim contenteditable>
 create table course (
-  course_number text,
-  section_number text,
-  semester text,
-  year smallint constraint year_after_found check (year > 1831),
+  course_number varchar(100),
+  section_number varchar(10),
+  semester varchar(20),
+  year smallint,
   title text,
   description text,
+  constraint year_after_found check (year > 1831),
   primary key (course_number, section_number, semester, year)
 );
 </code></pre>
@@ -42,35 +143,64 @@ create table course (
 
 </section>
 
+
+
 <section markdown="block">
 ## Let's Add Some Rows!
 
-__Based on the previous table definition, which of these queries will fail with an error, and which ones will work?__ &rarr;
+__Based on the previous table definition, which of these queries _should_ fail with an error, and which ones will work__ (they'll fail in sqlite3, but  will unforuntately be allowed for older versions of MariaDB/MySQL)? &rarr;
 
 <pre><code data-trim contenteditable>
 insert into course values 
-  ('0480', '008', 'spring', 1800, 'ait', 'web stuff');
+  ('0480', '034', 'fall', 1800, 'ait', 'web stuff');
 insert into course values 
-  ('0480', '008', 'spring', 2020, 'ait', 'web stuff');
+  ('0480', '034', 'fall', 2020, 'ait', 'web stuff');
 insert into course values 
-  ('0480', '001', 'spring', 2020, 'e-sports', 'video games!');
+  ('0480', '034', 'fall', 2020, 'e-sports', 'video games!');
 insert into course 
   (course_number, semester, year, title) 
 values 
-  ('0479', 'spring', 2020, 'dma');
+  ('0060', 'fall', 2020, 'db');
 </code></pre>
 {:.fragment}
 
 </section>
 
 <section markdown="block">
-## Foreign Keys Reviewed
+## A Quick Aside on Union
+
+Before we get into combining columns from different tables, __there is a way to put together the results from two queries.__ &rarr;
+
+You can use `UNION` to "stack" the results of two queries!
+{:.fragment}
+
+```
+insert into course values 
+  ('0480', '034', 'spring', 2020, 'ait', 'web stuff'),
+  ('00101', '001', 'summer', 2020, 'intro to cs', 'coffee!');
+```
+{:.fragment}
+
+We can sort of emulate group by putting together two queries that count:
+{:.fragment}
+
+```
+select semester, count(*) from course where semester = 'fall' 
+union 
+select semester, count(*) from course where semester = 'spring';
+```
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## Foreign Keys 
 
 __Now let's try to model a user on a web site... and their associated addresses__ &rarr;
 
 <pre><code data-trim contenteditable>
 create table web_user (
-  web_user_id serial primary key,
+  web_user_id integer primary key auto_increment,
   username varchar(8) not null unique,
   email text
 );
@@ -91,12 +221,13 @@ __...and the associated address table__ &rarr;
 
 <pre><code data-trim contenteditable>
 create table address (
-  address_id serial primary key, 
-  street text,
-  city text,
-  state varchar(2),
-  zip text, 
-  web_user_id integer references web_user(web_user_id)
+  address_id INTEGER PRIMARY KEY AUTO_INCREMENT, 
+  street TEXT,
+  city TEXT,
+  state VARCHAR(2),
+  zip TEXT, 
+  web_user_id INTEGER,
+  FOREIGN KEY (web_user_id) REFERENCES web_user(web_user_id)
 );
 </code></pre>
 {:.fragment}
@@ -127,7 +258,7 @@ drop table address;
 </section>
 
 <section markdown="block">
-## A Preview...
+## A Preview... Joins!
 
 __How can we view a person and their related addresses__ &rarr;
 
@@ -141,20 +272,30 @@ select * from web_user u
 <section markdown="block">
 ## Joins
 
-__A relational algebra operation implemented in SQL... that combines columns from one or more tables__
+The previous `SELECT` statement __used a <span class="hl">JOIN</span> clause to construct a result containing columns from multiple tables__ &rarr;
 
+* {:.fragment} the way that the values of columns are joined is usually based on the values of the columns 
+* {:.fragment} `JOIN` can be used with two tables as in the example... or more!
+* {:.fragment} an alternative syntax is to use comma separated table names after `FROM`
+
+Let's create a few example tables...
+{:.fragment}
 </section>
 
 <section markdown="block">
 ## Genre Table
 
 <pre><code data-trim contenteditable>
-CREATE TABLE genre (
-	genre_id integer,
-	name varchar(20),
-	description text,
-	PRIMARY KEY (genre_id)
-);
+DROP TABLE IF EXISTS movie;
+CREATE TABLE movie (
+	movie_id integer AUTO_INCREMENT,
+	title varchar(50) NOT NULL,
+	year smallint NOT NULL,
+	runtime smallint NOT NULL,
+	genre_id integer REFERENCES genre (genre_id),
+	PRIMARY KEY (movie_id)
+)
+CHARACTER SET 'utf8' COLLATE 'utf8_bin';
 </code></pre>
 </section>
 
@@ -179,13 +320,11 @@ CREATE TABLE genre (
 ## Movie Table
 
 <pre><code data-trim contenteditable>
-CREATE TABLE movie (
-	movie_id serial,
-	title varchar(50) NOT NULL,
-	year smallint NOT NULL,
-	runtime smallint NOT NULL, 
-	genre_id integer REFERENCES genre (genre_id),
-	PRIMARY KEY (movie_id)
+CREATE TABLE genre (
+	genre_id integer,
+	name varchar(20),
+	description text,
+	PRIMARY KEY (genre_id)
 );
 </code></pre>
 </section>
@@ -209,6 +348,7 @@ CREATE TABLE movie (
        11 | Shape of Water                         | 2018 |     123 |        3
 </code></pre>
 </section>
+
 <section markdown="block">
 ## Cross Join
 
@@ -252,11 +392,37 @@ SELECT title, name
 {:.fragment}
 </section>
 
+<section markdown="block">
+## How Does Join Work with Other Clauses?	
+
+__Write a query that shows the name of the genre as well as how many movies with that genre are in the database__ &rarr;
+
+```
++-----------------+-------------+
+| name            | movie_count |
++-----------------+-------------+
+| Drama           |           1 |
+| Fantasy         |           1 |
+| Science Fiction |           3 |
+| Super Hero      |           2 |
+| Thriller        |           2 |
++-----------------+-------------+
+```
+
+```
+select  name, count(*) as movie_count 
+from movie 
+inner join genre on movie.genre_id = genre.genre_id 
+group by name;
+```
+{:.fragment}
+
+</section>
 
 <section markdown="block">
 ## ⚠️ Here There Be Nulls! 
 
-__What happened to the `movie` rows that had a `null` `genre_id`__?
+__BTW, in both of our original queries... what happened to the `movie` rows that had a `null` `genre_id`__?
 
 * {:.fragment} they weren't included in the results!
 * {:.fragment} that implies that when a column that can have a `null` value is used in the join predicate, some rows may be omitted from the query result
@@ -300,11 +466,56 @@ __Same as above, but include everything in second (right) table: `RIGHT OUTER JO
 SELECT * FROM movie RIGHT OUTER JOIN genre ON movie.genre_id = genre.genre_id;
 </code></pre>
 
-__Both! `FULL OUTER JOIN`__ &rarr;
+</section>
 
-<pre><code data-trim contenteditable>
-SELECT * FROM movie FULL OUTER JOIN genre ON movie.genre_id = genre.genre_id;
-</code></pre>
+
+<section markdown="block">
+## Count Genres Again
+
+__Count genres again, but this time include 0 for genres that don't have movies associated with them__ &rarr; 
+
+```
++-----------------+-------------+
+| name            | movie_count |
++-----------------+-------------+
+| Comedy          |           0 |
+| Drama           |           1 |
+| Fantasy         |           1 |
+| Horror          |           0 |
+| Science Fiction |           3 |
+...
+```
+
+```
+-- note that we're counting movie_id!
+select  name, count(movie_id) as movie_count 
+from movie right outer join genre on movie.genre_id = genre.genre_id 
+group by name;
+```
+{:.fragment}
+
+</section>
+
+<section markdown="block">
+## Left and Right?
+
+__How can we show all rows from `movie` and `genre` regardless of whether or not there's a matching row in the other table__ &rarr;
+
+Hint: We can include everything from left... or everything from the right... __but how do we do both?__ &rarr;
+{:.fragment}
+
+
+```
+select title, name from movie 
+left outer join genre on movie.genre_id = genre.genre_id 
+union 
+select title, name from movie 
+right outer join genre on movie.genre_id = genre.genre_id;
+```
+{:.fragment}
+
+In other DBMS, this may be called a full outer join.
+{:.fragment}
 
 </section>
 
@@ -333,7 +544,7 @@ INNER JOIN movie as b on a.year = b.year
 ORDER BY a.year, a.title, b.title;
 </code></pre>
 
-Uh... there's something weird about the result of this. __What do you think will happend?__ &rarr;
+Uh... there's something weird about the result of this. __What do you think will happened?__ &rarr;
 {:.fragment}
 
 <pre><code data-trim contenteditable>
@@ -358,7 +569,7 @@ Well. __That didn't work__ 😞... since we're matching on year, we're getting m
 __What could we do to fix this?__ &rarr;
 
 * {:.fragment} let's try filtering the rows with a `WHERE` clause
-* {:.fragment} this clause should only show rows that don't have the same id 
+* {:.fragment} this clause should only show rows that don't have the same id or title
 * {:.fragment} so that we don't the same title in both title columns
 * {:.fragment} `WHERE a.movie_id <> b.movie_id`
 </section>
@@ -470,7 +681,7 @@ If you have a __foreign key__ in your table .... it will be the many side in a _
 <section markdown="block">
 ## One to One
 
-__Making sure that there's a one-to-one (or more exactly one to... zero or one) is a bit tricky__ &rarr;
+__Let's see one potential implementation__ &rarr;
 
 
 * {:.header .colspan} user
@@ -490,9 +701,9 @@ __Making sure that there's a one-to-one (or more exactly one to... zero or one) 
 Uh... isn't this the same as one-to-many? 
 {:.fragment}
 
-* {:.fragment} if we put a __unique__ constraint on the foreign key, that means a value for genre id can only occur once in `movie` 
+* {:.fragment} if we put a __unique__ constraint on the foreign key, that means a value for profile id can only occur once in `movie` 
 * {:.fragment} this means there can be either no associated profile or only associated profile for a __one-to-one__ relationship.
-* {:.fragment} if you want exactly one-to-one, you can put an fk in each table and use [deferred constraints in a transaction to insert rows in each table](https://www.postgresql.org/docs/12/sql-set-constraints.html)
+* {:.fragment} if you want exactly one-to-one, just put it in the same table! (some databases allow you to make circular foreign keys with [deferred constraints in a transaction](https://www.postgresql.org/docs/12/sql-set-constraints.html) to achieve this)
 </section>
 
 <section markdown="block">
@@ -505,14 +716,9 @@ __What if we wanted movies to have many genres, and genres to have many movies?_
 {:.fragment}
 
 
-Maybe `movie` could contains `genre_id` and  `genre` can contain `movie_id`
+Maybe `movie` could contain `genre_id` and  `genre` can contain `movie_id`
 {:.fragment}
 
-🙅‍♀️... nope this __isn't the best solution__! why not?
-{:.fragment}
-
-You'd have to put place duplicate rows _somewhere_:
-{:.fragment}
 
 * {:.header .colspan} movie
 * {:.header} movie_id (pk), title, genre_id
@@ -531,6 +737,11 @@ You'd have to put place duplicate rows _somewhere_:
 {:.table}
 
 
+🙅‍♀️... this __may note be the best solution__! why not?
+{:.fragment}
+
+duplicate / redundant data in both tables!
+{:.fragment}
 </section>
 
 
@@ -571,8 +782,3 @@ __For many-to-many, create a third table that houses ids of both other tables__ 
 </section>
 
 
-{% comment %}
-many to many
-
-
-{% endcomment %}
