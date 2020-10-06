@@ -77,7 +77,7 @@ __So what makes MySQL and MariaDB different?__ &rarr;
 1. make a database; use netid and password to login
 	[database manager](https://cims.nyu.edu/webapps/databases)
 2. hit reset password if you don't know / have a database password
-3. log in to i6 with i6 account
+3. log in to i6 with i6 account [see the docs for more details on i6 accounts, password resets, etc.](https://cims.nyu.edu/webapps/content/systems/resources/i6)
 	```
 ssh your_net_id@i6.cims.nyu.edu
 ```
