@@ -253,13 +253,30 @@ CIMS Services Documentation
 * Quiz #4 (Basic SQL) in NYU Classes
 * Quiz #5 (Joins) in NYU Classes
 ",,Using Python with SQLite
-y,,11,Oct-8,Thu,"Multiple Tables with MySQL, Relational Database Design 
+,,11,Oct-8,Thu,"Multiple Tables with MySQL
 
-* [joins review](slides/sql/joins-review.html) 
-* [subqueries](slides/sql/subqueries.html) 
-* [anomalies](slides/sql/anomalies.html)",,,,Relational database design
+* joins from previous class
+* [import, modifying tables, dates](slides/db/import-example.html) 
+* [subqueries](slides/db/subqueries.html) 
+","[{{ site.book_mysql }}]({{ site.book_mysql_link }})   
+
+* [III. Basics of Handling Data](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/learning-mysql-and/9781449362898/pt03.html)
+  * 9 Joining and Subquerying Data
+
+
+MariaDB Documentation
+
+* [Date and Time Types](https://mariadb.com/kb/en/date-and-time-data-types/)
+* [Date and Time Functions](https://mariadb.com/kb/en/date-time-functions/)
+
+MySQL Tutorial
+
+* [Import CSV File Into MySQL Table](https://www.mysqltutorial.org/import-csv-file-mysql-table/)
+
+",,,Relational database design
 y,workshop,12,Oct-13,Tue,"Relational Database Design
 
+* [anomalies](slides/sql/anomalies.html)
 * [normalization](slides/sql/normalization.html)
 * [ER diagrams, mysqlworkbench](slides/sql/er-diagrams.html)
 * [reverse engineering, forward engineering](slides/sql/reverse.html)

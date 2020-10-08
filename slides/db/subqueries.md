@@ -7,14 +7,68 @@ title: "Subqueries"
 <link rel="stylesheet" href="../../resources/css/data-table.css" type="text/css" media="screen" title="no title" charset="utf-8">
 
 
-<section markdown="block" class="intro-slide">
-# {{ page.title }}
 
-### {{ site.vars.course_number}}-{{ site.vars.course_section }}
+<section markdown="block">
+## Data for Examples
 
-<p><small></small></p>
+## 👇👇👇👇
+
+In this set of slides, __we'll continue using the [CAERS](https://www.fda.gov/food/compliance-enforcement-food/cfsan-adverse-event-reporting-system-caers) that we brought in and cleaned from [the importing data slides](import-example.html)__
+
 </section>
 
+<section markdown="block">
+## A Challenge
+
+Let's __find the event date, reported date, _lag_ (days between actual occurrence and reporting), product, and terms of the event that had the longest lag__ &rarr;
+
+First, let's find the longest lag:
+
+<pre><code data-trim contenteditable>
+select max(datediff(created_date, event_date)) 
+from caers_event;
+</code></pre>
+{:.fragment}
+
+Now lets try to add the other fields...
+{:.fragment}
+
+<pre><code data-trim contenteditable>
+select created_date, event_date, max(datediff(created_date, event_date)) as lag, product, terms
+from caers_event;
+</code></pre>
+{:.fragment}
+
+🤔🐟... hm, there's something fishy about that.
+{:.fragment}
+</section>
+
+<section markdown="block">
+## A Problem With Aggregate Functions
+
+__What are some issues with the previous query?__ &rarr;
+
+* {:.fragment} when we use an aggregate function without an explicit group by, all the rows are treated as one big group... and _it's tricky_ using ungrouped columns in the select list
+* {:.fragment} (which row do we get those details from?)
+* {:.fragment} another way to think of it: what if there are multiple rows that share the same max lag... which row will the dates, product name and terms come from? should we show all rows that match? __we can in two steps__ &rarr;
+
+
+<pre><code data-trim contenteditable>
+select created_date, event_date, product, terms
+from caers_event
+where datediff(created_date, event_date) = 23446;
+</code></pre>
+{:.fragment}
+
+Would order by work? 
+{:.fragment}
+
+Sort of, maybe? Only if we don't care about getting more results than we want.
+{:.fragment}
+
+But maybe we can use...
+{:.fragment}
+</section>
 
 <section markdown="block">
 ## Queryception
@@ -32,61 +86,17 @@ Yes. __U can have queries within queries__ 🤯: &rarr;
 
 </section>
 
-<section markdown="block">
-## Data Source for Examples
-
-Again, we'll use the _adverse_ food events data: [CAERS](https://www.fda.gov/food/compliance-enforcement-food/cfsan-adverse-event-reporting-system-caers) ...for most of our examples
-
-1. these slides use the 2014-2019 reports
-2. [documentation of fields](https://www.fda.gov/media/97035/download)
-3. sample data:
-
-* {:.header} Report ID, CAERS Created Date, Date of Event, Product Type, Product, Product Code, Description, Patient Age, Age Units, Sex, MedDRA Preferred Terms, Outcomes
-* 172940, 1/1/2014, , SUSPECT, DANNON DANNON LITE & FIT GREEK YOGURT CHERRY, 09,  Milk/Butter/Dried Milk Prod, , , , NAUSEA, Other Outcome
-* 175277, 4/7/2014, 3/15/2013, SUSPECT, CHIA PLUS COCONUT CHIA GRANOLA, 05,  Cereal Prep/Breakfast Food, 15, year(s), F, BURNING SENSATION, Other Outcome
-{:.fragment}
-{:.table}
-</section>
-
-
-<section markdown="block">
-## A Problem With Aggregate Functions
-
-Let's __find the event date, reported date, product, and terms of the event that had the longest time between actual occurrence and reporting__ &rarr;
-
-We can find max
-{:.fragment}
-
-<pre><code data-trim contenteditable>
-select max(created_date - event_date) from caers_event;
-</code></pre>
-{:.fragment}
-
-But we can't add the other fields (why?), so what do we do?
-{:.fragment}
-
-Add a second query I guess 🤷
-{:.fragment}
-
-<pre><code data-trim contenteditable>
-select created_date, event_date, product, terms
-from caers_event
-where created_date - event_date = 23446;
-</code></pre>
-{:.fragment}
-
-</section>
 
 <section markdown="block">
 ## A Subquery as a Single Value
 
-__We can simplify this series of queries by using a subquery! Our subquery will return a single value for use in our `WHERE` clause...__ &rarr;
+__We another alternative for finding the details of all rows with the max lag: __a subquery__! Our subquery will return a single value for use in our `WHERE` clause...__ &rarr;
 
 <pre><code data-trim contenteditable>
-select created_date, event_date, product, terms
+select created_date, event_date, datediff(created_date, event_date) as lag, product, terms
 from caers_event
-where (created_date - event_date) =
-      (select max(created_date - event_date) from caers_event);
+where datediff(created_date, event_date) =
+      (select max(datediff(created_date, event_date)) from caers_event);
 </code></pre>
 </section>
 
@@ -121,10 +131,12 @@ __What are all of the products' names and the year of the event involving them..
 First, lets see the counts by year (of `event_date`)... &rarr;
 
 <pre><code data-trim contenteditable>
-select date_part('year', event_date) as year, count(*) as c
+-- note, nonstandard sql allowed by mysql/mariadb
+-- alias in having!
+select year(event_date) as year, count(*) as c
 from caers_event
-group by date_part('year', event_date)
-having date_part('year', event_date) is not null
+group by year(event_date) 
+having year is not null
 order by c desc;
 </code></pre>
 {:.fragment}
@@ -143,10 +155,10 @@ We can _see_ 👀 the max year here... but if we want to use that as a variable 
 
 <pre><code data-trim contenteditable>
 select max(c) from
-(select date_part('year', event_date) as year, count(*) as c
+(select year(event_date) as year, count(*) as c
 from caers_event
-group by date_part('year', event_date)
-having date_part('year', event_date) is not null
+group by year(event_date)
+having year is not null
 order by c desc) as year_counts;
 </code></pre> 
 {:.fragment}
@@ -159,6 +171,7 @@ Note that when using a subquery as a table, you must alias is with `AS`.
 (\*)
 {% endcomment %}
 
+<!--
 <section markdown="block">
 ## Common Table Expression
 
@@ -219,7 +232,7 @@ limit 1);
 {% comment %}
 (\*)
 {% endcomment %}
-
+-->
 <section markdown="block">
 ## Subquery in Insert
 
