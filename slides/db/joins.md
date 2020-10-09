@@ -94,6 +94,25 @@ CREATE TABLE t2(
 </section>
 
 <section markdown="block">
+## BTW, Column Level FK
+
+__Foreign keys can also be defined on the column level__ &rarr;
+
+* in the code below, `bar`'s column, `foo_id` is a foreign key
+* it references the `foo_id` column in the `foo` table
+
+<pre><code data-trim contenteditable>
+CREATE TABLE foo (foo_id INT PRIMARY KEY AUTO_INCREMENT);
+CREATE TABLE bar (
+    bar_id INT PRIMARY KEY AUTO_INCREMENT,
+	foo_id INT REFERENCES foo(foo_id)
+);
+
+</code></pre>
+
+</section>
+
+<section markdown="block">
 ## Foreign Keys Explained
 
 __Foreign keys__ ensure integrity between related tables. For example, it could guarantee that a column in the first table that references a column in the second table actually has matching value in the second table.
