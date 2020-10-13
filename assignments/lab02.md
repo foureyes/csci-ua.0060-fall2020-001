@@ -1,6 +1,6 @@
 ---
 layout: homework
-title: "Workshop #1"
+title: "Workshop #2"
 ---
 
 # Workshop #2 - Dog Bytes

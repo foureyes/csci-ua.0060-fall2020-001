@@ -57,9 +57,11 @@ __So what makes MySQL and MariaDB different?__ &rarr;
 	* most of these are based on the size (for example, `TINYINT` is 1 byte)
 * [string types](https://mariadb.com/kb/en/string-data-types/)
 	* we'll use `varchar(num_characters)` and `text` (but text can't be part of a primary key)
+	* note that `LIKE` is case insensitive!
 * [dates and times](https://mariadb.com/kb/en/date-and-time-data-types/)
 
 </section>
+
 
 <section markdown="block">
 ## Courant, Client Server

@@ -181,7 +181,7 @@ Due today (9/15) by end of class
 Due __today (9/29) by end of class__
 
 * [workshop #02 submission form](https://forms.gle/ftbNcZpuxNBK6VsP7)
-* [workshop #02 -sqlite](assignments/lab02.html)
+* [workshop #02 - sqlite](assignments/lab02.html)
 
 <strike>Due __10/6 at 11pm__</strike>
 
@@ -274,7 +274,14 @@ MySQL Tutorial
 * [Import CSV File Into MySQL Table](https://www.mysqltutorial.org/import-csv-file-mysql-table/)
 
 ",,,Relational database design
-y,workshop,12,Oct-13,Tue,"Relational Database Design
+,workshop,12,Oct-13,Tue,"Multiple Table with MySQL
+
+* see workshop ",,"Turn in whatever work you’ve finished __today (10/13) by end of class__ (the entirety of the file will be part of a homework assignment)
+
+* [workshop #03 – sqlite](assignments/lab03.html)
+
+Homework #5 (which will include the finished version of the above) will be due 10/20 , before the review.",,Relational database design
+y,,13,Oct-15,Thu,"Relational Database Design
 
 * [anomalies](slides/sql/anomalies.html)
 * [normalization](slides/sql/normalization.html)
@@ -286,20 +293,20 @@ y,workshop,12,Oct-13,Tue,"Relational Database Design
 
 <!-- design and joins -->
 ",,Relational database design
-y,,13,Oct-15,Thu,"Relational Database Design
-
-",,,,Relational database design
 y,exam,14,Oct-20,Tue,Review,,,,Relational database design
 y,,15,Oct-22,Thu,Midterm Exam,,,,Review
-y,,16,Oct-27,Tue,"Database Administration
+y,,16,Oct-27,Tue,"Relational Database Design
+
+",,,,Exam
+y,,17,Oct-29,Thu,"Database Administration
 
 * [indexes](slides/sql/indexes.html)
-* backup / restore",,,,Exam
-y,,17,Oct-29,Thu,"Database Driven Websites
+* backup / restore",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
+y,,18,Nov-3,Tue,"Database Driven Websites
 
 * [http](slides/web/http.html)
-* [flask](slides/web/flask.html)",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
-y,,18,Nov-3,Tue,"Database Driven Websites, Using an API
+* [flask](slides/web/flask.html)",,,,Multiple Tables (MySQL)
+y,workshop,19,Nov-5,Thu,"Database Driven Websites, Using an API
 
 * [mysql and python](slides/db/mysql-python.html)
 * [flask and database](slides/web/db.html)
@@ -307,43 +314,42 @@ y,,18,Nov-3,Tue,"Database Driven Websites, Using an API
 
 <!-- create er based on existing db for site;-? create web site-->
 ",,Multiple Tables (MySQL)
-y,workshop,19,Nov-5,Thu,"Using an API, Data Visualization
+y,,20,Nov-10,Tue,"Using an API, Data Visualization
 
 * [matpotlib](slides/viz/matplotlib.html)
 * manipulating visualizations
 * others? bokeh maybe?",,"* [video: create a flask app with a database](modules/web/flask.html)
 * [video: consuming an pi](modules/web/api.html)
 * [video: viusalization](modules/py/matplotlib.html)",,Multiple Tables (MySQL)
-y,,20,Nov-10,Tue,"Consuming APIs and Data Visualization
+y,,21,Nov-12,Thu,"Consuming APIs and Data Visualization
 
 * consume data using an api
 * display data on the web",,"* [homework #06](homework/06.html)
 
 <!-- work with an api, create data visualization  -->
-",,Multiple Tables (MySQL)
-y,,21,Nov-12,Thu,"Document Store with MongoDB
+",,Multiple Tables (MySQL) / Database Management
+y,workshop,22,Nov-17,Tue,"Document Store with MongoDB
 
 * [mongodb intro](slides/db/mongodb.html)
 * [mongodb create,read, update, delete](slides/db/mongodb-crud.html)
 * [mongodb import and export](slides/db/mongodb-import-export.html)
-",,,,Multiple Tables (MySQL) / Database Management
-y,workshop,22,Nov-17,Tue,"Document Store with MongoDB
+",,,,NoSQL (MongoDB)
+y,,23,Nov-19,Thu,"Document Store with MongoDB
 
 * [mongodb aggregation](slides/db/mongodb-aggregation.html)
 * [mongodbo design](slides/db/mongodb-design.html)
 * [mongodb and ptyhon](slides/db/mongodb-python.html)",,* [video: mongodb](modules/db/mongodb.html),,NoSQL (MongoDB)
-y,,23,Nov-19,Thu,"Document Store with MongoDB
+y,,24,Nov-24,Tue,"Document Store with MongoDB
 
 * demo using mongodb",,"* [homework #07](homework/07.html)
 
 <!-- TODO: hw - use mongodb  -->
-",,NoSQL (MongoDB)
-y,,24,Nov-24,Tue,Data Analysis Library with Pandas,,,,Data Visualization (matplotlib)
+",,Data Visualization (matplotlib)
 y,holiday,,Nov-26,Thu,Holiday,,,,
-y,,25,Dec-1,Tue,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
+y,,25,Dec-1,Tue,Data Analysis Library with Pandas,,,,Data Analysis Library (pandas)
+y,,26,Dec-3,Thu,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
 
 <!-- TODO: hw - use pandas  -->
-",,Data Analysis Library (pandas)
-y,,26,Dec-3,Thu,Optional Topic (Other Structures for Data Storage),,,,Optional Topic 1
+",,Optional Topic 1
 y,,27,Dec-8,Tue,Review,,,,Review
 y,exam,28,Dec-10,Thu,Final Exam,,,,Exam
