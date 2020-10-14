@@ -16,8 +16,8 @@ title: "Workshop #3"
 #### Grading
 
 * `50%` - completing and submitting the form by the end of class
-* `30%` - attempted most queries
-* `10%` - queries are correct / close to being correct
+* `30%` - attempted queries
+* `10%` - queries _look_ correct / close to being correct
 * `10%` - answered non query questions
 
 ## Instructions
@@ -48,8 +48,17 @@ title: "Workshop #3"
 3. upload the zip file to `i6.cims.nyu.edu` using scp (on MacOS or Linux) or [winscp](https://winscp.net/eng/index.php) (on Windows) 
 	* if using winscp, fill out the host name with `i6.cims.nyu.edu` in the [login form](https://winscp.net/eng/docs/ui_login)
 		* drag and drop the file to your home folder
-	* if using scp: `scp caers-tables.zip YOUR_USERNAME@i6.cims.nyu.edu:~
+	* if using scp: `scp caers-tables.zip YOUR_USERNAME@i6.cims.nyu.edu:~`
 		* this will upload the zip file to your home folder
+	* ssh into i6
+	* check that the zip file is present on i6... then decompress the zip file
+		* `ls`
+		* `unzip caers-tables.zip`
+		* this should result in `caers-tables.sql` being extracted (us `ls` to check)
+	* you may have permissions issues when importing, so make it readable and writable for everyone:
+		* `chmod 777 caers-tables.sql`
+	* import into any database on MariaDB (you can reuse the database you used for homework 4, if you like... or create a new database with the cims database management tool) using the mysql client:
+		* `mysql -h warehouse.cims.nyu.edu -u YOUR_USERNAME -p YOUR_DATABASE_NAME < caers-tables.sql`
 4. answer questions about the reports of adverse reactions by using joins and/or subqueries
 	1. [download `lab03_queries.sql`](lab03/lab03_queries.sql)
 	2. open it with a text editor of your choice (right click, open with)
