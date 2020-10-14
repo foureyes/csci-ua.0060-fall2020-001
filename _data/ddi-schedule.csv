@@ -121,7 +121,7 @@ Due today (9/15) by end of class
 * [workshop survey results](slides/py/workshop01-results.html)
 * workshop solution
 * file types (from class 3)
-* [data “munging”](slides/py/clean.html)
+* [data munging](slides/py/clean.html)
 * sourcing / finding data - guest speaker
 ","[{{ site.book_python }}]({{ site.book_python_link }})  
 
@@ -136,7 +136,7 @@ Due today (9/15) by end of class
 ,,6,Sep-22,Tue,"Single Table with SQLite
 
 * finish file types from previous class
-* data “munging” from previous class
+* data munging from previous class
 * [databases intro](slides/db/intro.html)
 * [sqlite intro](slides/db/sqlite.html)
 * [sqlite commandline tool](slides/db/sqlite-cli.html)
@@ -276,23 +276,29 @@ MySQL Tutorial
 ",,,Relational database design
 ,workshop,12,Oct-13,Tue,"Multiple Table with MySQL
 
-* see workshop ",,"Turn in whatever work you’ve finished __today (10/13) by end of class__ (the entirety of the file will be part of a homework assignment)
+* see workshop ",,"Turn in whatever work finished __today (10/13) by end of class__ (the entirety of the file will be part of a homework assignment)
 
-* [workshop #03 – sqlite](assignments/lab03.html)
+* [workshop #03 - sqlite](assignments/lab03.html)
 
 Due __10/20 before class__
 
 * [Homework #5](assignments/05.html)",,Relational database design
-y,,13,Oct-15,Thu,"Relational Database Design
+,,13,Oct-15,Thu,"Relational Database Design
 
-* [anomalies](slides/sql/anomalies.html)
-* [normalization](slides/sql/normalization.html)
-* [ER diagrams, mysqlworkbench](slides/sql/er-diagrams.html)
+* review workshop solutions
+* [design, ER diagrams, mysqlworkbench](slides/db/design.html)
+* [anomalies](slides/db/design-motivation.html)
+* [normalization](slides/db/normalization.html)
+
+<!--
 * [reverse engineering, forward engineering](slides/sql/reverse.html)
-",,"* [video: mysql](modules/sql/mysql.html)
+-->",,"<!--
+
+* [video: mysql](modules/sql/mysql.html)
 * [video: joins](modules/sql/joins.html)
 * [homework #04](homework/04.html)
 
+-->
 <!-- design and joins -->
 ",,Relational database design
 y,exam,14,Oct-20,Tue,Review,,,,Relational database design

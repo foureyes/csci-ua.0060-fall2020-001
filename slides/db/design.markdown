@@ -189,7 +189,6 @@ Some are picky about what's a true ER diagram, but for our purposes, it could re
 <section markdown="block">
 ## Demo
 
-Please [see the book](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/relational-database-design/9780123747303/B9780123747303000048.xhtml) for a more complete guide on ER diagrams. Let's using the following types of diagrams:
 
 1. {:.fragment} Chen
 2. {:.fragment} Crow's Feet
