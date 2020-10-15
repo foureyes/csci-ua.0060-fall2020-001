@@ -292,7 +292,16 @@ Due __10/20 before class__
 
 <!--
 * [reverse engineering, forward engineering](slides/sql/reverse.html)
--->",,"<!--
+-->","[{{ site.book_db_design }}]({{ site.book_db_design_link }})   
+
+* [Ch 10. ER Modelling](https://opentextbc.ca/dbdesign01/chapter/chapter-10-er-modelling/)
+* [Ch 12. Normalization](https://opentextbc.ca/dbdesign01/chapter/chapter-12-normalization/)
+
+[Relational Database Design and Implementation](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/relational-database-design/9780123747303/)
+
+* Ch 3: Why Good Design Matters
+* Ch 4: Entities and Relationships
+* Ch 5: The Relational Data Model","<!--
 
 * [video: mysql](modules/sql/mysql.html)
 * [video: joins](modules/sql/joins.html)
