@@ -286,8 +286,8 @@ Due __10/20 before class__
 ,,13,Oct-15,Thu,"Relational Database Design
 
 * review workshop solutions
-* [design, ER diagrams, mysqlworkbench](slides/db/design.html)
 * [anomalies](slides/db/design-motivation.html)
+* [design, ER diagrams, mysqlworkbench](slides/db/design.html)
 * [normalization](slides/db/normalization.html)
 
 <!--
