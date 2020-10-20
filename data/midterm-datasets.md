@@ -40,8 +40,9 @@ Use the following steps to work with this dataset:
 	* easy for you to write an absolute path
 	* where you're going to be running `sqlite3`
 2. Run sqlite3...
+3. Switch mode to csv: `.mode csv`
 3. Bring in the data into a table called `user_behaviors` Use `.import PATH_TO_FILE TABLENAME`
 	* if you ran sqlite where you downloaded your file, `.import steam-200k.csv user_behaviors`
-	* you can also use an absolute path (`/Users/yourusername/Desktop/steam-200k.csv` or `"c:\Users\yourusername\steam-200k.csv"`)
-	* if you're on windows, you'll have to quote the value
-
+	* you can also use an absolute path (`/Users/yourusername/Desktop/steam-200k.csv` or `"c:\\Users\\yourusername\\Downloads\\steam-200k.csv"`)
+	* if you're on windows, you'll have to quote the value and escape the backslashes
+4. Switch back to column mode: `.mode column`
