@@ -26,6 +26,27 @@ This dataset is based off of the [Donations to Not-for-Profit Organizations Affi
 * every organization is associated with an elected official; two organizations can be associated with the same elected official
 * note that there are two kinds of donation amounts: amount and value_in_kind; you can think this as the donor donating either a monetary amount or an item that has some value... so each donation should have one of these fields filled, while the other would be null
 
+UPDATE 10/21: 
+
+Foreign keys were not included in original `.sql` file above. You can run these queries when you're in MariaDB and `use`ing your `username_midterm` database, but it is not required. It is adequate to just read over where the foreign keys are being placed:
+
+```
+ALTER TABLE organization ADD FOREIGN KEY (elected_official_id)
+    REFERENCES elected_official(elected_official_id);
+
+ALTER TABLE donation ADD FOREIGN KEY (donor_id)
+    REFERENCES donor(donor_id);
+
+ALTER TABLE donation ADD FOREIGN KEY (organization_id)
+    REFERENCES organization(organization_id);
+
+ALTER TABLE donor_location ADD FOREIGN KEY (donor_id)
+    REFERENCES donor(donor_id);
+
+ALTER TABLE donor_location ADD FOREIGN KEY (location_id)
+    REFERENCES location(location_id)
+```
+
 ## 2. [steam-200k.csv](midterm/steam-200k.csv) ⬇️
 
 This dataset contains data about user behaviors on Steam, a gaming platform / website / community. It has been modified to include headers. From the [documentation](https://www.kaggle.com/tamber/steam-video-games):
