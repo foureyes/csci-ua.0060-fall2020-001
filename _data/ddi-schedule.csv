@@ -312,10 +312,14 @@ Due __10/20 before class__
 ",,Relational database design
 y,exam,14,Oct-20,Tue,Review,,,,Relational database design
 y,,15,Oct-22,Thu,Midterm Exam,,,,Review
-y,,16,Oct-27,Tue,"Relational Database Design
+,,16,Oct-27,Tue,"Relational Database Design
 
+* [Database Design Demo](slides/db/design-demo.html)
+* [CASE Tools, Alternative Clients](slides/db/case-tools-clients.html)
+* Normalization (slides from before review)
+* Normalization Demo with CAERS
 ",,,,Exam
-y,,17,Oct-29,Thu,"Database Administration
+y,workshop,17,Oct-29,Thu,"Database Administration
 
 * [indexes](slides/sql/indexes.html)
 * backup / restore",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
