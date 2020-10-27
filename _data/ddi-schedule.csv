@@ -338,8 +338,9 @@ Database Administration
 
 * [Anatomy of an Index](https://use-the-index-luke.com/sql/anatomy)","Due __10/29__ Before Workshop
 
-* [Instsall MySQL Workbench](https://dev.mysql.com/downloads/workbench/) (you can use the recommended download for _everything_ or you can use the “other” download for just workbench)
-* try to login to zoom client with SSO prior to clicking NYU Classes link",,Exam
+* [Install MySQL Workbench](https://dev.mysql.com/downloads/workbench/) (you can use the recommended download for _everything_ or you can use the “other” download for just workbench)
+* try to login to zoom client with SSO prior to clicking NYU Classes link
+* review slides or skim readings on database design and normalization ",,Exam
 ,workshop,17,Oct-29,Thu,"Relational Database Design
 
 * see workshop instructions
