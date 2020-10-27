@@ -318,10 +318,31 @@ y,,15,Oct-22,Thu,Midterm Exam,,,,Review
 * [CASE Tools, Alternative Clients](slides/db/case-tools-clients.html)
 * Normalization (slides from before review)
 * Normalization Demo with CAERS
-",,,,Exam
-y,workshop,17,Oct-29,Thu,"Database Administration
 
-* [indexes](slides/sql/indexes.html)
+Database Administration
+
+* [indexes](slides/db/indexes.html)
+
+","[{{ site.book_db_design }}]({{ site.book_db_design_link }})   
+
+
+* [Ch 12. Normalization](https://opentextbc.ca/dbdesign01/chapter/chapter-12-normalization/)
+
+[Relational Database Design and Implementation](https://learning-oreilly-com.proxy.library.nyu.edu/library/view/relational-database-design/9780123747303/)
+
+* Ch 3: Why Good Design Matters
+* Ch 4: Entities and Relationships
+* Ch 5: The Relational Data Model
+
+[Use the Index Luke](https://use-the-index-luke.com/) - ebook on SQL Tuning and Indexing
+
+* [Anatomy of an Index](https://use-the-index-luke.com/sql/anatomy)",,,Exam
+,workshop,17,Oct-29,Thu,"Relational Database Design
+
+* see workshop instructions
+
+Database Administration
+
 * backup / restore",,,,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
 y,,18,Nov-3,Tue,"Database Driven Websites
 
