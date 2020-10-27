@@ -35,7 +35,7 @@ __A given SQL query can _actually_ be executed in different ways, but still resu
 * {:.fragment} for example, inner joins are commutative
 * {:.fragment} ...or using different ways to find data (sequentially scanning or using an index)
 
-MaraiDB/MySQL's query planner will _try_ to look at each possible execution plan and use the fastest one! 👟
+MariaDB/MySQL's query planner will _try_ to look at each possible execution plan and use the fastest one! 👟
 {:.fragment}
 
 (there are some queries, such as ones with several joins,  where it's not possible to examine every plan)
