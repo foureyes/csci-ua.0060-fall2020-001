@@ -50,9 +50,9 @@ function onClick(evt) {
 }
 </script>
 
-# Homework #6 - Database Design - Due Thursday, Nov 5th at 11pm
+# Assignment #6 - Database Design - Due Thursday, Nov 7th  at 11pm
 
-In this workshop, you'll:
+In this homework, you'll:
 
 1. Use "business" requirements to build a database 
 	1. Create a conceptual data model
@@ -110,8 +110,11 @@ Because you're an SQL _expert_ 🤓, you decide to store all of this information
 
 ⚠️ See [the "Write Some SQL" below](#write-some-sql) to get an idea of what queries you'd be running against this database. ⚠️
 
+{% comment %}
+7. They give you their payment information so that you can charge them for the hours they book and charge them additional fees if they return the scooter late or damaged (note that you don't keep track of this on your own - you use a 3rd party service so you don't have to deal with any credit card number storage regulations)
+{% endcomment %}
 
-### Create Data Models
+### Create an ER Diagram and write SQL to Make Tables
 
 
 1.  Based on the description above, create an ER Diagram to create a conceptual data model:
@@ -124,12 +127,8 @@ Because you're an SQL _expert_ 🤓, you decide to store all of this information
 2. Create a physical data model based off of your conceptual model
 	* 🔧 use __MySQL Workbench__ to do this
 	* 🔑 you can use natural primary keys or surrogate / artificial keys 
-	* 👀 avoid data redundancy and update / insert/ delete anomalies by making sure your data model is in __3rd normal form__
-	* 🖼 export this as a `.png`, and call the file `er-diagram.png`; do this by using File &rarr; export)
-	* 🗄️ save your model by going to File &rarr; Save As  ... and using `scoot-share.mwb` as the file name
-	* 💻 lastly, use File &rarr; Export &rarr; Forward Engineer to generate sql
-		* ⚠️ __make sure to check  "Omit schema qualifier in object names"
-		* ...save the new file into `part-1-create-scooters.sql`
+	* 👀 Avoid data redundancy and update / insert/ delete anomalies by making sure your data model is in __3rd normal form__
+	* 🖼 Export this as a `.png`, and call the file `er-diagram.png`  (File &rarr; export)
 3. Write out the rationale for _some_ of your design decisions 	
 	* 📖 write this in your `README.md`
 	* 🤔 it should describe _some_ of your design decisions (especially  ones that may be non-obvious or unexpected):
@@ -141,18 +140,12 @@ Because you're an SQL _expert_ 🤓, you decide to store all of this information
 
 <a name="write-some-sql">
 
-### Create Tables, Insert Data, and Write Some Queries!
+### Insert and Write Some SQL!
 
-Use your generated
-Try inserting some data into your tables. Save your inserts in: `part-1-insert-scooters.sql`
+Try inserting some data into your tables. Save your inserts in: `part-1-insert-scooter.sql`
 
-1. create a database on the server using [the database management tool](https://cims.nyu.edu/webapps/databases)
-	* call the database `scootshare`
-2. use [phpmyadmin](https://cims.nyu.edu/phpMyAdmin) to do this
-	* once you've logged in, _use_ a database by clicking on the databases tab
-2. insert two or more records in each table 
-3. try to create example data that would reflect how _real_ data might look in the database
-4. be mindful of foreign key constraints
+1. insert at least one record in each table
+2. be mindful of foreign key constraints
 
 Run some queries!
 
@@ -164,7 +157,7 @@ Run some queries!
 6. List all of the manufacturers of scooters in your database, __even if you don't currently have any of their scooters in your inventory__
 
 
-## Part 2: Normalize the data from previous assignments....
+## Part 2: Normalize the data form previous assignments....
 
 1. Use the data that you've worked on in previous assignments or find a new data set:
 	* create a physical data model using MySQL workbench
@@ -172,9 +165,12 @@ Run some queries!
 	* make sure that the resulting tables are minimally in 3rd normal form
 	* use file &rarr; export &rarr; forward engineer
 	* ...and save the new file into `part-2-normalization-create.sql`
-2. Insert some data into the three tables
-	* you can manually create insert statements to do this
-	* save any sql you've written into a file called `part-2-normalization-insert.sql` 
+2. Insert some data into the two tables
+	* you can use any method to do this
+	* ...from using only SQL
+	* ...to using a combination of SQL and Python (with any libraries you'd like to use)
+	* save any sql or Python that you've written into a file called `part-2-normalization-import.sql` or `part-2-normalization-import.py` (or both!)
+	* save the original data source an any intermediary transformations
 3. Write the following queries and __describe what they do in a comment__... all within `part-2-normalization-queries.sql`:
 	1. a query that involves an inner join
 		* use a comment to describe the query
@@ -182,3 +178,7 @@ Run some queries!
 		* use a comment to describe the query
 	3. a query that involves an inner join and an aggregate function
 		* use a comment to describe the query
+
+
+## Conclusion
+

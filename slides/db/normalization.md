@@ -15,7 +15,7 @@ title: "Normalization"
 </section>
 
 <section markdown="block">
-## A Misnomer
+## A Confusing Name
 
 The term __relational database__ doesn't stem from the fact that a database contains __entities__ and their __relationships__.
 
