@@ -1,6 +1,6 @@
 ---
 layout: slides
-title: "psycopg2"
+title: "MariaDB/MySQL and Python"
 ---
 <section markdown="block" class="intro-slide">
 # {{ page.title }}
@@ -20,7 +20,33 @@ SQL is _great_ and all, but sometimes:
 
 
 
+```
+{% comment %}
+from configparser import ConfigParser
+from mysql.connector import connect
+
+def load_config(fn):
+    parser = ConfigParser()
+    parser.read(fn)
+    return {k: v for k, v in parser.items('db')}
+    print(config)
+
+
+
+if __name__ == '__main__':
+    config = load_config('config.ini')
+    conn = connect(**config)
+    cursor = conn.cursor()
+
+    q = 'select * from report limit 5'
+    cursor.execute(q);
+    for row in cursor:
+        print(row)
+```
+{% endcomment %}
 </section>
+
+
 
 <section markdown="block">
 ## DB API 2
@@ -33,51 +59,74 @@ So, Python has a specification for accessing / interfacing with databases: [Pyth
 
 </section>
 
+<section markdown="block">
+## MariaDB/MySQL Libraries
+
+If you search for ways to work with Python and MariaDB/MySQL, the [results may be overwhelming](https://stackoverflow.com/questions/43102442/whats-the-difference-between-mysqldb-mysqlclient-and-mysql-connector-python/46396881#46396881). __However, because most adhere to the standard outlined by DB API 2, high level usage is somewhat similar__. &rarr;
+
+Here are some options:
+{:.fragment}
+
+* [PyMySQL](https://github.com/PyMySQL/PyMySQL)
+* [mysqlclient](https://github.com/PyMySQL/mysqlclient-python)
+* [MySQL Connector](https://github.com/mysql/mysql-connector-python)
+{:.fragment}
+</section>
+
 
 <section markdown="block">
-## psycopg2
+## PyMySQL
 
-__`psycopg2` is a Python module that is:__ &rarr;
+__`PyMySQL` is a Python module that is:__ &rarr;
 
 * {:.fragment} a _database adapter_ - software that connects an application to a database
-* {:.fragment} __specifically, for connecting to a PostgreSQL 🐘__
-* {:.fragment} a __complete implementation__ of the Python DB API 2
-* {:.fragment} able to share a single connection among multiple threads
+* {:.fragment} written in Python 
+	* {:.fragment} easier to install
+	* {:.fragment} performance is not as fast as `mysqlclient` 
+* {:.fragment} __specifically, for connecting to a MySQL/MariaDB 🐬__
+* {:.fragment} an implementation of Python DB API 2
 
 </section>
 
 <section markdown="block">
-## psycopg2
+## PyMySQL Install
 
-__Installation__
+
+On `i6`, __use this command__: `pip3 install --ignore-installed pymysql`
+
+(let's do this together)
+{:.fragment}
+
+More generally, though...
+{:.fragment}
 
 * {:.fragment} with anaconda:
-	* `conda install -c anaconda psycopg2`
+	* `conda install -c anaconda pymysql`
 * {:.fragment} with pip
-	* `pip install pyscopg2`
-	* or `pip install psycopg2-binary`
+	* `pip install pymysql`
+* {:.fragment} use [venv/virtualenv](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/) to manage your application's dependencies
 
 
 </section>
 
 <section markdown="block">
-## psycopg2 Methods
+## PyMySQL Methods
 
-__`pyscopg2` Methods and Workflow:__ &rarr;
+__`PyMySQL` Methods and Workflow:__ &rarr;
 
-1. {:.fragment} create a connection object with `pyscopg2.connect()`
+1. {:.fragment} create a connection object with `pymysql.connect()`
 	* {:.fragment} `connect` returns a new connection instance
-	* {:.fragment} it represents a database session (think: starting up `psql`)
+	* {:.fragment} it represents a database session (think: starting up `mysql`)
 	* {:.fragment} allows creation of cursor objects 
-2. {:.fragment} create a cursor object by `cursor` on a `connection` object
+2. {:.fragment} create a cursor object by calling `cursor` on a `connection` object
 	* {:.fragment} allows execution of queries
 	* {:.fragment} allows `commit` or `rollback` of transactions
 </section>
 
 <section markdown="block">
-## psycopg2 Methods Continued
+## PyMySQL Methods Continued
 
-3. {:.fragment} execute queries form the `cursor` object
+3. {:.fragment} `execute` queries form the `cursor` object
 	* {:.fragment} use `execute` to query the database
 	* {:.fragment} iteration over result or "fetch" some number of results (`fetchone`, `fetchall`)
 4. {:.fragment} use `commit` on the `connection` object to make changes persistent 
@@ -91,7 +140,7 @@ __`pyscopg2` Methods and Workflow:__ &rarr;
 <section markdown="block">
 ## Example Data
 
-__These slides use [the Museum of Modern Art (MoMA) collection data](https://github.com/MuseumofModernArt/collection)__ for example data.
+__These slides use [the Museum of Modern Art (MoMA) collection data](https://media.githubusercontent.com/media/MuseumofModernArt/collection/master/Artists.csv)__ for example data.
 
 <pre><code data-trim contenteditable>
 create table artist (
@@ -106,29 +155,31 @@ create table artist (
 	ulan text
 );
 </code></pre>
+{:.fragment}
 
 <pre><code data-trim contenteditable>
-copy artist from '/tmp/Artists.csv'
-with csv header
+LOAD DATA LOCAL INFILE 'Artists.csv' INTO TABLE artist
+  FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES;
 </code></pre>
+{:.fragment}
 
 
 
 </section>
 
 <section markdown="block">
-## pyscopg2 Connection and Cursor
+## PyMySQL Connection and Cursor
 
 __Creating a connection object... and a cursor__ &rarr;
 
 <pre><code data-trim contenteditable>
-import psycopg2
+import pymysql
 </code></pre>
 
 <pre><code data-trim contenteditable>
-# connect to a database (password can be omitted)
-# get back a connection object
-conn = psycopg2.connect(dbname="databasename", user="username", password="password")
+conn = pymysql.connect(database="yourusername_test", user="yourusername", password="yourpw", host="warehouse.cims.nyu.edu")
 </code></pre>
 {:.fragment}
 
@@ -142,7 +193,7 @@ cur = conn.cursor()
 </section>
 
 <section markdown="block">
-## pyscopg2 Query Execution
+## PyMySQL Query Execution
 
 __Construct and run the query__  &rarr;
 
@@ -167,7 +218,7 @@ cur.execute(q);
 </section>
 
 <section markdown="block">
-## psycopg2 Working With Query Results
+## PyMySQL Working With Query Results
 
 __Once the query has been executed, you can treat the cursor object as an iterator__ &rarr;
 
@@ -215,7 +266,7 @@ Calling `fetchone` with no more rows results in `None`; `fetchall` gives empty l
 <section markdown="block">
 ## Commit
 
-__By default, psycopg creates a transaction before executing commands...__ &rarr;
+__By default, PyMySQL creates a transaction before executing commands...__ &rarr;
 
 1. {:.fragment} which means that you'll have to `commit` or `rollback`
 2. {:.fragment} (not apparent when simply using select statements)
@@ -224,13 +275,11 @@ __By default, psycopg creates a transaction before executing commands...__ &rarr
 __⚠️ Make sure to commit after INSERT, UPDATE, and DELETE!__
 {:.fragment}
 
-(using [web_user](../db/indexes.html#10))
-{:.fragment}
 
 <pre><code data-trim contenteditable>
 q = """
-insert into web_user (user_id, first, last, active, email, password)
-values (400000, 'test', 'test', 'Y', 'test@test.test', 'asdf')
+insert into artist (name, bio)
+values ('joe', 'v')
 """
 cur.execute(q)
 conn.commit()
@@ -239,17 +288,10 @@ conn.commit()
 
 </section>
 <section markdown="block">
-## Autocommit, Close
+## Close
 
-__Tired of writing commit after your queries?__
 
-<pre><code data-trim contenteditable>
-conn.autocommit = True
-</code></pre>
-{:.fragment}	
-
-__Lastly, you can close the connection to the database by calling `close` on the `connection` objects.__
-{:.fragment}
+__You can close the connection to the database by calling `close` on the `connection` objects.__
 
 * {:.fragment} `conn.close()`
 * {:.fragment} `cur.close()` is available as well to close a cursor, but not connection 
@@ -265,22 +307,7 @@ __Both connections and cursors can be used with `with`__:
 * {:.fragment} for cursor, exiting the with block closes cursor
 * {:.fragment} an example of both:
 
-<pre><code data-trim contenteditable>
-conn = psycopg2.connect(DSN)
 
-with conn:
-    with conn.cursor() as curs:
-        curs.execute(SQL1)
-
-with conn:
-    with conn.cursor() as curs:
-        curs.execute(SQL2)
-
-conn.close()
-</code></pre>
-{:.fragment}
-
-</section>
 
 <section markdown="block">
 ## Tuples, Ugh
@@ -296,13 +323,9 @@ __Dictionaries FTW__
 An alternative is to use a cursor that gives back dictionaries:
 {:.fragment}
 
-<pre><code data-trim contenteditable>
-import psycopg2.extras
-</code></pre>
-{:.fragment}
 
 <pre><code data-trim contenteditable>
-cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+conn = pymysql.connect(.., cursorclass=pymysql.cursors.DictCursor)
 </code></pre>
 {:.fragment}
 
@@ -318,15 +341,16 @@ __⚠️ Do not use this code!!!! (why?) ⚠️__ &rarr;
 (note that the `input` function returns user input as a string)
 {:.fragment}
 <pre><code data-trim contenteditable>
-import psycopg2
+import pymysql
 
-conn = psycopg2.connect(dbname="databasename", user="username")
+conn = pymysql.connect(..., client_flag=pymysql.constants.CLIENT.MULTI_STATEMENTS)
 cur = conn.cursor()
 
 artist_name = input('Give me an artist name to search for\n> ')
-q = f"select * from artist where name ilike '%{artist_name}%'"
+q = f"select * from artist where name like '%{artist_name}%'"
 
 cur.execute(q)
+conn.commit()
 for row in cur:
     print(row)
 </code></pre>
@@ -351,7 +375,7 @@ Or how about _this artist_???
 {:.fragment}
 
 <pre><code data-trim contenteditable>
-jack%';select * from artist where nationality ilike '%American
+jack%'; insert into artist (name, bio) values ('joe', 'hello'); select '% 
 </code></pre>
 {:.fragment}
 
@@ -395,7 +419,7 @@ __Instead of using concatenation, etc. ... use parameterized queries__ &rarr;
 <section markdown="block">
 ## Parameterized Query Example
 
-__As a contrived example... the following psycopg2 execute__
+__As a contrived example... the following pymysql execute__
 
 <pre><code data-trim contenteditable>
 q = """
@@ -435,7 +459,7 @@ Modify the query so that `%s` is used as a placeholder for incoming value(s)
 {:.fragment}
 
 <pre><code data-trim contenteditable>
-q = f"select * from artist where name ilike %s"
+q = f"select * from artist where name like %s"
 </code></pre>
 {:.fragment}
 
@@ -450,6 +474,7 @@ cur.execute(q, (artist_name,))
 </section>
 
 
+{% comment %}
 <section markdown="block">
 ## psycopg2 Quick Start
 
@@ -466,3 +491,4 @@ Check out the [psycopg2 module usage section from the official docs](http://init
 {:.fragment}
 
 </section>
+{% endcomment %}

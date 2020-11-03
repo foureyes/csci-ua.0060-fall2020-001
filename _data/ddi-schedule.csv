@@ -357,13 +357,13 @@ Due __11/5 at 11pm__
 
 * [Homework #6](assignments/06.html)
 ",,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
-y,,18,Nov-3,Tue,"Database Driven Websites
+,,18,Nov-3,Tue,"Database Driven Websites
 
-* [http](slides/web/http.html)
+* [mysql and python](slides/py-db/mysql.html)
 * [flask](slides/web/flask.html)",,,,Multiple Tables (MySQL)
 y,workshop,19,Nov-5,Thu,"Database Driven Websites, Using an API
 
-* [mysql and python](slides/db/mysql-python.html)
+
 * [flask and database](slides/web/db.html)
 * [working with APIs](slides/web/apis.html)",,"* [homework #05](homework/05.html)
 
@@ -371,6 +371,7 @@ y,workshop,19,Nov-5,Thu,"Database Driven Websites, Using an API
 ",,Multiple Tables (MySQL)
 y,,20,Nov-10,Tue,"Using an API, Data Visualization
 
+* [http](slides/web/http.html)
 * [matpotlib](slides/viz/matplotlib.html)
 * manipulating visualizations
 * others? bokeh maybe?",,"* [video: create a flask app with a database](modules/web/flask.html)
