@@ -2,6 +2,7 @@
 layout: slides
 title: "Data Formats on the Web"
 ---
+
 <section markdown="block" class="intro-slide">
 # {{ page.title }}
 

@@ -359,25 +359,28 @@ Due __11/5 at 11pm__
 ",,"Using Unix/Linux on i6, Multiple Tables (MySQL)"
 ,,18,Nov-3,Tue,"Database Driven Websites
 
+* see slides on indexes from last Tuesday 
 * [mysql and python](slides/py-db/mysql.html)
-* [flask](slides/web/flask.html)",,,,Multiple Tables (MySQL)
-y,workshop,19,Nov-5,Thu,"Database Driven Websites, Using an API
+* [flask](slides/web/flask.html)","Module Documentation
 
+* [flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [PyMySQL documentation](https://pymysql.readthedocs.io/en/latest/",,,Multiple Tables (MySQL)
+,,19,Nov-5,Thu,"Database Driven Websites, Using an API
 
-* [flask and database](slides/web/db.html)
-* [working with APIs](slides/web/apis.html)",,"* [homework #05](homework/05.html)
+* see previous slides on flask
+* [HTTP](slides/web/http.html)
+* [data formats on the web](slides/web/data-formats-web.html)
+* [working with APIs](slides/web/apis.html)
+",,,,Multiple Tables (MySQL)
+,,20,Nov-10,Tue,"Data from the Web, Data Visualization
 
-<!-- create er based on existing db for site;-? create web site-->
-",,Multiple Tables (MySQL)
-y,,20,Nov-10,Tue,"Using an API, Data Visualization
-
-* [http](slides/web/http.html)
+* [regular expressions](slides/py/regex.html)
+* scraping demo
 * [matpotlib](slides/viz/matplotlib.html)
-* manipulating visualizations
-* others? bokeh maybe?",,"* [video: create a flask app with a database](modules/web/flask.html)
+* manipulating visualizations",,"* [video: create a flask app with a database](modules/web/flask.html)
 * [video: consuming an pi](modules/web/api.html)
 * [video: viusalization](modules/py/matplotlib.html)",,Multiple Tables (MySQL)
-y,,21,Nov-12,Thu,"Consuming APIs and Data Visualization
+y,workshop,21,Nov-12,Thu,"Consuming APIs and Data Visualization
 
 * consume data using an api
 * display data on the web",,"* [homework #06](homework/06.html)

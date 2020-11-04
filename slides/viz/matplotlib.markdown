@@ -1,6 +1,6 @@
 ---
 layout: slides
-title: "Matplotlib pt 1"
+title: "Matplotlib"
 ---
 
 <section markdown="block" class="intro-slide">
