@@ -298,16 +298,6 @@ __You can close the connection to the database by calling `close` on the `connec
 * {:.fragment} note that once closed, a `cursor` or `connection` can no longer be used
 </section>
 
-<section markdown="block">
-## Also, With!
-
-__Both connections and cursors can be used with `with`__:
-
-* {:.fragment} for connection, exiting the with block autocommits
-* {:.fragment} for cursor, exiting the with block closes cursor
-* {:.fragment} an example of both:
-
-
 
 <section markdown="block">
 ## Tuples, Ugh
