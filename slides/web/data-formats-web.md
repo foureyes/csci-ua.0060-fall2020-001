@@ -15,7 +15,7 @@ title: "Data Formats on the Web"
 <section markdown="block">
 ## Markdown, HTML, XML, JSON
 
-We've done _a lot_ of work with `csv` data, and it translates well to tabular data. However most data on the web is hierarchical: `html`, `xml`, and `json`. While simple `csv` files can be parsed by hand (or by `pandas`!)...  
+We've done _a lot_ of work with `csv` data, and it translates well to tabular data. However you'll find a lot of data on the web that is hierarchical: `html`, `xml`, and `json`. While simple `csv` files can be parsed by hand (or by the `csv` module or `pandas`!)...  
 
 __You don't want to mess with `html`, `xml`, and `json` on your own. It's actually quite difficult to get exactly right.__ &rarr;
 {:.fragment}

@@ -521,6 +521,23 @@ Note the example code above is for debugging purposes. Normally, detailed errors
 </section>
 
 <section markdown="block">
+## Permissions / CGI Script
+
+__To get your cgi script running (which in turn runs your flask app__ &rarr;
+
+* {:.fragment} make sure that it's readable and runnable:
+	* ```chmod 755 myapp.cgi```
+* {:.fragment} note that CGI scripts typically have an extension `.cgi`
+
+From there, accessing it on `i6` via url would be:
+{:.fragment}
+
+* {:.fragment} `https://i6.cims.nyu.edu/~yourusername/cgi-bin/myapp.cgi`
+* {:.fragment} any part of the path after `myapp.cgi` will be used by flask to find the appropriate route
+
+</section>
+
+<section markdown="block">
 ## More Debugging
 
 __Not best practice, but useful when starting out / debugging... you add this to your list of "routes" to show any runtime errors from the app in the response to the browser__ &rarr;
@@ -532,16 +549,31 @@ def handle_error(e):
 ```
 </section>
 
+<section markdown="block">
+## `i6` Workflow
+
+Although it's possible to edit files on `i6` directly, __it's best to develop locally (on your computer) first__.  __Why?__ &rarr;
+
+1. {:.fragment} you can treat `i6` as your _production_ environment; you don't want to make breaking changes to code while someone's viewing your site
+2. {:.fragment} your development tools are installed on your computer (your favorite IDE, for example)
+
+__Workflow__ 
+{:.fragment}
+
+1. {:.fragment} code locally if possible (install python, mysql server, etc.), using a configuration that uses your local environment
+2. {:.fragment} get your code onto `i6` (best to commit to git repository, then clone... but scp and sftp work too)
+3. {:.fragment} configure your application on the server to use `warehouse`
+4. {:.fragment} start the app with `flask run` or cgi (it may be easier to use flask run first)
+
+</section>
 
 <section markdown="block">
 ## Further Reading
 
-We've covered only very small portion of integrating a database with a web application. __If you'd like to explore flask further, check out these topics__ &rarr;
+We've covered only a very small portion of integrating a database with a web application. __If you'd like to explore flask further, check out these topics__ &rarr;
 
 * [handling request data (using forms)](https://flask.palletsprojects.com/en/1.1.x/quickstart/#accessing-request-data)
 * [using sessions to persist data between request and response cycles](https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions)
 * [handling errors gracefully, using redirects](https://flask.palletsprojects.com/en/1.1.x/quickstart/#redirects-and-errors)
-
-
 
 </section>
