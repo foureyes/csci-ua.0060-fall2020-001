@@ -174,7 +174,7 @@ __Now that we've read the docs, let's put together our url manually and in code_
 <pre><code data-trim contenteditable>
 tag = 'cat'
 api_key = 'XBu4Lke6Cyh2UrLFIZW0jIo79sUT8EwtruJduMAknEUNhccNwY'
-url = 'http://api.tumblr.com/v2/tagged?api_key={api_key}&tag={tag}' 
+url = f'http://api.tumblr.com/v2/tagged?api_key={api_key}&tag={tag}' 
 </code></pre>
 {:.fragment}
 </section>
