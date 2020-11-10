@@ -28,20 +28,71 @@ __You don't want to mess with `html`, `xml`, and `json` on your own. It's actual
 </section>
 
 <section markdown="block">
+## Trees!
+
+__Data formats, such as `html` `xml`, and `json` are hierarchical / nested.__ Think of a tree:
+
+```
+<html>
+<head></head>
+<body><h1>hello</h1><p>world</p></body>
+</html>
+```
+{:.fragment}
+
+```
+       html 
+       / \
+   head   body
+          /  \
+         h1   p
+         |    |
+     hello   world
+```
+{:.fragment}
+
+</section>
+
+<section markdown="block">
 ## So How Do We Even?
 
 __Find someone that already went through the pain of doing it, and use their library__.
 
 * {:.fragment} again, html is difficult to parse
+	* data is contained within data
+	* finding the start and end of a container is not trivial
 * {:.fragment} find an html parser already built for you
 * {:.fragment} for example you can use [beautiful soup 4](http://www.crummy.com/software/BeautifulSoup/bs4/doc/) to easily find elements within an html document using some simple methods
 * {:.fragment} some other libraries for parsing html:
 	* {:.fragment} [scrapy](https://scrapy.org/) - specialized for scraping data off of web-pages
 	* {:.fragment} [requests-html](https://html.python-requests.org/) - simple api built by author of popular library, `requests`
 
-
 </section>
 
+<section markdown="block">
+## HTML?
+
+__Before looking at parsing HTML, it's worth revisiting some vocabulary__ &rarr;
+
+An HTML document is composed of elements.
+{:.fragment}
+
+```
+                an element
++---------------------------------------+
+|                                       |
+|                         text content  |
+|                              |        |
+<a href="http://cs.nyu.edu">click me!</a>
+|   |                                   |
+|   attribute                           |
+|                             closing tag
+opening tag
+```
+{:.fragment}
+
+
+</section>
 
 <section markdown="block">
 ## Beautiful Soup 4
@@ -69,12 +120,12 @@ print(dom.select('.even-headier'))
 </section>
 
 <section markdown="block">
-## Beautiful Soup 4
+## Beautiful Soup 4 Installation / Usage
 
-__Here's a quick demonstration of how BeautifulSoup works...__ &rarr;
+__To get started...__ &rarr;
 
-1. {:.fragment} First, start off with installation:
-    * use PyCharm to install `beautifulsoup4`
+1. {:.fragment} install the module:
+    * use `pip3`, `conda`, PyCharm, etc. to install `beautifulsoup4`
 2. {:.fragment} Then... the usual import
     * `from bs4 import BeautifulSoup`
 
@@ -94,9 +145,10 @@ dom = BeautifulSoup("""
     &lt;body&gt;
         &lt;h1&gt;foo&lt;/h1&gt;
         &lt;p&gt;bar
-        &lt;h1 class='even-headier'&gt;baz&lt;/h1&gt;
-        &lt;a href='http://cs.nyu.edu'&gt;cs!&lt;/a&gt;
+            &lt;h1 class='even-headier'&gt;baz&lt;/h1&gt;
+            &lt;a href='http://cs.nyu.edu'&gt;cs!&lt;/a&gt;
         &lt;/p&gt;
+        &lt;a id='foo' href='http://nyu.edu'&gt;nyu!&lt;/a&gt;
     &lt;/body&gt;
 &lt;/html&gt;
 """, "html.parser")
@@ -106,9 +158,55 @@ dom = BeautifulSoup("""
 </section>
 
 <section markdown="block">
-## Beautiful Soup Continued
+## Beautiful Soup and CSS
 
-Now... __you can use css selectors to retrieve specific html elements... by using the `select` method!__ &rarr;
+__You can use CSS selectors to retrieve specific html elements... by using the `select` method!__
+
+__Wait, what's a CSS selector?__ &rarr;
+{:.fragment}
+
+* {:.fragment} a CSS selector is a way of finding / choosing elements 
+* {:.fragment} when used in conjunction with styling elements with CSS rules, it _"selects_ the elements to apply a rule to
+* {:.fragment} for example: `h1 {color: red}`...
+* {:.fragment} means: find all elements in the document that are `h1`; make them red
+* {:.fragment} in BeautifulSoup, we can use just the selector part to find elements 
+
+</section>
+
+<section markdown="block">
+## Example CSS Selectors
+
+__Do you know any common CSS selectors?__ &rarr;
+
+* {:.fragment} __class name__: `.foo` ... any element with a class attribute equal to foo (`<p class="foo">`)
+* {:.fragment} __id__: `#bar` ... any element an id attribute equal to bar (`<p id="bar">`)
+* {:.fragment} __tag name__: `p` ... any paragraph 
+* {:.fragment} __descendent__: `h1 p` ... any paragraph contained within an h1, regardless of depth (`<h1><section><p></p></section></h1>`)
+* {:.fragment} __direct descendent__: `h1 > p` ... any paragraph that's an immediate descendent / child of an h1 (`<h1><p></p></h1>`)
+
+These can be combined to be more specific. For example: `h1 p.foo` selects any paragraph element with class name `foo` that is contained within an h1.
+{:.fragment}
+</section>
+
+<section markdown="block">
+##  Using Beautiful Soup's `select` and `select_one`
+
+__Finally, let's get to working with the `select` method__ &rarr;
+
+* {:.fragment} The `select` method takes a single argument: the css selector as a string.
+* {:.fragment} It returns a list of matching HTML elements, with each element having its own methods or operators to:
+	* {:.fragment} get the text content: `element.get_text()`
+	* {:.fragment} get the value of an attribute: element.['attribute name']
+* {:.fragment} `select_one` returns the first matching element
+
+
+
+</section>
+
+<section markdown="block">
+## Select Examples 
+
+__A few quick examples using `select`, indexing with attribute names, and using `get_text`__ &rarr;
 
 <pre><code data-trim contenteditable>
 # get the elements with class .even-headier
@@ -124,11 +222,38 @@ print(dom.select('a')[0]['href'])
 
 </section>
 
+<section markdown="block">
+## Some Practice
+
+__Assuming `dom` represents a parsed version of the example html document from the previous slides:__ &rarr;
+
+1. {:.fragment} print the text content of the first element you find that is a link (an anchor / a) within a paragraph
+	* {:.fragment} `print(dom.select('p > a')[0].get_text())`
+2. {:.fragment} print the url (href) in the link with an id, foo
+	* {:.fragment} `print(dom.select_one('#foo')['href'])`
+
+</section>
+
 
 <section markdown="block">
 ## JSON
 
-Aaaand. Lastly, JSON. __Use the <code>json</code> module to convert to and from Python dictionaries and JSON strings__ &rarr;
+Aaaand. Lastly, __JSON__. __What's JSON again?__ &rarr;
+
+* {:.fragment} It's a data format that represents data such as objects, Arrays (think lists), numbers and strings.
+* {:.fragment} objects are collections of name and value pairs
+* {:.fragment} names are double quoted strings, and values can be other objects, Arrays, numbers and strings
+* {:.fragment} `{"playername": "foo", "stats": {"points": 5, "health": 3}}`
+* {:.fragment} __What python type does this remind you of?__ <span class="fragment">a python `dict`</span>
+
+__⚠️ JSON is a data interchange format!  It must be parsed before it can be used as an object or `dict`__
+{:.fragment}
+
+</section>
+<section markdown="block">
+## Working with JSON
+
+ __Use the <code>json</code> module to convert to and from Python dictionaries and JSON strings__ &rarr;
 
 <pre><code data-trim contenteditable>
 import json
@@ -141,12 +266,21 @@ print(d)
 </code></pre>
 {:.fragment}
 
+Remember to parse with `loads` first! Otherwise, you just have a string!
+{:.fragment} 
+
+<pre><code data-trim contenteditable>
+s = '{"first":"joe", "last":"versoza"}'
+print(s["first"]) # ERROR (not yet a dict)
+</code></pre>
+{:.fragment}
+
 </section>
 
 <section markdown="block">
 ## Pandas and JSON
 
-__Of course, you can also use `pandas` to work with `json`:__ &rarr;
+__You can also use `pandas` -- a module we'll look at later --  to work with `json`:__ &rarr;
 
 To create a `DataFrame` from a `json` string:
 {:.fragment}
@@ -163,6 +297,7 @@ Keys are columns, but they can be adjusted using the `orient` keyword argument
 * {:.fragment} (for example, `orient=split` will expect separate keys for `index`, `columns` and `data`)
 </section>
 
+{% comment %}
 <section markdown="block">
 ## Nested JSON
 
@@ -213,6 +348,7 @@ json_normalize(json.loads(s))
 {:.fragment}
 
 </section>
+{% endcomment %}
 
 
 
