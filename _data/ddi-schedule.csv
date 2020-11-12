@@ -384,13 +384,24 @@ Due __11/5 at 11pm__
 * [video: viusalization](modules/py/matplotlib.html)
 
 -->",,Multiple Tables (MySQL)
-y,workshop,21,Nov-12,Thu,"Consuming APIs and Data Visualization
+,workshop,21,Nov-12,Thu,"Consuming APIs and Data Visualization
 
-* consume data using an api
-* display data on the web",,"Due __11/19 at 11pm__
+* see workshop instructions",,"Turn in whatever work finished __today (11/12) by end of class__ (this will be completed as part of the homework assignment)
 
+* workshop 05 to be posted
+
+<--
+* [workshop #05 - database design](assignments/lab05.html)
+-->
+
+
+Due __11/19 at 11pm__
+
+* homework 07 to be posted
+
+<--
 * [homework #07](homework/07.html)
-
+--->
 <!-- work with an api, create data visualization  -->
 ",,Multiple Tables (MySQL) / Database Management
 y,workshop,22,Nov-17,Tue,"Document Store with MongoDB
