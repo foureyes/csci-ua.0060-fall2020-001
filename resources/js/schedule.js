@@ -28,6 +28,7 @@ function createNotebookLinks() {
       // create link to notebook as html
 			const nb = document.createElement('a');
       const pattern = /notebooks\/(\w*)/;
+      console.log('pattern', pattern, originalPath);
 			nb.href = originalPath.replace(pattern,'notebooks\/$1\/html').replace('.ipynb', '.html');
 			nb.textContent = '📓';
 			a.parentNode.appendChild(nb);

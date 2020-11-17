@@ -376,7 +376,8 @@ Due __11/5 at 11pm__
 
 * [regular expressions](slides/py/regex.html)
 * scraping demo
-* [matpotlib](slides/viz/matplotlib.html)",,"<!--
+* [matpotlib part 1](slides/viz/matplotlib.html) and (optional – if you’ve worked with numpy) [matpotlib part 2](slides/viz/matplotlib-extras.html)
+* [enc.txt](data/enc.txt), [more visualization](notebooks/viz/charts-graphs-decode.ipynb),",,"<!--
 
 * [video: create a flask app with a database](modules/web/flask.html)
 * [video: consuming an pi](modules/web/api.html)
