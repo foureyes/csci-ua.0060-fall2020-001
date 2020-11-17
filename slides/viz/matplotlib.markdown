@@ -134,7 +134,6 @@ Setup...
 
 <pre><code data-trim contenteditable>
 import matplotlib.pyplot as plt
-import numpy as np
 </code></pre>
 
 Some data...
@@ -204,7 +203,7 @@ feels = ('👍', '😒', '🍠')
 num_votes = [5, 3, 12]
 
 # the x values (based on number of labels)
-x = np.arange(len(feels))
+x = range(len(feels))
 
 </code></pre>
 {:.fragment}
@@ -236,8 +235,9 @@ __If your data were in a dictionary... here's how the previous program may look_
 
 <pre><code data-trim contenteditable>
 feels = {'👍': 5, '😒':3, '🍠':12}
-plt.bar(np.arange(len(feels)), list(feels.values()), align='center', color='#aaddff')
-plt.xticks(np.arange(len(feels)), list(feels.keys()))
+plt.bar(range(len(feels)), list(feels.values()), align='center', color='#aaddff')
+
+plt.xticks(range(len(feels)), list(feels.keys()))
 
 plt.ylim(0, 14)
 plt.ylabel('Votes')
