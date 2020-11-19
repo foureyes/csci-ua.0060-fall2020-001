@@ -404,7 +404,9 @@ Document Store with MongoDB
 
 * [mongodb intro](slides/mongo/intro.html)
 * [books.csv](data/books/books.csv)
-* [book_fields.txt](data/books/books_fields.txt)","* [MongoDB CRUD Operations](https://docs.mongodb.com/manual/crud/)
+* [book_fields.txt](data/books/books_fields.txt)","* [MongoDB Database Management on CIMS](https://cims.nyu.edu/class-mongodb/manage)
+* [Accessing MongoDB on CIMS](https://cims.nyu.edu/webapps/content/systems/userservices/databases/class-mongodb)
+* [MongoDB CRUD Operations](https://docs.mongodb.com/manual/crud/)
 * [MongoDB db.collection.find()](https://docs.mongodb.com/manual/reference/method/db.collection.find/)",,,NoSQL (MongoDB)
 ,,23,Nov-19,Thu,"Document Store with MongoDB
 
