@@ -162,14 +162,24 @@ The __Object ID__ is a 12-byte value, consists of: a 4-byte timestamp (seconds s
 </section>
 
 <section markdown="block">
+## Hosted MongoDB
+
+For this class, we'll be using [mongodb on CIMS](https://cims.nyu.edu/webapps/content/systems/userservices/databases/class-mongodb)
+
+* see [the docs for how to set up access](https://cims.nyu.edu/webapps/content/systems/userservices/databases/class-mongodb)
+* like MariaDB, you'll have to `ssh` to `i6` first
+* then use the commandline client, `mongo` to access it
+
+</section>
+<section markdown="block">
 ## Installation
 
-[Comprehensive docs are here](http://docs.mongodb.org/manual/installation/)
+You can also (but are not required to) [install on your own computer](http://docs.mongodb.org/manual/installation/)
 
 * basically, just [use the appropriate installer from their downloads page](http://www.mongodb.org/downloads)
 * if you use a package manager, do that instead 
 	* they have .debs for Debian and Ubuntu
-	* since I'm on OSX, and I use homebrew, I used <code>brew install mongodb</code>
+	* since I'm on MacOS, and I use homebrew, I used <code>brew install mongodb-community</code>
 * starting will vary based on OS
 * you may need to create and/or specify a directory where your data will be stored, so if mongo doesn't start up, it's missing its data directory
 </section>	
@@ -179,8 +189,11 @@ The __Object ID__ is a 12-byte value, consists of: a 4-byte timestamp (seconds s
 
 Working with MongoDB on the commandline...
 
-If your OS doesn't autostart by default, you can run:
+If your OS doesn't autostart by default (Windows likely does this for you), you can run (on MacOS):
 
+<pre><code data-trim contenteditable>
+brew services start mongodb-community
+</code></pre>
 <pre><code data-trim contenteditable>
 mongod
 </code></pre>
