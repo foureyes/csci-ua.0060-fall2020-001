@@ -392,7 +392,7 @@ Due __11/5 at 11pm__
 
 
 
-Due __11/19 at 11pm__
+Due <strike>11/19 at 11pm</strike> __11/24 at 11pm__
 
 
 * [homework #07](assignments/07.html)",,Multiple Tables (MySQL) / Database Management
@@ -404,18 +404,18 @@ Document Store with MongoDB
 
 * [mongodb intro](slides/mongo/intro.html)
 * [books.csv](data/books/books.csv)
-* [book_fields.txt](data/books/books_fields.txt)",,"* [MongoDB CRUD Operations](https://docs.mongodb.com/manual/crud/)
-* [MongoDB db.collection.find()](https://docs.mongodb.com/manual/reference/method/db.collection.find/)",,NoSQL (MongoDB)
+* [book_fields.txt](data/books/books_fields.txt)","* [MongoDB CRUD Operations](https://docs.mongodb.com/manual/crud/)
+* [MongoDB db.collection.find()](https://docs.mongodb.com/manual/reference/method/db.collection.find/)",,,NoSQL (MongoDB)
 ,,23,Nov-19,Thu,"Document Store with MongoDB
 
 * [mongodb aggregation](slides/mongo/aggregation.html)
 * [mongodb design](slides/mongo/design.html)
-* [mongodb and ptyhon](slides/mongo/pymongo.html)",,"* [MongoDB Data Model Design](https://docs.mongodb.com/manual/core/data-model-design/)
+* [mongodb and ptyhon](slides/mongo/pymongo.html)","* [MongoDB Data Model Design](https://docs.mongodb.com/manual/core/data-model-design/)
 * [MongoDB Data Model Examples and Patterns](https://docs.mongodb.com/manual/applications/data-models/)
 
 <!--
 * [video: mongodb](modules/db/mongodb.html)
--->",,NoSQL (MongoDB)
+-->",,,NoSQL (MongoDB)
 y,,24,Nov-24,Tue,"Document Store with MongoDB
 
 * demo using mongodb",,"* [homework #07](homework/07.html)
