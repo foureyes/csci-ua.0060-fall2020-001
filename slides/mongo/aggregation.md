@@ -18,7 +18,8 @@ __Using the [job postings data set](https://data.cityofnewyork.us/City-Governmen
 
 * {:.fragment} bring the `csv` file into a collection named `jobs` in a database called `test` by using `mongoimport`;
 * {:.fragment} you'll have to specify that it has a header line, that it's type is a csv, and where the import file is located
-* {:.fragment} `mongoimport --headerline --type=csv --db=test --collection=jobs --file=./NYC_jobs.csv`
+* {:.fragment} on i6: `mongoimport --headerline --type=csv --db=YOUR_USERNAME --collection=jobs --host=class-mongo db.cims.nyu.edu --file=./NYC_jobs.csv --username=YOUR_USERNAME --password=YOUR_PASSWORD`
+* {:.fragment} if you have mongodb installed locally: `mongoimport --headerline --type=csv --db=test --collection=jobs --file=./NYC_jobs.csv`
 
 </section>
 
