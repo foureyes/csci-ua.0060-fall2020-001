@@ -107,7 +107,7 @@ db.jobs.find({}, fields).sort(orderBy).limit(20).pretty();
 <section markdown="block">
 ## Aggregation
 
-Like `GROUP BY` in relational databases and the `groupby` method in pandas, __MongoDB also supports performing aggregation functions on groups of data (documents instead of rows, of course!)__.
+Like `GROUP BY` in relational databases (and the `groupby` method in pandas), __MongoDB also supports performing aggregation functions on groups of data (documents instead of rows, of course!)__.
 
 There are a few ways to do this in MongoDB:
 
@@ -147,7 +147,7 @@ Pass in an Array containing a sequence of aggregation pipeline stages.
 __We'll use some of the following stages__ &rarr;
 
 1. {:.fragment} `$match` - to filter documents
-2. {:.fragment} `$count` - to count the number documents at this stage
+2. {:.fragment} `$count` - to count the number documents at this stage (only available in > 3.4)
 3. {:.fragment} `$project` - to calculate or select fields
 4. {:.fragment} `$group` - to group documents
 </section>
@@ -159,7 +159,7 @@ __Looking at some of these stages, there's something that seems _redundant_ abou
 
 * {:.fragment} don't most of these stages have a counterpart already? 
 	* `$match` is like query 
-	* `$project` and `count` are like, _well_, project, and `.count`)
+	* `$project` and `count` are like, _well_, "project", and `.count`)
 * {:.fragment} __however... these are stages in a pipeline of operations__ ...so they can be chained, repeated... and take advantage of aggregation / grouping!  🎆
 
 
@@ -168,7 +168,7 @@ __Looking at some of these stages, there's something that seems _redundant_ abou
 <section markdown="block">
 ## Other Stages
 
-__Additionally, there are more (perhaps not as _familiar stages)__: 
+__Additionally, there are more (perhaps not as _familiar_ stages)__: 
 {:.fragment}
 
 * {:.fragment} such as `$addFields` (similar to `$project`), `$bucket` (_binning values_),  and `$sample` (to select a random number of documents from its input) 
@@ -209,7 +209,7 @@ __The `$match` operator filters documents__ &rarr;
 </section>
 
 <section markdown="block">
-## $count
+## $count (only available in 3 (only available in 3.4).4)
 
 __As the name implies, counts the number of documents incoming from the previous stage__ &rarr;
 
@@ -286,6 +286,9 @@ db.jobs.aggregate([{$project: projection}]);
 __Combining `$match` and `$project`: show jobs that have "External" `Posting Type` with a subset of fields__ &rarr;
 {:.fragment}
 
+Let's retrieve only Job ID, Posting Type as ptype, and title...
+{:.fragment}
+
 <pre><code data-trim contenteditable>
 var projection = {
   _id:0, 
@@ -293,6 +296,10 @@ var projection = {
   ptype: "$Posting Type", 
   "title": {$toUpper: "$Business Title"}
 };
+</code></pre>
+{:.fragment}
+
+<pre><code data-trim contenteditable>
 db.jobs.aggregate([
 	{$match: {"Posting Type": "External"}}, 
 	{$project: projection}]);
@@ -304,7 +311,7 @@ db.jobs.aggregate([
 <section markdown="block">
 ## A More Complicated `$project`
 
-__Now let's try creating an arbitrary complex expression by nesting a split within an arrayElemenAt__ &Rarr;
+__Now let's try creating an arbitrary complex expression by nesting a split within an arrayElemenAt__ &rarr;
 
 The following breaks up the `Job Category` field and retrieves the first element
 {:.fragment}
