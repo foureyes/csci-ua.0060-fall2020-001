@@ -28,9 +28,9 @@ __Using the [job postings data set](https://data.cityofnewyork.us/City-Governmen
 
 __Let's check out what we've imported__ &rarr;
 
-* {:.fragment} get to the right collection
+* {:.fragment} get to the right database (not necessary on i6), then describe the collection
 	```
-use test
+use YOUR_DATABASE
 show collections
 	```
 	{:.fragment}
