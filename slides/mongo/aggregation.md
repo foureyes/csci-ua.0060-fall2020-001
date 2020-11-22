@@ -313,7 +313,7 @@ db.jobs.aggregate([
 
 __Now let's try creating an arbitrary complex expression by nesting a split within an arrayElemenAt__ &rarr;
 
-The following breaks up the `Job Category` field and retrieves the first element
+The following breaks up the `Job Category` field and retrieves the first element (this will only work on 3.4 due to #split)
 {:.fragment}
 
 <pre><code data-trim contenteditable>
@@ -397,7 +397,7 @@ __Unlike sql `SELECT`, the order of the stages in a call to `aggregate` can be s
 
 
 * {:.fragment} try to place `$match` operations earlier... __why__ &rarr;
-* {:.fragment} $match reduces the total number of documents to be processed 
+* {:.fragment} `$match` reduces the total number of documents to be processed 
 * {:.fragment} which means that later stages won't have to deal with large volumes of documents!
 
 </section>
@@ -406,7 +406,7 @@ __Unlike sql `SELECT`, the order of the stages in a call to `aggregate` can be s
 <section markdown="block">
 ## Match
 
-__Make a simple aggregation pipeline that acts like find to filter such that the minimum `Salary Range From` in our results is $200,000__ &rarr;
+__Make a simple aggregation pipeline that acts like find to filter such that the minimum `Salary Range From` in our results is $155,000__ &rarr;
 
 <pre><code data-trim contenteditable>
 var min_from = {$match: {"Salary Range From": {$gt: 200000}}}
