@@ -82,6 +82,8 @@ db.jobs.find(filter, fields).sort({'Job ID': 1}).pretty();
 
 __Show the top 20 jobs based on highest "to" salary (use `Salary Range To`)__ &rarr;
 
+(only show Job ID, Business Title, Posting Date, and Salary Range To)
+
 <pre><code data-trim contenteditable>
 var fields = {
 	_id: 0, 
@@ -89,6 +91,10 @@ var fields = {
 	"Business Title": 1, 
 	"Posting Date": 1, 
 	"Salary Range To": 1};
+</code></pre>
+{:.fragment}
+
+<pre><code data-trim contenteditable>
 var orderBy = {"Salary Range To": -1};
 db.jobs.find({}, fields).sort(orderBy).limit(20).pretty();
 </code></pre>
