@@ -392,7 +392,7 @@ Due __11/5 at 11pm__
 
 
 
-Due <strike>11/19 at 11pm</strike> __11/24 at 11pm__
+Due <strike>11/19 at 11pm</strike> __12/1 at 11pm__
 
 
 * [homework #07](assignments/07.html)",,Multiple Tables (MySQL) / Database Management
@@ -418,9 +418,13 @@ Document Store with MongoDB
 <!--
 * [video: mongodb](modules/db/mongodb.html)
 -->",,,NoSQL (MongoDB)
-y,,24,Nov-24,Tue,"Document Store with MongoDB
+,,24,Nov-24,Tue,"Document Store with MongoDB
 
-* demo using mongodb",,"* [homework #07](homework/07.html)
+* see previous classes on MongoDB",,"Due __12/1 at 12:30pm (AT CLASS START)__
+
+* Quiz #6 (MongoDB Basics) in NYU Classes
+
+<!-- * [homework #07](homework/07.html) -->
 
 <!-- TODO: hw - use mongodb  -->
 ",,Data Visualization (matplotlib)
