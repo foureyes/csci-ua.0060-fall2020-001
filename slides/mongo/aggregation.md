@@ -264,7 +264,8 @@ Some examples include:
 
 __Additional operations... and expressions__ &rarr;
 
-* {:.fragment} [`$add`](https://docs.mongodb.com/manual/reference/operator/aggregation/add/#exp._S_add), [`$subtract`](https://docs.mongodb.com/manual/reference/operator/aggregation/subtract/#exp._S_subtract), etc. ... `{$subtract: ["$field1", "$field2"]} // field1 - field2`
+* {:.fragment} [`$add`](https://docs.mongodb.com/manual/reference/operator/aggregation/add/#exp._S_add), [`$subtract`](https://docs.mongodb.com/manual/reference/operator/aggregation/subtract/#exp._S_subtract), [`$divide`](https://docs.mongodb.com/manual/reference/operator/aggregation/divide/), and [`$multiply`](https://docs.mongodb.com/manual/reference/operator/aggregation/multiply/), etc. ... `{$subtract: ["$field1", "$field2"]} // field1 - field2`
+
 * {:.fragment} and [sooo may others, like `$toUpper`, `$trim`, `{$arrayElemAt: someArray, someIndex}`, etc.](https://docs.mongodb.com/manual/reference/operator/aggregation/)
 
 Note that in most cases, the values can be arbitrary expressions that are: values at fields (`"$fieldName"`), a hardcoded value (`5`) or even the result of another operation (`{$op: [arg1, arg2}`)
