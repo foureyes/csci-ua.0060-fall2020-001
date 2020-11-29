@@ -429,8 +429,12 @@ Document Store with MongoDB
 <!-- TODO: hw - use mongodb  -->
 ",,Data Visualization (matplotlib)
 y,holiday,,Nov-26,Thu,Holiday,,,,
-y,,25,Dec-1,Tue,Data Analysis Library with Pandas,,,,Data Analysis Library (pandas)
-y,,26,Dec-3,Thu,Data Analysis Library with Pandas,,"* [homework #08](homework/08.html)
+,,25,Dec-1,Tue,"Aggregation and Python with Document Store
+
+* see previous classes on MongoDB",,"Due __12/4 at 11pm__
+
+* [homework #08](assignments/08.html)",,Data Analysis Library (pandas)
+y,,26,Dec-3,Thu,Data Analysis Library with Pandas,,"
 
 <!-- TODO: hw - use pandas  -->
 ",,Optional Topic 1
