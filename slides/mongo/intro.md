@@ -225,9 +225,26 @@ __`mongo` is the client that comes bundled with `mongod`. It's an interactive sh
 </section>
 
 <section markdown="block">
-## Starting Out
+## Starting Out on i6
+
+1. get a password for your database here: [https://cims.nyu.edu/class-mongodb/manage](https://cims.nyu.edu/class-mongodb/manage)
+2. ssh to i6: `ssh YOUR_USERNAME@i6.cims.nyu.edu`
+3. set up environment variables (on i6):
+	```
+export LC_ALL=en_US.UTF-8
+module load mongodb-3.2.0
+```
+4. use mongo commandline client with your password (on i6):
+	```
+mongo jversoza --host class-mongodb.cims.nyu.edu -u jversoza -p
+```
+
+</section>
+<section markdown="block">
+## Starting Out Locally
 
 __To begin using the commandline client to inspect your data:__ &rarr;
+
 
 1. make sure that `mongod` is running in a different window (or running _in the background_ or as a daemon)
 2. start up the commandline client with `mongo`

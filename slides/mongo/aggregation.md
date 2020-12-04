@@ -18,7 +18,12 @@ __Using the [job postings data set](https://data.cityofnewyork.us/City-Governmen
 
 * {:.fragment} bring the `csv` file into a collection named `jobs` in a database called `test` by using `mongoimport`;
 * {:.fragment} you'll have to specify that it has a header line, that it's type is a csv, and where the import file is located
-* {:.fragment} on i6: `mongoimport --headerline --type=csv --db=YOUR_USERNAME --collection=jobs --host=class-mongo db.cims.nyu.edu --file=./NYC_jobs.csv --username=YOUR_USERNAME --password=YOUR_PASSWORD`
+* {:.fragment} on i6: 
+	```
+export LC_ALL=en_US.UTF-8
+module load mongodb-3.2.0
+`mongoimport --headerline --type=csv --db=YOUR_USERNAME --collection=jobs --host=class-mongo db.cims.nyu.edu --file=./NYC_jobs.csv --username=YOUR_USERNAME --password=YOUR_PASSWORD`
+```
 * {:.fragment} if you have mongodb installed locally: `mongoimport --headerline --type=csv --db=test --collection=jobs --file=./NYC_jobs.csv`
 
 </section>
@@ -26,19 +31,38 @@ __Using the [job postings data set](https://data.cityofnewyork.us/City-Governmen
 <section markdown="block">
 ## Explore the Sample Data
 
-__Let's check out what we've imported__ &rarr;
+__Let's check out what we've imported by connecting to the database first__ &rarr;
+
+* {:.fragment} use the `mongo` client :
+* {:.fragment} on i6:
+* {:.fragment} set up environment variables (on i6):
+	```
+export LC_ALL=en_US.UTF-8
+module load mongodb-3.2.0
+```
+* {:.fragment} use mongo commandline client with your password (on i6): 
+	```
+mongo jversoza --host class-mongodb.cims.nyu.edu -u jversoza -p
+```
+* {:.fragment} locally, you can use `mongo` without any additional options
+
+
+</section>
+
+<section markdown="block">
+## Exploration Continued
+
+Once you've started the client...
 
 * {:.fragment} get to the right database (not necessary on i6), then describe the collection
 	```
 use YOUR_DATABASE
 show collections
 	```
-	{:.fragment}
 * {:.fragment} show the imported fields by displaying exactly one document 
 	```
 db.jobs.findOne()
 	```
-	{:.fragment}
 * {:.fragment} how many documents are in the collection?
 	```
 db.jobs.find().count()
@@ -49,8 +73,8 @@ db.jobs.find().count()
 db.jobs.distinct('Agency')
 db.jobs.distinct('Full-Time/Part-Time indicator')
 	```
-	{:.fragment}
 	
+
 </section>
 
 <section markdown="block">
