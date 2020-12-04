@@ -434,7 +434,24 @@ y,holiday,,Nov-26,Thu,Holiday,,,,
 * see previous classes on MongoDB",,"Due __12/4 at 11pm__
 
 * [homework #08](assignments/08.html)",,Data Analysis Library (pandas)
-y,,26,Dec-3,Thu,Data Analysis Library with Pandas,,"
+,,26,Dec-3,Thu,"Document Store Database Design
+
+* finish database design
+* questions about homework 8
+
+Using Notebooks
+
+* jupyterlab and jupyternotebook
+* with matplotlib and letter frequency
+* with matplotlib and previous dataset
+
+Data Analysis Library with Pandas
+
+* demo using pandas
+* optional slides
+  * [numpy basics](slides/py/numpy-basics.html)
+  * [pandas basics](slides/py/pandas-basics.html)
+  * [pandas arithmetic](slides/py/pandas-review-arithmetic-index.htm.html)",,"
 
 <!-- TODO: hw - use pandas  -->
 ",,Optional Topic 1
