@@ -1,0 +1,8 @@
+{
+  "info": {"curPage": 3, "totalPages": 5},
+  "data": [
+    { "author": "Isaac Asimov", "title": "The Foundation Trilogy"},
+    { "author": "Frank Herbert", "title": "Dune"},
+    { "author": "Mary Shelley", "title": "The Last Man"}
+  ]
+}

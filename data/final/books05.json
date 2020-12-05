@@ -1,0 +1,8 @@
+{
+  "info": {"curPage": 5, "totalPages": 5},
+  "data": [
+    { "author": "Margaret Atwood", "title": "Oryx and Crake"},
+    { "author": "Margaret Atwood", "title": "The Year of the Flood"},
+    { "author": "Philip K. Dick", "title": "Ubik"}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "info": {"curPage": 2, "totalPages": 5},
+  "data": [
+    { "author": "Frank Herbert", "title": "Children of Dune"},
+    { "author": "Margaret Atwood", "title": "The Handmaid's Tale"},
+    { "author": "Douglas Adams", "title": "The Hitchhiker's Guide To The Galaxy"},
+    { "author": " Orson Scott Card", "title": "Ender's Game"}
+  ]
+}
