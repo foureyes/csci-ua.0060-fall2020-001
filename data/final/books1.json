@@ -2,7 +2,7 @@
   "info": {"curPage": 1, "totalPages": 5},
   "data": [
     { "author": "Mary Shelley", "title": "Frankenstein"},
-    { "author": "Philip K. Dick", "title": "Do Androids Dream Of Electric Sheep?"}
+    { "author": "Philip K. Dick", "title": "Do Androids Dream Of Electric Sheep?"},
     { "author": "Neal Stephenson", "title": "Snow Crash"}
   ]
 }
