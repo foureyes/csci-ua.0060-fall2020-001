@@ -24,7 +24,32 @@ To import this .csv into MongoDB on i6:
 	```
 mongoimport --headerline --type=csv --file=nyc_properties_sold.csv --db=YOURUSERNAME --collection=sales --username=YOURUSERNAME --host=class-mongodb.cims.nyu.edu --password YOURPASSWORD
 ```
-6. finally, start the `mongo` client by running this command, again substituting `YOURUSERNAME` with your actual username:
+6. start the `mongo` client by running this command, again substituting `YOURUSERNAME` with your actual username:
 	```
 mongo YOURUSERNAME --host class-mongodb.cims.nyu.edu -u YOURUSERNAME -p
+```
+7. convert the data types of two columns by running this code __while connected to mongodb within the mongo client__
+	```
+db.sales.find().forEach(function(data) {
+    db.sales.update({
+        "_id": data._id,
+        "gross_square_feet": data.gross_square_feet
+    }, {
+        "$set": {
+            "gross_square_feet": parseInt(data.gross_square_feet)
+        }
+    });
+})
+```
+	```
+db.sales.find().forEach(function(data) {
+    db.sales.update({
+        "_id": data._id,
+        "land_square_feet": data.land_square_feet
+    }, {
+        "$set": {
+            "land_square_feet": parseInt(data.land_square_feet)
+        }
+    });
+})
 ```
